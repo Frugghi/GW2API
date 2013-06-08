@@ -78,4 +78,12 @@ typedef enum {
     GW2ProfessionTailor
 } GW2Profession;
 
+typedef enum {
+    GW2ObjectiveUnknown = 0,
+    GW2ObjectiveCamp,
+    GW2ObjectiveTower,
+    GW2ObjectiveKeep,
+    GW2ObjectiveCastle
+} GW2ObjectiveType;
+
 #endif

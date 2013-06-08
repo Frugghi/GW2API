@@ -86,6 +86,15 @@
     }
 }
 
+- (NSString *)nameByTrimmingLangTag {
+    NSUInteger index = [self.name rangeOfString:@"[" options:NSBackwardsSearch].location;
+    if (index != NSNotFound){
+        return [[self.name substringToIndex:index] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    }
+    
+    return self.name;
+}
+
 #pragma mark - NSObject protocol -
 
 - (NSString *)description {

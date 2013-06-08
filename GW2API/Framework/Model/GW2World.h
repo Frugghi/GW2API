@@ -33,5 +33,6 @@
 @property (nonatomic, readonly) GW2Language language;
 
 - (id)initWithID:(NSString *)ID name:(NSString *)name;
+- (NSString *)nameByTrimmingLangTag;
 
 @end

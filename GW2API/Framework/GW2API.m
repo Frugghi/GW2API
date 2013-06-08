@@ -129,22 +129,24 @@
 
 + (NSDate *)nextWvWReset:(GW2Region)region {
     NSString *timezone = (region == GW2RegionEurope ? @"UTC" : @"PDT");
-    NSDate *today = [[NSDate alloc] init];
+    NSUInteger hour = 18;
+    NSDate *today = [NSDate date];
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     [gregorian setTimeZone:[NSTimeZone timeZoneWithAbbreviation:timezone]];
     
-    NSDateComponents *weekdayComponents = [gregorian components:NSWeekdayCalendarUnit fromDate:today];
+    NSDateComponents *weekdayComponents = [gregorian components:(NSWeekdayCalendarUnit | NSHourCalendarUnit) fromDate:today];
     
     NSDateComponents *componentsToAdd = [[NSDateComponents alloc] init];
     [componentsToAdd setDay:(13 - [weekdayComponents weekday]) % 7];
+    if ([weekdayComponents weekday] == 6 && [weekdayComponents hour] >= hour) {
+        [componentsToAdd setDay:7];
+    }
     
     NSDate *friday = [gregorian dateByAddingComponents:componentsToAdd toDate:today options:0];
     
-    NSDateComponents *components =
-    [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit)
-                 fromDate: friday];
-    
-    [components setHour:18];
+    NSDateComponents *components = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit)
+                                                fromDate:friday];
+    [components setHour:hour];
     
     friday = [gregorian dateFromComponents:components];
     

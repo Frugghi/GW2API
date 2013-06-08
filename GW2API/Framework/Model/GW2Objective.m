@@ -58,7 +58,7 @@
 
 #pragma mark - Properties -
 
-- (NSUInteger)points {
+- (GW2ObjectiveType)type {
     @try {
         switch ([[self ID] intValue]) {
             case 1:
@@ -74,7 +74,7 @@
             case 41:
             case 44:
             case 46:
-                return 25;
+                return GW2ObjectiveKeep;
             case 4:
             case 5:
             case 6:
@@ -98,7 +98,7 @@
             case 59:
             case 60:
             case 61:
-                return 5;
+                return GW2ObjectiveCamp;
             case 11:
             case 12:
             case 13:
@@ -123,15 +123,25 @@
             case 45:
             case 47:
             case 57:
-                return 10;
+                return GW2ObjectiveTower;
             case 9:
-                return 35;
+                return GW2ObjectiveCastle;
             default:
-                return 0;
+                return GW2ObjectiveUnknown;
         }
     }
     @catch (NSException *exception) {
-        return 0;
+        return GW2ObjectiveUnknown;
+    }
+}
+
+- (NSUInteger)points {
+    switch ([self type]) {
+        case GW2ObjectiveUnknown: return  0;
+        case GW2ObjectiveCamp:    return  5;
+        case GW2ObjectiveTower:   return 10;
+        case GW2ObjectiveKeep:    return 25;
+        case GW2ObjectiveCastle:  return 35;
     }
 }
 

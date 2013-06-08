@@ -118,6 +118,7 @@
     }
     
     self.block = nil;
+    _suspended = NO;
 }
 
 - (void)setTimeInterval:(NSTimeInterval)timeInterval startInterval:(NSTimeInterval)startInterval leeway:(NSTimeInterval)leeway {

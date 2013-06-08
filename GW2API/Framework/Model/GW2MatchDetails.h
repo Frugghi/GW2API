@@ -33,6 +33,9 @@
 @property (nonatomic, assign) NSInteger redScore;
 @property (nonatomic, assign) NSInteger blueScore;
 @property (nonatomic, assign) NSInteger greenScore;
+@property (nonatomic, readonly) NSInteger redPotentialPoints;
+@property (nonatomic, readonly) NSInteger bluePotentialPoints;
+@property (nonatomic, readonly) NSInteger greenPotentialPoints;
 @property (nonatomic, copy) NSSet *maps;
 @property (nonatomic, readonly) GW2Region region;
 @property (nonatomic, readonly) NSInteger tier;
@@ -47,6 +50,9 @@
 @property (nonatomic, assign) NSInteger redScore;
 @property (nonatomic, assign) NSInteger blueScore;
 @property (nonatomic, assign) NSInteger greenScore;
+@property (nonatomic, readonly) NSInteger redPotentialPoints;
+@property (nonatomic, readonly) NSInteger bluePotentialPoints;
+@property (nonatomic, readonly) NSInteger greenPotentialPoints;
 @property (nonatomic, copy) NSSet *mapObjectives;
 
 @end

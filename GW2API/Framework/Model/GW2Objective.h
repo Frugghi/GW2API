@@ -32,6 +32,7 @@
 @property (nonatomic, assign) GW2WvWTeam ownerTeam;
 @property (nonatomic, strong) NSString *ownerGuild;
 @property (nonatomic, readonly) NSUInteger points;
+@property (nonatomic, readonly) GW2ObjectiveType type;
 
 - (id)initWithID:(NSString *)ID name:(NSString *)name;
 

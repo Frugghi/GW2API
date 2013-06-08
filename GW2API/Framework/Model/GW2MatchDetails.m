@@ -80,6 +80,33 @@
     return nil;
 }
 
+- (NSInteger)redPotentialPoints {
+    NSInteger potentialPoints = 0;
+    for (GW2WvWMap *map in _maps) {
+        potentialPoints += [map redPotentialPoints];
+    }
+    
+    return potentialPoints;
+}
+
+- (NSInteger)bluePotentialPoints {
+    NSInteger potentialPoints = 0;
+    for (GW2WvWMap *map in _maps) {
+        potentialPoints += [map bluePotentialPoints];
+    }
+    
+    return potentialPoints;
+}
+
+- (NSInteger)greenPotentialPoints {
+    NSInteger potentialPoints = 0;
+    for (GW2WvWMap *map in _maps) {
+        potentialPoints += [map greenPotentialPoints];
+    }
+    
+    return potentialPoints;
+}
+
 #pragma mark - NSObject -
 
 - (NSString *)description {
@@ -220,6 +247,41 @@
     [coder encodeObject:@(self.blueScore) forKey:@"bluescore"];
     [coder encodeObject:@(self.greenScore) forKey:@"greenscore"];
     [coder encodeObject:self.mapObjectives forKey:@"mapobjectives"];
+}
+
+#pragma mark - Properties -
+
+- (NSInteger)redPotentialPoints {
+    NSInteger potentialPoints = 0;
+    for (GW2Objective *objective in _mapObjectives) {
+        if ([objective ownerTeam] == GW2WvWTeamRed) {
+            potentialPoints += [objective points];
+        }
+    }
+    
+    return potentialPoints;
+}
+
+- (NSInteger)bluePotentialPoints {
+    NSInteger potentialPoints = 0;
+    for (GW2Objective *objective in _mapObjectives) {
+        if ([objective ownerTeam] == GW2WvWTeamBlue) {
+            potentialPoints += [objective points];
+        }
+    }
+    
+    return potentialPoints;
+}
+
+- (NSInteger)greenPotentialPoints {
+    NSInteger potentialPoints = 0;
+    for (GW2Objective *objective in _mapObjectives) {
+        if ([objective ownerTeam] == GW2WvWTeamGreen) {
+            potentialPoints += [objective points];
+        }
+    }
+    
+    return potentialPoints;
 }
 
 #pragma mark - NSObject protocol -
