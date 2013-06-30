@@ -43,6 +43,7 @@ static GW2 *sharedInstance = nil;
 @implementation GW2
 
 NSString *const GW2APICachePlist = @"com.GW2API.Cache.plist";
+NSString *const GW2APICacheBuildIDKey = @"com.GW2API.CacheBuildIDKey";
 
 NSString *const GW2ObjectUserInfoKey = @"com.GW2.ObjectUserInfoKey";
 NSString *const GW2ObjectIDUserInfoKey = @"com.GW2.ObjectIDUserInfoKey";
@@ -79,6 +80,17 @@ NSString *const GW2ItemNotification = @"com.GW2.ItemNotification";
             _cacheTable = [[NSMutableDictionary alloc] init];
             [_cacheTable writeToURL:self.cacheURL atomically:YES];
         }
+        
+        dispatch_barrier_async(self.cacheQueue, ^{
+            NSString *cachedBuildID = [_cacheTable objectForKey:GW2APICacheBuildIDKey];
+            NSString *currentBuildID = [_api buildID];
+            
+            if (currentBuildID && ![currentBuildID isEqualToString:cachedBuildID]) {
+                [GW2 clearCache];
+                [_cacheTable setObject:currentBuildID forKey:GW2APICacheBuildIDKey];
+                [_cacheTable writeToURL:self.cacheURL atomically:YES];
+            }
+        });
     }
     
     return self;
@@ -635,7 +647,8 @@ NSString *const GW2ItemNotification = @"com.GW2.ItemNotification";
         NSDate *now = [NSDate date];
         NSMutableArray *expiredKeys = [[NSMutableArray alloc] init];
         for (NSString *key in _cacheTable) {
-            if ([now timeIntervalSinceDate:[_cacheTable objectForKey:key]] >= 0) {
+            if ([[_cacheTable objectForKey:key] isKindOfClass:[NSDate class]]
+                && [now timeIntervalSinceDate:[_cacheTable objectForKey:key]] >= 0) {
                 [expiredKeys addObject:key];
             }
         }

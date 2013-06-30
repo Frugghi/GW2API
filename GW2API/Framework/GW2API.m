@@ -97,6 +97,22 @@
 
 #pragma mark - Public methods
 
+- (NSString *)buildID {
+    NSError *error;
+    NSURL *requestURL = [self requestURL:@"build.json" params:nil];
+    NSData *jsonData = [self syncRequest:requestURL error:&error];
+    
+    if (!error) {
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+        
+        if (!error) {
+            return [[json objectForKey:@"build_id"] stringValue];
+        }
+    }
+    
+    return nil;
+}
+
 + (NSString *)regionName:(GW2Region)region {
     switch (region) {
         case GW2RegionUnknown:      return @"Unknown";
@@ -117,13 +133,13 @@
 
 + (NSString *)stateName:(GW2EventStateType)state {
     switch (state) {
-        case GW2EventStateUnknown: return @"Unknown";
-        case GW2EventStateInactive: return @"Inactive";
-        case GW2EventStateWarmup:  return @"Warmup";
+        case GW2EventStateUnknown:      return @"Unknown";
+        case GW2EventStateInactive:     return @"Inactive";
+        case GW2EventStateWarmup:       return @"Warmup";
         case GW2EventStatePreparation:  return @"Preparation";
-        case GW2EventStateActive: return @"Active";
-        case GW2EventStateSuccess: return @"Success";
-        case GW2EventStateFail: return @"Failed";
+        case GW2EventStateActive:       return @"Active";
+        case GW2EventStateSuccess:      return @"Success";
+        case GW2EventStateFail:         return @"Failed";
     }
 }
 
@@ -173,7 +189,7 @@
 - (NSData *)syncRequest:(NSURL *)requestURL error:(NSError *__autoreleasing *)error {
     __block dispatch_semaphore_t semaphore;
     __block NSData *(^block)(void);
-    
+
     dispatch_sync([self serialQueue], ^{
         NSMutableDictionary *dict = [self.semaphoreDict objectForKey:requestURL];
         if (dict) {
@@ -200,12 +216,14 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 });
-                
-                dispatch_sync([self serialQueue], ^{
-                    NSMutableDictionary *dict = [self.semaphoreDict objectForKey:requestURL];
-                    [dict setObject:[jsonData copy] forKey:@"data"];
-                    dispatch_semaphore_signal([dict objectForKey:@"semaphore"]);
-                });
+                                
+                if (!error) {
+                    dispatch_sync([self serialQueue], ^{
+                        NSMutableDictionary *dict = [self.semaphoreDict objectForKey:requestURL];
+                        [dict setObject:[jsonData copy] forKey:@"data"];
+                        dispatch_semaphore_signal([dict objectForKey:@"semaphore"]);
+                    });
+                }
                 
                 return jsonData;
             };

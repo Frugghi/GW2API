@@ -34,6 +34,7 @@
 @property (nonatomic, strong) NSString *version;
 @property (nonatomic, strong) NSString *langCode;
 @property (nonatomic, strong) NSURL *baseURL;
+@property (nonatomic, readonly) NSString *buildID;
 
 #pragma mark - Classes -
 
