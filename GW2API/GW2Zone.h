@@ -1,5 +1,5 @@
 //
-//  GW2Map.h
+//  GW2Zone.h
 //  GW2API for ObjC
 //
 //  Created by Tommaso Madonia on 26/05/13.
@@ -26,7 +26,7 @@
 
 #import "GW2Object.h"
 
-@interface GW2Map : GW2Object
+@interface GW2Zone : GW2Object
 
 @property (nonatomic, strong) NSString *name;
 

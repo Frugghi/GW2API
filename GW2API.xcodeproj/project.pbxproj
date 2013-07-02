@@ -33,8 +33,8 @@
 		18B8391E17810B9C008F1FEA /* GW2EventState.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8390817810B9C008F1FEA /* GW2EventState.m */; };
 		18B8391F17810B9C008F1FEA /* GW2Item.h in Headers */ = {isa = PBXBuildFile; fileRef = 18B8390917810B9C008F1FEA /* GW2Item.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18B8392017810B9C008F1FEA /* GW2Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8390A17810B9C008F1FEA /* GW2Item.m */; };
-		18B8392117810B9C008F1FEA /* GW2Map.h in Headers */ = {isa = PBXBuildFile; fileRef = 18B8390B17810B9C008F1FEA /* GW2Map.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		18B8392217810B9C008F1FEA /* GW2Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8390C17810B9C008F1FEA /* GW2Map.m */; };
+		18B8392117810B9C008F1FEA /* GW2Zone.h in Headers */ = {isa = PBXBuildFile; fileRef = 18B8390B17810B9C008F1FEA /* GW2Zone.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18B8392217810B9C008F1FEA /* GW2Zone.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8390C17810B9C008F1FEA /* GW2Zone.m */; };
 		18B8392317810B9C008F1FEA /* GW2Match.h in Headers */ = {isa = PBXBuildFile; fileRef = 18B8390D17810B9C008F1FEA /* GW2Match.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18B8392417810B9C008F1FEA /* GW2Match.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8390E17810B9C008F1FEA /* GW2Match.m */; };
 		18B8392517810B9C008F1FEA /* GW2MatchDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 18B8390F17810B9C008F1FEA /* GW2MatchDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -84,8 +84,8 @@
 		18B8390817810B9C008F1FEA /* GW2EventState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2EventState.m; sourceTree = "<group>"; };
 		18B8390917810B9C008F1FEA /* GW2Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Item.h; sourceTree = "<group>"; };
 		18B8390A17810B9C008F1FEA /* GW2Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Item.m; sourceTree = "<group>"; };
-		18B8390B17810B9C008F1FEA /* GW2Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Map.h; sourceTree = "<group>"; };
-		18B8390C17810B9C008F1FEA /* GW2Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Map.m; sourceTree = "<group>"; };
+		18B8390B17810B9C008F1FEA /* GW2Zone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Zone.h; sourceTree = "<group>"; };
+		18B8390C17810B9C008F1FEA /* GW2Zone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Zone.m; sourceTree = "<group>"; };
 		18B8390D17810B9C008F1FEA /* GW2Match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Match.h; sourceTree = "<group>"; };
 		18B8390E17810B9C008F1FEA /* GW2Match.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Match.m; sourceTree = "<group>"; };
 		18B8390F17810B9C008F1FEA /* GW2MatchDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2MatchDetails.h; sourceTree = "<group>"; };
@@ -125,8 +125,8 @@
 				18B8390617810B9C008F1FEA /* GW2Event.m */,
 				18B8390717810B9C008F1FEA /* GW2EventState.h */,
 				18B8390817810B9C008F1FEA /* GW2EventState.m */,
-				18B8390B17810B9C008F1FEA /* GW2Map.h */,
-				18B8390C17810B9C008F1FEA /* GW2Map.m */,
+				18B8390B17810B9C008F1FEA /* GW2Zone.h */,
+				18B8390C17810B9C008F1FEA /* GW2Zone.m */,
 				18B8391717810B9C008F1FEA /* GW2World.h */,
 				18B8391817810B9C008F1FEA /* GW2World.m */,
 			);
@@ -286,7 +286,7 @@
 				18B8391B17810B9C008F1FEA /* GW2Event.h in Headers */,
 				18B8391D17810B9C008F1FEA /* GW2EventState.h in Headers */,
 				18B8391F17810B9C008F1FEA /* GW2Item.h in Headers */,
-				18B8392117810B9C008F1FEA /* GW2Map.h in Headers */,
+				18B8392117810B9C008F1FEA /* GW2Zone.h in Headers */,
 				18B8392317810B9C008F1FEA /* GW2Match.h in Headers */,
 				18B8392517810B9C008F1FEA /* GW2MatchDetails.h in Headers */,
 				18B8392717810B9C008F1FEA /* GW2Object.h in Headers */,
@@ -419,7 +419,7 @@
 				18B8391C17810B9C008F1FEA /* GW2Event.m in Sources */,
 				18B8391E17810B9C008F1FEA /* GW2EventState.m in Sources */,
 				18B8392017810B9C008F1FEA /* GW2Item.m in Sources */,
-				18B8392217810B9C008F1FEA /* GW2Map.m in Sources */,
+				18B8392217810B9C008F1FEA /* GW2Zone.m in Sources */,
 				18B8392417810B9C008F1FEA /* GW2Match.m in Sources */,
 				18B8392617810B9C008F1FEA /* GW2MatchDetails.m in Sources */,
 				18B8392817810B9C008F1FEA /* GW2Object.m in Sources */,

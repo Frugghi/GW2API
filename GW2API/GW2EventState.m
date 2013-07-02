@@ -32,13 +32,13 @@
 - (void)setID:(NSString *)ID {
     NSArray *components = [ID componentsSeparatedByString:@"_"];
     [self setWorldID:[components objectAtIndex:0]];
-    [self setMapID:[components objectAtIndex:1]];
+    [self setZoneID:[components objectAtIndex:1]];
     [self setEventID:[components objectAtIndex:2]];
 }
 
 - (NSString *)ID {
     return [NSString stringWithFormat:@"%@_%@_%@",
-            (self.worldID ? self.worldID : @""), (self.mapID ? self.mapID : @""), (self.eventID ? self.eventID : @"")];
+            (self.worldID ? self.worldID : @""), (self.zoneID ? self.zoneID : @""), (self.eventID ? self.eventID : @"")];
 }
 
 #pragma mark - NSCoding protocol -
@@ -48,7 +48,7 @@
     if (self) {
         [self setState:[[decoder decodeObjectForKey:@"status"] integerValue]];
         [self setWorldID:[decoder decodeObjectForKey:@"world_id"]];
-        [self setMapID:[decoder decodeObjectForKey:@"map_id"]];
+        [self setZoneID:[decoder decodeObjectForKey:@"zone_id"]];
         [self setEventID:[decoder decodeObjectForKey:@"event_id"]];
     }
     
@@ -58,14 +58,14 @@
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:@(self.state) forKey:@"status"];
     [coder encodeObject:self.worldID forKey:@"world_id"];
-    [coder encodeObject:self.mapID forKey:@"map_id"];
+    [coder encodeObject:self.zoneID forKey:@"zone_id"];
     [coder encodeObject:self.eventID forKey:@"event_id"];
 }
 
 #pragma mark - NSObject -
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"[World %@, Map %@, Event %@] %@", self.worldID, self.mapID, self.eventID, [GW2API stateName:self.state]];
+	return [NSString stringWithFormat:@"[World %@, Zone %@, Event %@] %@", self.worldID, self.zoneID, self.eventID, [GW2API stateName:self.state]];
 }
 
 #pragma mark - GW2Caching protocol -
@@ -94,7 +94,7 @@
         GW2EventState *eventStatus = (GW2EventState *)object;
         [self setState:eventStatus.state];
         [self setWorldID:[eventStatus.worldID copyWithZone:zone]];
-        [self setMapID:[eventStatus.mapID copyWithZone:zone]];
+        [self setZoneID:[eventStatus.zoneID copyWithZone:zone]];
         [self setEventID:[eventStatus.eventID copyWithZone:zone]];
     }
 }
@@ -107,7 +107,7 @@
     }
     
     if ([[components objectAtIndex:1] length] > 0) {
-        [params setObject:[components objectAtIndex:1] forKey:@"map_id"];
+        [params setObject:[components objectAtIndex:1] forKey:@"zone_id"];
     }
     
     if ([[components objectAtIndex:2] length] > 0) {
@@ -131,12 +131,12 @@
     for (NSDictionary *dict in [json objectForKey:@"events"]) {
         GW2EventState *obj = [[[self class] alloc] init];
         [obj setEventID:[dict objectForKey:@"event_id"]];
-        [obj setMapID:[[dict objectForKey:@"map_id"] stringValue]];
+        [obj setZoneID:[[dict objectForKey:@"map_id"] stringValue]];
         [obj setWorldID:[[dict objectForKey:@"world_id"] stringValue]];
         [obj setState:[self stateTypeFromString:[dict objectForKey:@"state"]]];
         [obj setLastUpdate:now];
         [events addObject:obj.eventID];
-        [maps addObject:obj.mapID];
+        [maps addObject:obj.zoneID];
         [worlds addObject:obj.worldID];
         [gw2Array addObject:obj];
     }

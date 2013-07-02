@@ -52,7 +52,7 @@
         // Model
         [self setWorldClass:[GW2World class]];
         [self setContinentClass:[GW2Continent class]];
-        [self setMapClass:[GW2Map class]];
+        [self setZoneClass:[GW2Zone class]];
         [self setMatchClass:[GW2Match class]];
         [self setMatchDetailsClass:[GW2MatchDetails class]];
         [self setObjectiveClass:[GW2Objective class]];

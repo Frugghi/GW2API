@@ -1,5 +1,5 @@
 //
-//  GW2Map.m
+//  GW2Zone.m
 //  GW2API for ObjC
 //
 //  Created by Tommaso Madonia on 26/05/13.
@@ -24,10 +24,10 @@
 //  THE SOFTWARE.
 //
 
-#import "GW2Map.h"
+#import "GW2Zone.h"
 #import "GW2Protected.h"
 
-@implementation GW2Map
+@implementation GW2Zone
 
 #pragma mark - Init -
 
@@ -65,7 +65,7 @@
 #pragma mark - GW2Caching protocol -
 
 - (NSString *)cacheKey {
-    return @"gw2_maps";
+    return @"gw2_zones";
 }
 
 - (NSTimeInterval)timeout {
@@ -76,7 +76,7 @@
 
 - (GW2FetchBlock)fetchBlock {
     return (GW2FetchBlock) ^(NSError **error) {
-        return [GW2 mapByID:[self ID] error:error];
+        return [GW2 zoneByID:[self ID] error:error];
     };
 }
 
@@ -84,9 +84,9 @@
 
 - (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
     [super copyObject:object withZone:zone];
-    if ([object isKindOfClass:[GW2Map class]]) {
-        GW2Map *map = (GW2Map *)object;
-        [self setName:[map.name copyWithZone:zone]];
+    if ([object isKindOfClass:[GW2Zone class]]) {
+        GW2Zone *gw2Zone = (GW2Zone *)object;
+        [self setName:[gw2Zone.name copyWithZone:zone]];
     }
 }
 
@@ -103,8 +103,8 @@
     NSDate *now = [NSDate date];
     GW2Array *gw2Array = [[GW2Array alloc] init];
     for (NSDictionary *dict in json) {
-        GW2Map *obj = [[[self class] alloc] initWithID:[dict objectForKey:@"id"]
-                                                  name:[dict objectForKey:@"name"]];
+        GW2Zone *obj = [[[self class] alloc] initWithID:[dict objectForKey:@"id"]
+                                                   name:[dict objectForKey:@"name"]];
         [obj setLastUpdate:now];
         [gw2Array addObject:obj];
     }

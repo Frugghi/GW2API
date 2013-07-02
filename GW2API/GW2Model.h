@@ -32,7 +32,7 @@
 #import "GW2Match.h"
 #import "GW2MatchDetails.h"
 #import "GW2Objective.h"
-#import "GW2Map.h"
+#import "GW2Zone.h"
 #import "GW2Event.h"
 #import "GW2EventState.h"
 #import "GW2Recipe.h"

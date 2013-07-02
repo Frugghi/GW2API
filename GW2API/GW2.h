@@ -72,15 +72,15 @@ extern NSString *const GW2ItemNotification;
 + (void)continentsWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
 + (void)continentByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
 
-+ (void)mapsWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
-+ (void)mapByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
++ (void)zonesWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
++ (void)zoneByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
 
 + (void)eventsWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
 + (void)eventByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
 
 + (void)eventStateByID:(NSString *)ID completitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
-+ (void)eventStateEventID:(NSString *)eventID mapID:(NSString *)mapID worldID:(NSString *)worldID completitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
-+ (void)eventStateEvent:(GW2Event *)event map:(GW2Map *)map world:(GW2World *)world completitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
++ (void)eventStateEventID:(NSString *)eventID zoneID:(NSString *)zoneID worldID:(NSString *)worldID completitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
++ (void)eventStateEvent:(GW2Event *)event zone:(GW2Zone *)zone world:(GW2World *)world completitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
 
 + (void)matchesWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
 + (void)matchByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
@@ -112,10 +112,10 @@ extern NSString *const GW2ItemNotification;
 + (GW2Continent *)continentByID:(NSString *)ID;
 + (GW2Continent *)continentByID:(NSString *)ID error:(NSError **)error;
 
-+ (GW2Array *)maps;
-+ (GW2Array *)mapsWithError:(NSError **)error;
-+ (GW2Map *)mapByID:(NSString *)ID;
-+ (GW2Map *)mapByID:(NSString *)ID error:(NSError **)error;
++ (GW2Array *)zones;
++ (GW2Array *)zonesWithError:(NSError **)error;
++ (GW2Zone *)zoneByID:(NSString *)ID;
++ (GW2Zone *)zoneByID:(NSString *)ID error:(NSError **)error;
 
 + (GW2Array *)events;
 + (GW2Array *)eventsWithError:(NSError **)error;
@@ -123,8 +123,8 @@ extern NSString *const GW2ItemNotification;
 + (GW2Event *)eventByID:(NSString *)ID error:(NSError **)error;
 
 + (GW2Array *)eventStateByID:(NSString *)ID error:(NSError **)error;
-+ (GW2Array *)eventStateEventID:(NSString *)eventID mapID:(NSString *)mapID worldID:(NSString *)worldID error:(NSError **)error;
-+ (GW2Array *)eventStateEvent:(GW2Event *)event map:(GW2Map *)map world:(GW2World *)world error:(NSError **)error;
++ (GW2Array *)eventStateEventID:(NSString *)eventID zoneID:(NSString *)zoneID worldID:(NSString *)worldID error:(NSError **)error;
++ (GW2Array *)eventStateEvent:(GW2Event *)event zone:(GW2Zone *)zone world:(GW2World *)world error:(NSError **)error;
 
 + (GW2Array *)matches;
 + (GW2Array *)matchesWithError:(NSError **)error;

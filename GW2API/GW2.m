@@ -288,36 +288,36 @@ NSString *const GW2ItemNotification = @"com.GW2.ItemNotification";
     });
 }
 
-#pragma mark - Maps -
+#pragma mark - Zones -
 
-+ (GW2Array *)maps {
-    return [self mapsWithError:nil];
++ (GW2Array *)zones {
+    return [self zonesWithError:nil];
 }
 
-+ (GW2Array *)mapsWithError:(NSError *__autoreleasing *)error {
-    return [[self sharedInstance] fetchObjectForClass:[[self api] mapClass] ID:nil error:error];
++ (GW2Array *)zonesWithError:(NSError *__autoreleasing *)error {
+    return [[self sharedInstance] fetchObjectForClass:[[self api] zoneClass] ID:nil error:error];
 }
 
-+ (void)mapsWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock {
++ (void)zonesWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock {
     dispatch_async([[self sharedInstance] fetchQueue], ^{
         NSError *error;
-        GW2Array *collection = [self mapsWithError:&error];
+        GW2Array *collection = [self zonesWithError:&error];
         completitionBlock(collection, error);
     });
 }
 
-+ (GW2Map *)mapByID:(NSString *)ID {
-    return [self mapByID:ID error:nil];
++ (GW2Zone *)zoneByID:(NSString *)ID {
+    return [self zoneByID:ID error:nil];
 }
 
-+ (GW2Map *)mapByID:(NSString *)ID error:(NSError *__autoreleasing *)error {
-    return (GW2Map *)[[self mapsWithError:error] objectWithID:ID];
++ (GW2Zone *)zoneByID:(NSString *)ID error:(NSError *__autoreleasing *)error {
+    return (GW2Zone *)[[self zonesWithError:error] objectWithID:ID];
 }
 
-+ (void)mapByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock {
++ (void)zoneByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock {
     dispatch_async([[self sharedInstance] fetchQueue], ^{
         NSError *error;
-        GW2Map *object = [self mapByID:ID error:&error];
+        GW2Zone *object = [self zoneByID:ID error:&error];
         completitionBlock(object, error);
     });
 }
@@ -362,13 +362,13 @@ NSString *const GW2ItemNotification = @"com.GW2.ItemNotification";
     return [[self sharedInstance] fetchObjectForClass:[[self api] eventStateClass] ID:ID error:error];
 }
 
-+ (GW2Array *)eventStateEventID:(NSString *)eventID mapID:(NSString *)mapID worldID:(NSString *)worldID error:(NSError **)error {
-    return [self eventStateByID:[NSString stringWithFormat:@"%@_%@_%@", worldID ? worldID : @"", mapID ? mapID : @"", eventID ? eventID : @""]
++ (GW2Array *)eventStateEventID:(NSString *)eventID zoneID:(NSString *)zoneID worldID:(NSString *)worldID error:(NSError **)error {
+    return [self eventStateByID:[NSString stringWithFormat:@"%@_%@_%@", worldID ? worldID : @"", zoneID ? zoneID : @"", eventID ? eventID : @""]
                           error:error];
 }
 
-+ (GW2Array *)eventStateEvent:(GW2Event *)event map:(GW2Map *)map world:(GW2World *)world error:(NSError **)error {
-    return [self eventStateEventID:event.ID mapID:map.ID worldID:world.ID error:error];
++ (GW2Array *)eventStateEvent:(GW2Event *)event zone:(GW2Zone *)zone world:(GW2World *)world error:(NSError **)error {
+    return [self eventStateEventID:event.ID zoneID:zone.ID worldID:world.ID error:error];
 }
 
 + (void)eventStateByID:(NSString *)ID completitionBlock:(GW2CollectionCompletitionBlock)completitionBlock {
@@ -379,18 +379,18 @@ NSString *const GW2ItemNotification = @"com.GW2.ItemNotification";
     });
 }
 
-+ (void)eventStateEventID:(NSString *)eventID mapID:(NSString *)mapID worldID:(NSString *)worldID completitionBlock:(GW2CollectionCompletitionBlock)completitionBlock {
++ (void)eventStateEventID:(NSString *)eventID zoneID:(NSString *)zoneID worldID:(NSString *)worldID completitionBlock:(GW2CollectionCompletitionBlock)completitionBlock {
     dispatch_async([[self sharedInstance] fetchQueue], ^{
         NSError *error;
-        GW2Array *collection = [self eventStateEventID:eventID mapID:mapID worldID:worldID error:&error];
+        GW2Array *collection = [self eventStateEventID:eventID zoneID:zoneID worldID:worldID error:&error];
         completitionBlock(collection, error);
     });
 }
 
-+ (void)eventStateEvent:(GW2Event *)event map:(GW2Map *)map world:(GW2World *)world completitionBlock:(GW2CollectionCompletitionBlock)completitionBlock {
++ (void)eventStateEvent:(GW2Event *)event zone:(GW2Zone *)zone world:(GW2World *)world completitionBlock:(GW2CollectionCompletitionBlock)completitionBlock {
     dispatch_async([[self sharedInstance] fetchQueue], ^{
         NSError *error;
-        GW2Array *collection = [self eventStateEvent:event map:map world:world error:&error];
+        GW2Array *collection = [self eventStateEvent:event zone:zone world:world error:&error];
         completitionBlock(collection, error);
     });
 }
