@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		185007FB17824B60002800B0 /* GW2Continent.h in Headers */ = {isa = PBXBuildFile; fileRef = 185007F917824B60002800B0 /* GW2Continent.h */; };
+		185007FB17824B60002800B0 /* GW2Continent.h in Headers */ = {isa = PBXBuildFile; fileRef = 185007F917824B60002800B0 /* GW2Continent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		185007FC17824B60002800B0 /* GW2Continent.m in Sources */ = {isa = PBXBuildFile; fileRef = 185007FA17824B60002800B0 /* GW2Continent.m */; };
 		18B83886178103F1008F1FEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B83885178103F1008F1FEA /* Foundation.framework */; };
 		18B8388C178103F1008F1FEA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18B8388A178103F1008F1FEA /* InfoPlist.strings */; };
@@ -297,8 +297,8 @@
 				18B8393517810BE9008F1FEA /* GW2Caching.h in Headers */,
 				18B8393617810BE9008F1FEA /* GW2Fetching.h in Headers */,
 				18B838F7178109E9008F1FEA /* GW2Protocols.h in Headers */,
-				18B8393717810BE9008F1FEA /* GW2Protected.h in Headers */,
 				185007FB17824B60002800B0 /* GW2Continent.h in Headers */,
+				18B8393717810BE9008F1FEA /* GW2Protected.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,10 +501,7 @@
 		18B83891178103F1008F1FEA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -515,8 +512,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GW2API/GW2API-Prefix.pch";
 				INFOPLIST_FILE = "GW2API/GW2API-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -524,10 +523,7 @@
 		18B83892178103F1008F1FEA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -540,6 +536,7 @@
 				INFOPLIST_FILE = "GW2API/GW2API-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
