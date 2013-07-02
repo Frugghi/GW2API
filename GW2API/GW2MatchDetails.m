@@ -149,11 +149,8 @@
 }
 
 + (id)parseJSONData:(NSData *)jsonData error:(NSError *__autoreleasing *)error {
-    NSError *error_;
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error_];
-    if (error_ && error) {
-        NSLog(@"%s %@", __PRETTY_FUNCTION__, [error_ description]);
-        *error = error_;
+    NSDictionary *json = [super parseJSONData:jsonData error:error];
+    if (!json) {
         return nil;
     }
     

@@ -115,17 +115,14 @@
 }
 
 + (id)parseJSONData:(NSData *)jsonData error:(NSError *__autoreleasing *)error {
-    NSError *error_;
-    NSArray *json = [[NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error_] objectForKey:@"wvw_matches"];
-    if (error_ && error) {
-        NSLog(@"%s %@", __PRETTY_FUNCTION__, [error_ description]);
-        *error = error_;
+    NSDictionary *json = [super parseJSONData:jsonData error:error];
+    if (!json) {
         return nil;
     }
     
     NSDate *now = [NSDate date];
     GW2Array *gw2Array = [[GW2Array alloc] init];
-    for (NSDictionary *dict in json) {
+    for (NSDictionary *dict in [json objectForKey:@"wvw_matches"]) {
         GW2Match *obj = [[[self class] alloc] initWithID:[dict objectForKey:@"wvw_match_id"]];
         [obj setRedWorld:[GW2 worldByID:[[dict objectForKey:@"red_world_id"] stringValue]]];
         [obj setBlueWorld:[GW2 worldByID:[[dict objectForKey:@"blue_world_id"] stringValue]]];

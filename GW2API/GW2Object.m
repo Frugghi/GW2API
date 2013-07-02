@@ -119,7 +119,18 @@
 #pragma mark - Protected -
 
 + (id)parseJSONData:(NSData *)jsonData error:(NSError *__autoreleasing *)error {
-    return nil;
+    NSError *jsonError;
+    id json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
+    if (jsonError && error) {
+        NSLog(@"%s %@", __PRETTY_FUNCTION__, [jsonError description]);
+        if (error) {
+            *error = jsonError;
+        }
+        
+        return nil;
+    }
+    
+    return json;
 }
 
 + (NSArray *)notificationNames {

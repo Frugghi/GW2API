@@ -118,11 +118,8 @@
 }
 
 + (id)parseJSONData:(NSData *)jsonData error:(NSError *__autoreleasing *)error {
-    NSError *error_;
-    NSArray *json = [[NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error_] objectForKey:@"events"];
-    if (error_ && error) {
-        NSLog(@"%s %@", __PRETTY_FUNCTION__, [error_ description]);
-        *error = error_;
+    NSDictionary *json = [super parseJSONData:jsonData error:error];
+    if (!json) {
         return nil;
     }
     
@@ -131,7 +128,7 @@
     NSMutableSet *worlds = [[NSMutableSet alloc] init];
     NSDate *now = [NSDate date];
     GW2Array *gw2Array = [[GW2Array alloc] init];
-    for (NSDictionary *dict in json) {
+    for (NSDictionary *dict in [json objectForKey:@"events"]) {
         GW2EventState *obj = [[[self class] alloc] init];
         [obj setEventID:[dict objectForKey:@"event_id"]];
         [obj setMapID:[[dict objectForKey:@"map_id"] stringValue]];
