@@ -41,6 +41,7 @@
 @property (nonatomic, assign) Class cacheClass;
 
 @property (nonatomic, assign) Class worldClass;
+@property (nonatomic, assign) Class continentClass;
 @property (nonatomic, assign) Class mapClass;
 @property (nonatomic, assign) Class matchClass;
 @property (nonatomic, assign) Class matchDetailsClass;

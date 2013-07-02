@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		185007FB17824B60002800B0 /* GW2Continent.h in Headers */ = {isa = PBXBuildFile; fileRef = 185007F917824B60002800B0 /* GW2Continent.h */; };
+		185007FC17824B60002800B0 /* GW2Continent.m in Sources */ = {isa = PBXBuildFile; fileRef = 185007FA17824B60002800B0 /* GW2Continent.m */; };
 		18B83886178103F1008F1FEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B83885178103F1008F1FEA /* Foundation.framework */; };
 		18B8388C178103F1008F1FEA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18B8388A178103F1008F1FEA /* InfoPlist.strings */; };
 		18B838C017810407008F1FEA /* GW2.h in Headers */ = {isa = PBXBuildFile; fileRef = 18B8389317810407008F1FEA /* GW2.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		185007F917824B60002800B0 /* GW2Continent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Continent.h; sourceTree = "<group>"; };
+		185007FA17824B60002800B0 /* GW2Continent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Continent.m; sourceTree = "<group>"; };
 		18B83882178103F1008F1FEA /* GW2API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework.static; includeInIndex = 0; path = GW2API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B83885178103F1008F1FEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18B83889178103F1008F1FEA /* GW2API-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GW2API-Info.plist"; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 			children = (
 				18B838FD17810B32008F1FEA /* GW2MapTilesSource.h */,
 				18B838FE17810B32008F1FEA /* GW2MapTilesSource.m */,
+				185007F917824B60002800B0 /* GW2Continent.h */,
+				185007FA17824B60002800B0 /* GW2Continent.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -292,6 +298,7 @@
 				18B8393617810BE9008F1FEA /* GW2Fetching.h in Headers */,
 				18B838F7178109E9008F1FEA /* GW2Protocols.h in Headers */,
 				18B8393717810BE9008F1FEA /* GW2Protected.h in Headers */,
+				185007FB17824B60002800B0 /* GW2Continent.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +427,7 @@
 				18B8392C17810B9C008F1FEA /* GW2Recipe.m in Sources */,
 				18B8392E17810B9C008F1FEA /* GW2World.m in Sources */,
 				18B8393817810BE9008F1FEA /* GW2Protected.m in Sources */,
+				185007FC17824B60002800B0 /* GW2Continent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

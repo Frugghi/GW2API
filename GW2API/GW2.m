@@ -254,6 +254,40 @@ NSString *const GW2ItemNotification = @"com.GW2.ItemNotification";
     });
 }
 
+#pragma mark - Continents -
+
++ (GW2Array *)continents {
+    return [self continentsWithError:nil];
+}
+
++ (GW2Array *)continentsWithError:(NSError *__autoreleasing *)error {
+    return [[self sharedInstance] fetchObjectForClass:[[self api] continentClass] ID:nil error:error];
+}
+
++ (void)continentsWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock {
+    dispatch_async([[self sharedInstance] fetchQueue], ^{
+        NSError *error;
+        GW2Array *collection = [self continentsWithError:&error];
+        completitionBlock(collection, error);
+    });
+}
+
++ (GW2Continent *)continentByID:(NSString *)ID {
+    return [self continentByID:ID error:nil];
+}
+
++ (GW2Continent *)continentByID:(NSString *)ID error:(NSError *__autoreleasing *)error {
+    return (GW2Continent *)[[self continentsWithError:error] objectWithID:ID];
+}
+
++ (void)continentByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock {
+    dispatch_async([[self sharedInstance] fetchQueue], ^{
+        NSError *error;
+        GW2Continent *object = [self continentByID:ID error:&error];
+        completitionBlock(object, error);
+    });
+}
+
 #pragma mark - Maps -
 
 + (GW2Array *)maps {
