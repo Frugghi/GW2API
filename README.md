@@ -5,14 +5,14 @@ GW2API is an Objective-C framework for iOS and OS X that wraps the Guild Wars 2 
 ## Requirements
 
 - **OS X**: Not tested
-- **iOS**: 6.0
+- **iOS**: 6.0+
 - **ARC**: Yes
 
 ## Installation
 
-1. Grab the source from GitHub
-2. Copy the _Framework_ folder into your project
-3. Import the GW2 header `#import "GW2.h"`
+1. Download the framework from the [framework branch](https://github.com/Frugghi/GW2API/tree/framework) or compile it
+2. Drag `GW2API.framework` into your project
+3. Import the GW2 header `#import <GW2API/GW2.h>`
 
 ## How does it work?
 
@@ -31,7 +31,7 @@ you should provide your own implementation. The cache must conform to `GW2APICac
 The framework implements both synchronous and asynchronous methods, you can recognize an asynchronous method from the completitionBlock: param.
 
 ```objective-c
-    // asynchronous, return the world with ID 2002 (Desolation)
+    // asynchronous, return the world with ID 2002 (Desolation EU)
     [GW2 worldByID:@"2002" completitionBlock:^(GW2Object *obj, NSError *error) {
         NSLog(@"%@", obj);
     }];
