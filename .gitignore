@@ -8,3 +8,5 @@ xcuserdata
 *.xcuserstate
 
 *.xcscheme
+
+*.framework

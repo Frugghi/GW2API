@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1810457917862E7F00C90B8A /* GW2Map.h in Headers */ = {isa = PBXBuildFile; fileRef = 1810457717862E7F00C90B8A /* GW2Map.h */; };
+		1810457917862E7F00C90B8A /* GW2Map.h in Headers */ = {isa = PBXBuildFile; fileRef = 1810457717862E7F00C90B8A /* GW2Map.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1810457A17862E7F00C90B8A /* GW2Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810457817862E7F00C90B8A /* GW2Map.m */; };
 		185007FB17824B60002800B0 /* GW2Continent.h in Headers */ = {isa = PBXBuildFile; fileRef = 185007F917824B60002800B0 /* GW2Continent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		185007FC17824B60002800B0 /* GW2Continent.m in Sources */ = {isa = PBXBuildFile; fileRef = 185007FA17824B60002800B0 /* GW2Continent.m */; };
@@ -304,8 +304,8 @@
 				18B8393617810BE9008F1FEA /* GW2Fetching.h in Headers */,
 				18B838F7178109E9008F1FEA /* GW2Protocols.h in Headers */,
 				185007FB17824B60002800B0 /* GW2Continent.h in Headers */,
-				18B8393717810BE9008F1FEA /* GW2Protected.h in Headers */,
 				1810457917862E7F00C90B8A /* GW2Map.h in Headers */,
+				18B8393717810BE9008F1FEA /* GW2Protected.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
