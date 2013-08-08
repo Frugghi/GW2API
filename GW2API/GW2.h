@@ -72,6 +72,9 @@ extern NSString *const GW2ItemNotification;
 + (void)continentsWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
 + (void)continentByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
 
++ (void)mapsWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
++ (void)mapByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
+
 + (void)zonesWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
 + (void)zoneByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
 
@@ -111,6 +114,11 @@ extern NSString *const GW2ItemNotification;
 + (GW2Array *)continentsWithError:(NSError **)error;
 + (GW2Continent *)continentByID:(NSString *)ID;
 + (GW2Continent *)continentByID:(NSString *)ID error:(NSError **)error;
+
++ (GW2Array *)maps;
++ (GW2Array *)mapsWithError:(NSError **)error;
++ (GW2Map *)mapByID:(NSString *)ID;
++ (GW2Map *)mapByID:(NSString *)ID error:(NSError **)error;
 
 + (GW2Array *)zones;
 + (GW2Array *)zonesWithError:(NSError **)error;

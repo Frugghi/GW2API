@@ -1,8 +1,8 @@
 //
-//  GW2Model.h
+//  GW2Map.h
 //  GW2API for ObjC
 //
-//  Created by Tommaso Madonia on 22/05/13.
+//  Created by Tommaso Madonia on 05/07/13.
 //  Copyright (c) 2013 Tommaso Madonia. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,21 +24,20 @@
 //  THE SOFTWARE.
 //
 
-#ifndef GW2_GW2Model_h
-#define GW2_GW2Model_h
-
 #import "GW2Object.h"
-#import "GW2World.h"
-#import "GW2Match.h"
-#import "GW2MatchDetails.h"
-#import "GW2Objective.h"
-#import "GW2Zone.h"
-#import "GW2Event.h"
-#import "GW2EventState.h"
-#import "GW2Recipe.h"
-#import "GW2Item.h"
-#import "GW2Array.h"
-#import "GW2Continent.h"
-#import "GW2Map.h"
 
-#endif
+@interface GW2Map : GW2Object
+
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, assign) NSInteger minLevel;
+@property (nonatomic, assign) NSInteger maxLevel;
+@property (nonatomic, strong) NSNumber *defaultFloor;
+@property (nonatomic, strong) NSArray *floors;
+@property (nonatomic, strong) NSString *regionID;
+@property (nonatomic, strong) NSString *regionName;
+@property (nonatomic, strong) NSString *continentID;
+@property (nonatomic, strong) NSString *continentName;
+@property (nonatomic, assign) CGRect mapRect;
+@property (nonatomic, assign) CGRect continentRect;
+
+@end

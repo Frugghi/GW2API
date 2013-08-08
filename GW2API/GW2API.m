@@ -52,6 +52,7 @@
         // Model
         [self setWorldClass:[GW2World class]];
         [self setContinentClass:[GW2Continent class]];
+        [self setMapClass:[GW2Map class]];
         [self setZoneClass:[GW2Zone class]];
         [self setMatchClass:[GW2Match class]];
         [self setMatchDetailsClass:[GW2MatchDetails class]];
@@ -208,15 +209,19 @@
                                            @"count": @(0)}]
                                    forKey:requestURL];
             block = ^{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-                });
+                if ([UIApplication class]) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+                    });
+                }
                 NSData *jsonData = [NSData dataWithContentsOfURL:requestURL
                                                          options:NSDataReadingUncached
                                                            error:error];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                });
+                if ([UIApplication class]) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                    });
+                }
                                 
                 if (!error) {
                     dispatch_sync([self serialQueue], ^{

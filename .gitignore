@@ -3,8 +3,8 @@
 
 *.xcworkspacedata
 
+xcuserdata
+
 *.xcuserstate
 
 *.xcscheme
-
-*.plist

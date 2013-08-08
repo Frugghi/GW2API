@@ -101,10 +101,11 @@
         return nil;
     }
     
+    NSDictionary *continents = [json objectForKey:@"continents"];
     NSDate *now = [NSDate date];
     GW2Array *gw2Array = [[GW2Array alloc] init];
-    for (NSString *continentID in [[json objectForKey:@"continents"] allKeys]) {
-        NSDictionary *continent = [[json objectForKey:@"continents"] objectForKey:continentID];
+    for (NSString *continentID in [continents allKeys]) {
+        NSDictionary *continent = [continents objectForKey:continentID];
         GW2Continent *obj = [[[self class] alloc] initWithID:continentID];
         [obj setName:[continent objectForKey:@"name"]];
         NSArray *continentDims = [continent objectForKey:@"continent_dims"];

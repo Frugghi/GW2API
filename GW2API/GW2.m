@@ -288,6 +288,40 @@ NSString *const GW2ItemNotification = @"com.GW2.ItemNotification";
     });
 }
 
+#pragma mark - Maps -
+
++ (GW2Array *)maps {
+    return [self mapsWithError:nil];
+}
+
++ (GW2Array *)mapsWithError:(NSError *__autoreleasing *)error {
+    return [[self sharedInstance] fetchObjectForClass:[[self api] mapClass] ID:nil error:error];
+}
+
++ (void)mapsWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock {
+    dispatch_async([[self sharedInstance] fetchQueue], ^{
+        NSError *error;
+        GW2Array *collection = [self mapsWithError:&error];
+        completitionBlock(collection, error);
+    });
+}
+
++ (GW2Map *)mapByID:(NSString *)ID {
+    return [self mapByID:ID error:nil];
+}
+
++ (GW2Map *)mapByID:(NSString *)ID error:(NSError *__autoreleasing *)error {
+    return (GW2Map *)[[self mapsWithError:error] objectWithID:ID];
+}
+
++ (void)mapByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock {
+    dispatch_async([[self sharedInstance] fetchQueue], ^{
+        NSError *error;
+        GW2Map *object = [self mapByID:ID error:&error];
+        completitionBlock(object, error);
+    });
+}
+
 #pragma mark - Zones -
 
 + (GW2Array *)zones {
