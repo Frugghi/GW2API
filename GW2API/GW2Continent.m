@@ -35,7 +35,7 @@
     self = [super initWithCoder:decoder];
     if (self) {
         [self setName:[decoder decodeObjectForKey:@"name"]];
-        [self setDimensions:[[decoder decodeObjectForKey:@"dimensions"] CGSizeValue]];
+        [self setDimensions:[decoder decodeCGSizeForKey:@"dimensions"]];
         [self setMinZoom:[[decoder decodeObjectForKey:@"minZoom"] integerValue]];
         [self setMaxZoom:[[decoder decodeObjectForKey:@"maxZoom"] integerValue]];
         [self setMapFloors:[decoder decodeObjectForKey:@"floors"]];
@@ -47,7 +47,7 @@
 - (void)encodeWithCoder:(NSCoder *)coder {
     [super encodeWithCoder:coder];
     [coder encodeObject:self.name forKey:@"name"];
-    [coder encodeObject:[NSValue valueWithCGSize:self.dimensions] forKey:@"dimensions"];
+    [coder encodeCGSize:self.dimensions forKey:@"dimensions"];
     [coder encodeObject:@(self.minZoom) forKey:@"minZoom"];
     [coder encodeObject:@(self.maxZoom) forKey:@"maxZoom"];
     [coder encodeObject:self.mapFloors forKey:@"floors"];

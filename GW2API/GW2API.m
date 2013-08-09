@@ -209,20 +209,20 @@
                                            @"count": @(0)}]
                                    forKey:requestURL];
             block = ^{
-                if ([UIApplication class]) {
+                #if TARGET_OS_IPHONE
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
                     });
-                }
+                #endif
                 NSData *jsonData = [NSData dataWithContentsOfURL:requestURL
                                                          options:NSDataReadingUncached
                                                            error:error];
-                if ([UIApplication class]) {
+                #if TARGET_OS_IPHONE
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                     });
-                }
-                                
+                #endif
+                
                 if (!error) {
                     dispatch_sync([self serialQueue], ^{
                         NSMutableDictionary *dict = [self.semaphoreDict objectForKey:requestURL];

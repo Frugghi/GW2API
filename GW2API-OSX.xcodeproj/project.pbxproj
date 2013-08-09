@@ -1,0 +1,516 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		185BF4BF17B5698A0031201B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185BF4A417B5691C0031201B /* Cocoa.framework */; };
+		185BF4C917B5698A0031201B /* GW2API.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4C817B5698A0031201B /* GW2API.m */; };
+		185BF4D417B56D450031201B /* GW2.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4CE17B56D450031201B /* GW2.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF4D517B56D450031201B /* GW2.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4CF17B56D450031201B /* GW2.m */; };
+		185BF4D617B56D450031201B /* GW2Cache.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4D017B56D450031201B /* GW2Cache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF4D717B56D450031201B /* GW2Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4D117B56D450031201B /* GW2Cache.m */; };
+		185BF4D817B56D450031201B /* GW2Timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4D217B56D450031201B /* GW2Timer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF4D917B56D450031201B /* GW2Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4D317B56D450031201B /* GW2Timer.m */; };
+		185BF4DE17B56D5E0031201B /* GW2Enums.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4DB17B56D5E0031201B /* GW2Enums.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF4DF17B56D5E0031201B /* GW2Model.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4DC17B56D5E0031201B /* GW2Model.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF4E017B56D5E0031201B /* GW2Protocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4DD17B56D5E0031201B /* GW2Protocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF4E617B56DA30031201B /* GW2Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4E417B56DA30031201B /* GW2Protected.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		185BF4E717B56DA30031201B /* GW2Protected.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4E517B56DA30031201B /* GW2Protected.m */; };
+		185BF4EB17B56DAC0031201B /* GW2APICache.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4E817B56DAC0031201B /* GW2APICache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF4EC17B56DAC0031201B /* GW2Caching.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4E917B56DAC0031201B /* GW2Caching.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF4ED17B56DAC0031201B /* GW2Fetching.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4EA17B56DAC0031201B /* GW2Fetching.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF50A17B56DC90031201B /* GW2Array.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4EE17B56DC90031201B /* GW2Array.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF50B17B56DC90031201B /* GW2Array.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4EF17B56DC90031201B /* GW2Array.m */; };
+		185BF50C17B56DC90031201B /* GW2Object.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4F017B56DC90031201B /* GW2Object.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF50D17B56DC90031201B /* GW2Object.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4F117B56DC90031201B /* GW2Object.m */; };
+		185BF51017B56DC90031201B /* GW2Continent.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4F417B56DC90031201B /* GW2Continent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF51117B56DC90031201B /* GW2Continent.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4F517B56DC90031201B /* GW2Continent.m */; };
+		185BF51217B56DC90031201B /* GW2Map.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4F617B56DC90031201B /* GW2Map.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF51317B56DC90031201B /* GW2Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4F717B56DC90031201B /* GW2Map.m */; };
+		185BF51417B56DC90031201B /* GW2Item.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4F817B56DC90031201B /* GW2Item.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF51517B56DC90031201B /* GW2Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4F917B56DC90031201B /* GW2Item.m */; };
+		185BF51617B56DC90031201B /* GW2Recipe.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4FA17B56DC90031201B /* GW2Recipe.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF51717B56DC90031201B /* GW2Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4FB17B56DC90031201B /* GW2Recipe.m */; };
+		185BF51817B56DC90031201B /* GW2Event.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4FC17B56DC90031201B /* GW2Event.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF51917B56DC90031201B /* GW2Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4FD17B56DC90031201B /* GW2Event.m */; };
+		185BF51A17B56DC90031201B /* GW2EventState.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4FE17B56DC90031201B /* GW2EventState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF51B17B56DC90031201B /* GW2EventState.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4FF17B56DC90031201B /* GW2EventState.m */; };
+		185BF51C17B56DC90031201B /* GW2Zone.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF50017B56DC90031201B /* GW2Zone.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF51D17B56DC90031201B /* GW2Zone.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF50117B56DC90031201B /* GW2Zone.m */; };
+		185BF51E17B56DC90031201B /* GW2World.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF50217B56DC90031201B /* GW2World.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF51F17B56DC90031201B /* GW2World.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF50317B56DC90031201B /* GW2World.m */; };
+		185BF52017B56DC90031201B /* GW2Match.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF50417B56DC90031201B /* GW2Match.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF52117B56DC90031201B /* GW2Match.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF50517B56DC90031201B /* GW2Match.m */; };
+		185BF52217B56DC90031201B /* GW2MatchDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF50617B56DC90031201B /* GW2MatchDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF52317B56DC90031201B /* GW2MatchDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF50717B56DC90031201B /* GW2MatchDetails.m */; };
+		185BF52417B56DC90031201B /* GW2Objective.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF50817B56DC90031201B /* GW2Objective.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF52517B56DC90031201B /* GW2Objective.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF50917B56DC90031201B /* GW2Objective.m */; };
+		185BF56017B56F170031201B /* GW2API.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4C717B5698A0031201B /* GW2API.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		185BF56717B572700031201B /* GW2ProtectedOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF56517B572700031201B /* GW2ProtectedOSX.h */; };
+		185BF56817B572700031201B /* GW2ProtectedOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF56617B572700031201B /* GW2ProtectedOSX.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		185BF4A417B5691C0031201B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		185BF4A717B5691C0031201B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		185BF4A817B5691C0031201B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		185BF4A917B5691C0031201B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		185BF4BE17B5698A0031201B /* GW2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GW2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		185BF4C617B5698A0031201B /* GW2API-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GW2API-Prefix.pch"; sourceTree = "<group>"; };
+		185BF4C717B5698A0031201B /* GW2API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GW2API.h; sourceTree = "<group>"; };
+		185BF4C817B5698A0031201B /* GW2API.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GW2API.m; sourceTree = "<group>"; };
+		185BF4CE17B56D450031201B /* GW2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2.h; sourceTree = "<group>"; };
+		185BF4CF17B56D450031201B /* GW2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2.m; sourceTree = "<group>"; };
+		185BF4D017B56D450031201B /* GW2Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Cache.h; sourceTree = "<group>"; };
+		185BF4D117B56D450031201B /* GW2Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Cache.m; sourceTree = "<group>"; };
+		185BF4D217B56D450031201B /* GW2Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Timer.h; sourceTree = "<group>"; };
+		185BF4D317B56D450031201B /* GW2Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Timer.m; sourceTree = "<group>"; };
+		185BF4DB17B56D5E0031201B /* GW2Enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Enums.h; sourceTree = "<group>"; };
+		185BF4DC17B56D5E0031201B /* GW2Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Model.h; sourceTree = "<group>"; };
+		185BF4DD17B56D5E0031201B /* GW2Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Protocols.h; sourceTree = "<group>"; };
+		185BF4E417B56DA30031201B /* GW2Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Protected.h; sourceTree = "<group>"; };
+		185BF4E517B56DA30031201B /* GW2Protected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Protected.m; sourceTree = "<group>"; };
+		185BF4E817B56DAC0031201B /* GW2APICache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2APICache.h; sourceTree = "<group>"; };
+		185BF4E917B56DAC0031201B /* GW2Caching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Caching.h; sourceTree = "<group>"; };
+		185BF4EA17B56DAC0031201B /* GW2Fetching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Fetching.h; sourceTree = "<group>"; };
+		185BF4EE17B56DC90031201B /* GW2Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Array.h; sourceTree = "<group>"; };
+		185BF4EF17B56DC90031201B /* GW2Array.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Array.m; sourceTree = "<group>"; };
+		185BF4F017B56DC90031201B /* GW2Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Object.h; sourceTree = "<group>"; };
+		185BF4F117B56DC90031201B /* GW2Object.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Object.m; sourceTree = "<group>"; };
+		185BF4F417B56DC90031201B /* GW2Continent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Continent.h; sourceTree = "<group>"; };
+		185BF4F517B56DC90031201B /* GW2Continent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Continent.m; sourceTree = "<group>"; };
+		185BF4F617B56DC90031201B /* GW2Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Map.h; sourceTree = "<group>"; };
+		185BF4F717B56DC90031201B /* GW2Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Map.m; sourceTree = "<group>"; };
+		185BF4F817B56DC90031201B /* GW2Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Item.h; sourceTree = "<group>"; };
+		185BF4F917B56DC90031201B /* GW2Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Item.m; sourceTree = "<group>"; };
+		185BF4FA17B56DC90031201B /* GW2Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Recipe.h; sourceTree = "<group>"; };
+		185BF4FB17B56DC90031201B /* GW2Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Recipe.m; sourceTree = "<group>"; };
+		185BF4FC17B56DC90031201B /* GW2Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Event.h; sourceTree = "<group>"; };
+		185BF4FD17B56DC90031201B /* GW2Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Event.m; sourceTree = "<group>"; };
+		185BF4FE17B56DC90031201B /* GW2EventState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2EventState.h; sourceTree = "<group>"; };
+		185BF4FF17B56DC90031201B /* GW2EventState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2EventState.m; sourceTree = "<group>"; };
+		185BF50017B56DC90031201B /* GW2Zone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Zone.h; sourceTree = "<group>"; };
+		185BF50117B56DC90031201B /* GW2Zone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Zone.m; sourceTree = "<group>"; };
+		185BF50217B56DC90031201B /* GW2World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2World.h; sourceTree = "<group>"; };
+		185BF50317B56DC90031201B /* GW2World.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2World.m; sourceTree = "<group>"; };
+		185BF50417B56DC90031201B /* GW2Match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Match.h; sourceTree = "<group>"; };
+		185BF50517B56DC90031201B /* GW2Match.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Match.m; sourceTree = "<group>"; };
+		185BF50617B56DC90031201B /* GW2MatchDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2MatchDetails.h; sourceTree = "<group>"; };
+		185BF50717B56DC90031201B /* GW2MatchDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2MatchDetails.m; sourceTree = "<group>"; };
+		185BF50817B56DC90031201B /* GW2Objective.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Objective.h; sourceTree = "<group>"; };
+		185BF50917B56DC90031201B /* GW2Objective.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Objective.m; sourceTree = "<group>"; };
+		185BF56517B572700031201B /* GW2ProtectedOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2ProtectedOSX.h; sourceTree = "<group>"; };
+		185BF56617B572700031201B /* GW2ProtectedOSX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2ProtectedOSX.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		185BF4BA17B5698A0031201B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				185BF4BF17B5698A0031201B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		185BF49717B5691C0031201B = {
+			isa = PBXGroup;
+			children = (
+				185BF4C017B5698A0031201B /* GW2API */,
+				185BF4A317B5691C0031201B /* Frameworks */,
+				185BF4A217B5691C0031201B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		185BF4A217B5691C0031201B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				185BF4BE17B5698A0031201B /* GW2.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		185BF4A317B5691C0031201B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				185BF4A417B5691C0031201B /* Cocoa.framework */,
+				185BF4A617B5691C0031201B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		185BF4A617B5691C0031201B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				185BF4A717B5691C0031201B /* AppKit.framework */,
+				185BF4A817B5691C0031201B /* CoreData.framework */,
+				185BF4A917B5691C0031201B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		185BF4C017B5698A0031201B /* GW2API */ = {
+			isa = PBXGroup;
+			children = (
+				185BF4CE17B56D450031201B /* GW2.h */,
+				185BF4CF17B56D450031201B /* GW2.m */,
+				185BF4C717B5698A0031201B /* GW2API.h */,
+				185BF4C817B5698A0031201B /* GW2API.m */,
+				185BF4D017B56D450031201B /* GW2Cache.h */,
+				185BF4D117B56D450031201B /* GW2Cache.m */,
+				185BF4D217B56D450031201B /* GW2Timer.h */,
+				185BF4D317B56D450031201B /* GW2Timer.m */,
+				185BF4DA17B56D540031201B /* Headers */,
+				185BF4E117B56D7D0031201B /* Model */,
+				185BF4E217B56D840031201B /* Protocols */,
+				185BF4E317B56D8A0031201B /* Protected */,
+				185BF4C117B5698A0031201B /* Supporting Files */,
+			);
+			path = GW2API;
+			sourceTree = "<group>";
+		};
+		185BF4C117B5698A0031201B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				185BF4C617B5698A0031201B /* GW2API-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		185BF4DA17B56D540031201B /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				185BF4DB17B56D5E0031201B /* GW2Enums.h */,
+				185BF4DC17B56D5E0031201B /* GW2Model.h */,
+				185BF4DD17B56D5E0031201B /* GW2Protocols.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		185BF4E117B56D7D0031201B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				185BF4EE17B56DC90031201B /* GW2Array.h */,
+				185BF4EF17B56DC90031201B /* GW2Array.m */,
+				185BF4F017B56DC90031201B /* GW2Object.h */,
+				185BF4F117B56DC90031201B /* GW2Object.m */,
+				185BF52617B56DD00031201B /* Map */,
+				185BF52717B56DD90031201B /* Item and Recipe */,
+				185BF52817B56DEE0031201B /* Dynamic Events */,
+				185BF52917B56DF60031201B /* WvW */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		185BF4E217B56D840031201B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				185BF4E817B56DAC0031201B /* GW2APICache.h */,
+				185BF4E917B56DAC0031201B /* GW2Caching.h */,
+				185BF4EA17B56DAC0031201B /* GW2Fetching.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		185BF4E317B56D8A0031201B /* Protected */ = {
+			isa = PBXGroup;
+			children = (
+				185BF4E417B56DA30031201B /* GW2Protected.h */,
+				185BF4E517B56DA30031201B /* GW2Protected.m */,
+				185BF56517B572700031201B /* GW2ProtectedOSX.h */,
+				185BF56617B572700031201B /* GW2ProtectedOSX.m */,
+			);
+			name = Protected;
+			sourceTree = "<group>";
+		};
+		185BF52617B56DD00031201B /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				185BF4F417B56DC90031201B /* GW2Continent.h */,
+				185BF4F517B56DC90031201B /* GW2Continent.m */,
+				185BF4F617B56DC90031201B /* GW2Map.h */,
+				185BF4F717B56DC90031201B /* GW2Map.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		185BF52717B56DD90031201B /* Item and Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				185BF4F817B56DC90031201B /* GW2Item.h */,
+				185BF4F917B56DC90031201B /* GW2Item.m */,
+				185BF4FA17B56DC90031201B /* GW2Recipe.h */,
+				185BF4FB17B56DC90031201B /* GW2Recipe.m */,
+			);
+			name = "Item and Recipe";
+			sourceTree = "<group>";
+		};
+		185BF52817B56DEE0031201B /* Dynamic Events */ = {
+			isa = PBXGroup;
+			children = (
+				185BF4FC17B56DC90031201B /* GW2Event.h */,
+				185BF4FD17B56DC90031201B /* GW2Event.m */,
+				185BF4FE17B56DC90031201B /* GW2EventState.h */,
+				185BF4FF17B56DC90031201B /* GW2EventState.m */,
+				185BF50017B56DC90031201B /* GW2Zone.h */,
+				185BF50117B56DC90031201B /* GW2Zone.m */,
+				185BF50217B56DC90031201B /* GW2World.h */,
+				185BF50317B56DC90031201B /* GW2World.m */,
+			);
+			name = "Dynamic Events";
+			sourceTree = "<group>";
+		};
+		185BF52917B56DF60031201B /* WvW */ = {
+			isa = PBXGroup;
+			children = (
+				185BF50417B56DC90031201B /* GW2Match.h */,
+				185BF50517B56DC90031201B /* GW2Match.m */,
+				185BF50617B56DC90031201B /* GW2MatchDetails.h */,
+				185BF50717B56DC90031201B /* GW2MatchDetails.m */,
+				185BF50817B56DC90031201B /* GW2Objective.h */,
+				185BF50917B56DC90031201B /* GW2Objective.m */,
+			);
+			name = WvW;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		185BF4BB17B5698A0031201B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				185BF4D417B56D450031201B /* GW2.h in Headers */,
+				185BF56017B56F170031201B /* GW2API.h in Headers */,
+				185BF4D617B56D450031201B /* GW2Cache.h in Headers */,
+				185BF4D817B56D450031201B /* GW2Timer.h in Headers */,
+				185BF4DE17B56D5E0031201B /* GW2Enums.h in Headers */,
+				185BF4DF17B56D5E0031201B /* GW2Model.h in Headers */,
+				185BF4E017B56D5E0031201B /* GW2Protocols.h in Headers */,
+				185BF4EB17B56DAC0031201B /* GW2APICache.h in Headers */,
+				185BF4EC17B56DAC0031201B /* GW2Caching.h in Headers */,
+				185BF4ED17B56DAC0031201B /* GW2Fetching.h in Headers */,
+				185BF50A17B56DC90031201B /* GW2Array.h in Headers */,
+				185BF50C17B56DC90031201B /* GW2Object.h in Headers */,
+				185BF51017B56DC90031201B /* GW2Continent.h in Headers */,
+				185BF51217B56DC90031201B /* GW2Map.h in Headers */,
+				185BF51417B56DC90031201B /* GW2Item.h in Headers */,
+				185BF51617B56DC90031201B /* GW2Recipe.h in Headers */,
+				185BF51817B56DC90031201B /* GW2Event.h in Headers */,
+				185BF51A17B56DC90031201B /* GW2EventState.h in Headers */,
+				185BF51C17B56DC90031201B /* GW2Zone.h in Headers */,
+				185BF51E17B56DC90031201B /* GW2World.h in Headers */,
+				185BF52017B56DC90031201B /* GW2Match.h in Headers */,
+				185BF52217B56DC90031201B /* GW2MatchDetails.h in Headers */,
+				185BF52417B56DC90031201B /* GW2Objective.h in Headers */,
+				185BF4E617B56DA30031201B /* GW2Protected.h in Headers */,
+				185BF56717B572700031201B /* GW2ProtectedOSX.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		185BF4BD17B5698A0031201B /* GW2API */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 185BF4CC17B5698A0031201B /* Build configuration list for PBXNativeTarget "GW2API" */;
+			buildPhases = (
+				185BF4B917B5698A0031201B /* Sources */,
+				185BF4BA17B5698A0031201B /* Frameworks */,
+				185BF4BB17B5698A0031201B /* Headers */,
+				185BF4BC17B5698A0031201B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GW2API;
+			productName = GW2API;
+			productReference = 185BF4BE17B5698A0031201B /* GW2.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		185BF49817B5691C0031201B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Tommaso Madonia";
+			};
+			buildConfigurationList = 185BF49B17B5691C0031201B /* Build configuration list for PBXProject "GW2API-OSX" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 185BF49717B5691C0031201B;
+			productRefGroup = 185BF4A217B5691C0031201B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				185BF4BD17B5698A0031201B /* GW2API */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		185BF4BC17B5698A0031201B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		185BF4B917B5698A0031201B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				185BF4C917B5698A0031201B /* GW2API.m in Sources */,
+				185BF4D517B56D450031201B /* GW2.m in Sources */,
+				185BF4D717B56D450031201B /* GW2Cache.m in Sources */,
+				185BF4D917B56D450031201B /* GW2Timer.m in Sources */,
+				185BF4E717B56DA30031201B /* GW2Protected.m in Sources */,
+				185BF50B17B56DC90031201B /* GW2Array.m in Sources */,
+				185BF50D17B56DC90031201B /* GW2Object.m in Sources */,
+				185BF51117B56DC90031201B /* GW2Continent.m in Sources */,
+				185BF51317B56DC90031201B /* GW2Map.m in Sources */,
+				185BF51517B56DC90031201B /* GW2Item.m in Sources */,
+				185BF51717B56DC90031201B /* GW2Recipe.m in Sources */,
+				185BF51917B56DC90031201B /* GW2Event.m in Sources */,
+				185BF51B17B56DC90031201B /* GW2EventState.m in Sources */,
+				185BF51D17B56DC90031201B /* GW2Zone.m in Sources */,
+				185BF51F17B56DC90031201B /* GW2World.m in Sources */,
+				185BF52117B56DC90031201B /* GW2Match.m in Sources */,
+				185BF52317B56DC90031201B /* GW2MatchDetails.m in Sources */,
+				185BF52517B56DC90031201B /* GW2Objective.m in Sources */,
+				185BF56817B572700031201B /* GW2ProtectedOSX.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		185BF4B417B5691C0031201B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		185BF4B517B5691C0031201B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		185BF4CA17B5698A0031201B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GW2API/GW2API-Prefix.pch";
+				INFOPLIST_FILE = "";
+				PRODUCT_NAME = GW2;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		185BF4CB17B5698A0031201B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GW2API/GW2API-Prefix.pch";
+				INFOPLIST_FILE = "";
+				PRODUCT_NAME = GW2;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		185BF49B17B5691C0031201B /* Build configuration list for PBXProject "GW2API-OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				185BF4B417B5691C0031201B /* Debug */,
+				185BF4B517B5691C0031201B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		185BF4CC17B5698A0031201B /* Build configuration list for PBXNativeTarget "GW2API" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				185BF4CA17B5698A0031201B /* Debug */,
+				185BF4CB17B5698A0031201B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 185BF49817B5691C0031201B /* Project object */;
+}

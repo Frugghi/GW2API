@@ -1,8 +1,8 @@
 //
-//  GW2Protected.h
+//  GW2ProtectedOSX.h
 //  GW2API for ObjC
 //
-//  Created by Tommaso Madonia on 27/05/13.
+//  Created by Tommaso Madonia on 09/08/13.
 //  Copyright (c) 2013 Tommaso Madonia. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,49 +24,14 @@
 //  THE SOFTWARE.
 //
 
-#import "GW2.h"
-#import "GW2API.h"
-#import "GW2Model.h"
-#import "GW2Array.h"
+#pragma mark - IOS_Wrapper NSValue category -
 
-#if !(TARGET_OS_IPHONE)
-#import "GW2ProtectedOSX.h"
-#endif
+@interface NSCoder (IOS_Wrapper)
 
-#pragma mark - GW2Object extension -
+- (void)encodeCGSize:(CGSize)size forKey:(NSString *)key;
+- (void)encodeCGRect:(CGRect)rect forKey:(NSString *)key;
 
-@interface GW2Object ()
-
-+ (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID;
-- (void)copyObject:(GW2Object *)obj withZone:(NSZone *)zone;
-+ (id)parseJSONData:(NSData *)jsonData error:(NSError **)error;
-+ (NSArray *)notificationNames;
-
-@end
-
-#pragma mark - GW2Array extension -
-
-@interface GW2Array ()
-
-@property (nonatomic, readwrite, assign) NSTimeInterval timeout;
-@property (nonatomic, readwrite, strong) NSString *cacheKey;
-
-@end
-
-#pragma mark - GW2RecipeID -
-
-@interface GW2RecipeID : GW2Object
-@end
-
-#pragma mark - GW2ItemID -
-
-@interface GW2ItemID : GW2Object
-@end
-
-#pragma mark - GW2_ID NSString category -
-
-@interface NSString (GW2_ID)
-
-- (NSString *)stringValue;
+- (CGSize)decodeCGSizeForKey:(NSString *)key;
+- (CGRect)decodeCGRectForKey:(NSString *)key;
 
 @end
