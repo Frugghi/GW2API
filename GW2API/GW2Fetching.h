@@ -24,8 +24,6 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
-
 typedef id (^GW2FetchBlock)(NSError **error);
 
 @protocol GW2Fetching <NSObject>

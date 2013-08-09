@@ -24,7 +24,6 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
 #import "GW2Protocols.h"
 
 @interface GW2Timer : NSObject

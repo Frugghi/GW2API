@@ -24,7 +24,6 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
 #import "GW2.h"
 #import "GW2API.h"
 #import "GW2Model.h"

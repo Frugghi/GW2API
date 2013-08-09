@@ -24,7 +24,6 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
 #import "GW2Protocols.h"
 
 @interface GW2Array : NSObject <NSCopying, NSCoding, NSFastEnumeration, GW2Fetching, GW2Caching>

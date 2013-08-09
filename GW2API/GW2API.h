@@ -24,7 +24,6 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
 #import "GW2Enums.h"
 
 @interface GW2API : NSObject

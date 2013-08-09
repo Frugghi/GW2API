@@ -1,8 +1,0 @@
-//
-// Prefix header for all source files of the 'GW2API' target in the 'GW2API' project
-//
-
-#ifdef __OBJC__
-    #import <UIKit/UIKit.h>
-    #import <Foundation/Foundation.h>
-#endif

@@ -24,8 +24,6 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
-
 @protocol GW2Caching <NSObject>
 
 @property (nonatomic, strong) NSDate *lastUpdate;

@@ -24,7 +24,6 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
 #import "GW2APICache.h"
 
 @interface GW2Cache : NSObject <GW2APICache>

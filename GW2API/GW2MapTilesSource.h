@@ -24,9 +24,6 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
-#import <MapBox/RMAbstractWebMapSource.h>
-
 @interface GW2MapTilesSource : RMAbstractWebMapSource
 
 @property (nonatomic, assign) NSInteger continent;

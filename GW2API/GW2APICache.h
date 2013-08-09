@@ -24,8 +24,6 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
-
 @protocol GW2APICache <NSObject>
 
 - (id)initWithName:(NSString *)name;
