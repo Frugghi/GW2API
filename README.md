@@ -10,7 +10,7 @@ GW2API is an Objective-C framework for iOS and OS X that wraps the Guild Wars 2 
 
 ## Installation
 
-1. Download the framework from the [framework branch](https://github.com/Frugghi/GW2API/tree/framework) or compile it (require **Real Framework** from [iOS Universal Framework](https://github.com/kstenerud/iOS-Universal-Framework))
+1. Download the framework from the [framework branch](https://github.com/Frugghi/GW2API/tree/framework) or compile it
 2. Drag `GW2API.framework` into your project
 3. Import the GW2 header `#import <GW2API/GW2.h>`
 
