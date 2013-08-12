@@ -33,6 +33,15 @@
 
 #pragma mark - Init -
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        [self setLastUpdate:[NSDate date]];
+    }
+    
+    return self;
+}
+
 - (id)initWithID:(NSString *)ID {
     self = [super init];
     if (self) {
@@ -118,7 +127,7 @@
 
 #pragma mark - Protected -
 
-+ (id)parseJSONData:(NSData *)jsonData error:(NSError *__autoreleasing *)error {
++ (id)parseJSONData:(NSData *)jsonData requestURL:(NSURL *)requestURL error:(NSError *__autoreleasing *)error {
     NSError *jsonError;
     id json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&jsonError];
     if (jsonError && error) {

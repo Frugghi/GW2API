@@ -1,8 +1,8 @@
 //
-//  GW2ProtectedOSX.h
+//  GW2ItemID.h
 //  GW2API for ObjC
 //
-//  Created by Tommaso Madonia on 09/08/13.
+//  Created by Tommaso Madonia on 12/08/13.
 //  Copyright (c) 2013 Tommaso Madonia. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,14 +24,8 @@
 //  THE SOFTWARE.
 //
 
-#pragma mark - IOS_Wrapper NSValue category -
+#import "GW2Object.h"
 
-@interface NSCoder (IOS_Wrapper)
-
-- (void)encodeCGSize:(CGSize)size forKey:(NSString *)key;
-- (void)encodeCGRect:(CGRect)rect forKey:(NSString *)key;
-
-- (CGSize)decodeCGSizeForKey:(NSString *)key;
-- (CGRect)decodeCGRectForKey:(NSString *)key;
+@interface GW2ItemID : GW2Object
 
 @end

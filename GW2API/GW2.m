@@ -322,6 +322,45 @@ NSString *const GW2ItemNotification = @"com.GW2.ItemNotification";
     });
 }
 
+#pragma mark - Map Floor -
+
++ (GW2MapFloor *)mapFloorByID:(NSString *)ID error:(NSError *__autoreleasing *)error {
+    return [[self sharedInstance] fetchObjectForClass:[[self api] mapFloorClass] ID:ID error:error];
+}
+
++ (GW2MapFloor *)mapFloorContinentID:(NSString *)continentID floor:(NSInteger)floor error:(NSError *__autoreleasing *)error {
+    return [self mapFloorByID:[NSString stringWithFormat:@"%@_%li", continentID, (long)floor] error:error];
+}
+
++ (GW2MapFloor *)mapFloorContinent:(GW2Continent *)continent floor:(NSInteger)floor error:(NSError *__autoreleasing *)error {
+    return [self mapFloorContinentID:[continent ID] floor:floor error:error];
+}
+
++ (void)mapFloorByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock {
+    dispatch_async([[self sharedInstance] fetchQueue], ^{
+        NSError *error;
+        GW2Object *object = [self mapFloorByID:ID error:&error];
+        completitionBlock(object, error);
+    });
+}
+
++ (void)mapFloorContinentID:(NSString *)continentID floor:(NSInteger)floor completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock {
+    dispatch_async([[self sharedInstance] fetchQueue], ^{
+        NSError *error;
+        GW2Object *object = [self mapFloorContinentID:continentID floor:floor error:&error];
+        completitionBlock(object, error);
+    });
+}
+
++ (void)mapFloorContinent:(GW2Continent *)continent floor:(NSInteger)floor completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock {
+    dispatch_async([[self sharedInstance] fetchQueue], ^{
+        NSError *error;
+        GW2Object *object = [self mapFloorContinent:continent floor:floor error:&error];
+        completitionBlock(object, error);
+    });
+}
+
+
 #pragma mark - Zones -
 
 + (GW2Array *)zones {
@@ -641,7 +680,8 @@ NSString *const GW2ItemNotification = @"com.GW2.ItemNotification";
 
     if (!gw2Object) {
         NSError *error_;
-        NSData *jsonData = [self dataForURL:[class requestURL:self.api withID:ID] error:&error_];
+        NSURL *requestURL = [class requestURL:self.api withID:ID];
+        NSData *jsonData = [self dataForURL:requestURL error:&error_];
         if (error_) {
             NSLog(@"%s %@", __PRETTY_FUNCTION__, [error_ description]);
             if (error) {
@@ -650,7 +690,7 @@ NSString *const GW2ItemNotification = @"com.GW2.ItemNotification";
             return nil;
         }
         
-        gw2Object = [class parseJSONData:jsonData error:&error_];
+        gw2Object = [class parseJSONData:jsonData requestURL:requestURL error:&error_];
         if (error_) {
             NSLog(@"%s %@", __PRETTY_FUNCTION__, [error_ description]);
             if (error) {

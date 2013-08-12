@@ -29,7 +29,7 @@
 @interface GW2World : GW2Object
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, readonly) GW2Region region;
+@property (nonatomic, readonly) GW2RegionServer region;
 @property (nonatomic, readonly) GW2Language language;
 
 - (id)initWithID:(NSString *)ID name:(NSString *)name;

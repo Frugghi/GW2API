@@ -29,8 +29,13 @@
 #import "GW2Model.h"
 #import "GW2Array.h"
 
+#import "GW2RecipeID.h"
+#import "GW2ItemID.h"
+#import "NSString+GW2_ID.h"
+#import "GW2Function.h"
+
 #if !(TARGET_OS_IPHONE)
-#import "GW2ProtectedOSX.h"
+#import "NSCoder+IOS_Wrapper.h"
 #endif
 
 #pragma mark - GW2Object extension -
@@ -39,7 +44,7 @@
 
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID;
 - (void)copyObject:(GW2Object *)obj withZone:(NSZone *)zone;
-+ (id)parseJSONData:(NSData *)jsonData error:(NSError **)error;
++ (id)parseJSONData:(NSData *)jsonData requestURL:(NSURL *)requestURL error:(NSError **)error;
 + (NSArray *)notificationNames;
 
 @end
@@ -53,20 +58,3 @@
 
 @end
 
-#pragma mark - GW2RecipeID -
-
-@interface GW2RecipeID : GW2Object
-@end
-
-#pragma mark - GW2ItemID -
-
-@interface GW2ItemID : GW2Object
-@end
-
-#pragma mark - GW2_ID NSString category -
-
-@interface NSString (GW2_ID)
-
-- (NSString *)stringValue;
-
-@end

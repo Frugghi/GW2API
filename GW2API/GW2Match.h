@@ -34,7 +34,7 @@
 @property (nonatomic, copy) GW2World *blueWorld;
 @property (nonatomic, copy) GW2World *greenWorld;
 @property (nonatomic, readonly) NSString *matchDetailsID;
-@property (nonatomic, readonly) GW2Region region;
+@property (nonatomic, readonly) GW2RegionServer region;
 @property (nonatomic, readonly) NSInteger tier;
 
 @end

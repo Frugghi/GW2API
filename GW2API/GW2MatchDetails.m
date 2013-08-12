@@ -53,7 +53,7 @@
 
 #pragma mark - Properties -
 
-- (GW2Region)region {
+- (GW2RegionServer)region {
     @try {
         switch ([[[self ID] substringToIndex:1] intValue]) {
             case 1: return GW2RegionNorthAmerica;
@@ -110,7 +110,7 @@
 #pragma mark - NSObject -
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"[%@, %@ Tier %i] R:%i B:%i G:%i", self.ID, [GW2API regionName:self.region], self.tier, self.redScore, self.blueScore, self.greenScore];
+	return [NSString stringWithFormat:@"[%@, %@ Tier %li] R:%li B:%li G:%li", self.ID, [GW2API regionName:self.region], (long)self.tier, (long)self.redScore, (long)self.blueScore, (long)self.greenScore];
 }
 
 #pragma mark - GW2Caching protocol -
@@ -148,8 +148,8 @@
     return [api requestURL:@"wvw/match_details.json" params:@{@"match_id": ID}];
 }
 
-+ (id)parseJSONData:(NSData *)jsonData error:(NSError *__autoreleasing *)error {
-    NSDictionary *json = [super parseJSONData:jsonData error:error];
++ (id)parseJSONData:(NSData *)jsonData requestURL:(NSURL *)requestURL error:(NSError *__autoreleasing *)error {
+    NSDictionary *json = [super parseJSONData:jsonData requestURL:requestURL error:error];
     if (!json) {
         return nil;
     }
@@ -208,7 +208,7 @@
         [maps addObject:currentMap];
     }
     
-    [obj setMaps:maps];
+    [obj setMaps:[maps copy]];
     
     return obj;
 }
@@ -284,7 +284,7 @@
 #pragma mark - NSObject protocol -
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"[%i] R:%i B:%i G:%i", self.type, self.redScore, self.blueScore, self.greenScore];
+	return [NSString stringWithFormat:@"[%i] R:%li B:%li G:%li", self.type, (long)self.redScore, (long)self.blueScore, (long)self.greenScore];
 }
 
 - (BOOL)isEqual:(id)object {

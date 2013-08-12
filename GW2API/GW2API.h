@@ -42,6 +42,7 @@
 @property (nonatomic, assign) Class worldClass;
 @property (nonatomic, assign) Class continentClass;
 @property (nonatomic, assign) Class mapClass;
+@property (nonatomic, assign) Class mapFloorClass;
 @property (nonatomic, assign) Class zoneClass;
 @property (nonatomic, assign) Class matchClass;
 @property (nonatomic, assign) Class matchDetailsClass;
@@ -53,11 +54,11 @@
 
 #pragma mark - Public methods -
 
-+ (NSString *)regionName:(GW2Region)region;
++ (NSString *)regionName:(GW2RegionServer)region;
 + (NSString *)languageName:(GW2Language)language;
 + (NSString *)stateName:(GW2EventStateType)state;
-+ (NSDate *)nextWvWReset:(GW2Region)region;
-+ (NSTimeInterval)timeIntervalBeforeWvWReset:(GW2Region)region;
++ (NSDate *)nextWvWReset:(GW2RegionServer)region;
++ (NSTimeInterval)timeIntervalBeforeWvWReset:(GW2RegionServer)region;
 
 - (NSURL *)requestURL:(NSString *)relativeURL params:(NSDictionary *)params;
 - (NSData *)syncRequest:(NSURL *)requestURL error:(NSError **)error;

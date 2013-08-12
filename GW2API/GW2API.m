@@ -53,6 +53,7 @@
         [self setWorldClass:[GW2World class]];
         [self setContinentClass:[GW2Continent class]];
         [self setMapClass:[GW2Map class]];
+        [self setMapFloorClass:[GW2MapFloor class]];
         [self setZoneClass:[GW2Zone class]];
         [self setMatchClass:[GW2Match class]];
         [self setMatchDetailsClass:[GW2MatchDetails class]];
@@ -115,7 +116,7 @@
     return nil;
 }
 
-+ (NSString *)regionName:(GW2Region)region {
++ (NSString *)regionName:(GW2RegionServer)region {
     switch (region) {
         case GW2RegionUnknown:      return @"Unknown";
         case GW2RegionNorthAmerica: return @"North America";
@@ -135,17 +136,17 @@
 
 + (NSString *)stateName:(GW2EventStateType)state {
     switch (state) {
-        case GW2EventStateUnknown:      return @"Unknown";
-        case GW2EventStateInactive:     return @"Inactive";
-        case GW2EventStateWarmup:       return @"Warmup";
-        case GW2EventStatePreparation:  return @"Preparation";
-        case GW2EventStateActive:       return @"Active";
-        case GW2EventStateSuccess:      return @"Success";
-        case GW2EventStateFail:         return @"Failed";
+        case GW2EventStateUnknown:     return @"Unknown";
+        case GW2EventStateInactive:    return @"Inactive";
+        case GW2EventStateWarmup:      return @"Warmup";
+        case GW2EventStatePreparation: return @"Preparation";
+        case GW2EventStateActive:      return @"Active";
+        case GW2EventStateSuccess:     return @"Success";
+        case GW2EventStateFail:        return @"Failed";
     }
 }
 
-+ (NSDate *)nextWvWReset:(GW2Region)region {
++ (NSDate *)nextWvWReset:(GW2RegionServer)region {
     NSString *timezone = (region == GW2RegionEurope ? @"UTC" : @"PDT");
     NSUInteger hour = 18;
     NSDate *today = [NSDate date];
@@ -171,7 +172,7 @@
     return friday;
 }
 
-+ (NSTimeInterval)timeIntervalBeforeWvWReset:(GW2Region)region {
++ (NSTimeInterval)timeIntervalBeforeWvWReset:(GW2RegionServer)region {
     return [[self nextWvWReset:region] timeIntervalSinceDate:[NSDate date]];
 }
 
@@ -214,9 +215,11 @@
                         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
                     });
                 #endif
+                
                 NSData *jsonData = [NSData dataWithContentsOfURL:requestURL
                                                          options:NSDataReadingUncached
                                                            error:error];
+                
                 #if TARGET_OS_IPHONE
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];

@@ -1,5 +1,5 @@
 //
-//  GW2ProtectedOSX.m
+//  NSCoder+IOS_Wrapper.m
 //  GW2API for ObjC
 //
 //  Created by Tommaso Madonia on 09/08/13.
@@ -24,15 +24,16 @@
 //  THE SOFTWARE.
 //
 
-
-#import "GW2ProtectedOSX.h"
-
-#pragma mark - IOS_Wrapper NSValue category -
+#import "NSCoder+IOS_Wrapper.h"
 
 @implementation NSCoder (IOS_Wrapper)
 
 - (void)encodeCGSize:(CGSize)size forKey:(NSString *)key {
     [self encodeSize:size forKey:key];
+}
+
+- (void)encodeCGPoint:(CGPoint)point forKey:(NSString *)key {
+    [self encodePoint:point forKey:key];
 }
 
 - (void)encodeCGRect:(CGRect)rect forKey:(NSString *)key {
@@ -41,6 +42,10 @@
 
 - (CGSize)decodeCGSizeForKey:(NSString *)key {
     return [self decodeSizeForKey:key];
+}
+
+- (CGPoint)decodeCGPointForKey:(NSString *)key {
+    return [self decodePointForKey:key];
 }
 
 - (CGRect)decodeCGRectForKey:(NSString *)key {

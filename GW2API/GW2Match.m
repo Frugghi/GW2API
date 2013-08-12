@@ -55,7 +55,7 @@
     return [self ID];
 }
 
-- (GW2Region)region {
+- (GW2RegionServer)region {
     @try {
         switch ([[[self ID] substringToIndex:1] intValue]) {
             case 1: return GW2RegionNorthAmerica;
@@ -114,8 +114,8 @@
     return [api requestURL:@"wvw/matches.json" params:nil];
 }
 
-+ (id)parseJSONData:(NSData *)jsonData error:(NSError *__autoreleasing *)error {
-    NSDictionary *json = [super parseJSONData:jsonData error:error];
++ (id)parseJSONData:(NSData *)jsonData requestURL:(NSURL *)requestURL error:(NSError *__autoreleasing *)error {
+    NSDictionary *json = [super parseJSONData:jsonData requestURL:requestURL error:error];
     if (!json) {
         return nil;
     }

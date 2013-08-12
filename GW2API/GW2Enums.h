@@ -31,7 +31,7 @@ typedef enum {
     GW2RegionUnknown = 0,
     GW2RegionNorthAmerica = 1,
     GW2RegionEurope = 2
-} GW2Region;
+} GW2RegionServer;
 
 typedef enum {
     GW2LanguageUnknown = -1,
@@ -85,5 +85,12 @@ typedef enum {
     GW2ObjectiveKeep,
     GW2ObjectiveCastle
 } GW2ObjectiveType;
+
+typedef enum {
+    GW2POIUnkown = 0,
+    GW2POILandmark,
+    GW2POIWaypoint,
+    GW2POIVista
+} GW2POIType;
 
 #endif

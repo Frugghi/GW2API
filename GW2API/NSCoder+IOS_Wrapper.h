@@ -1,8 +1,8 @@
 //
-//  GW2Model.h
+//  NSCoder+IOS_Wrapper.h
 //  GW2API for ObjC
 //
-//  Created by Tommaso Madonia on 22/05/13.
+//  Created by Tommaso Madonia on 09/08/13.
 //  Copyright (c) 2013 Tommaso Madonia. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,22 +24,16 @@
 //  THE SOFTWARE.
 //
 
-#ifndef GW2_GW2Model_h
-#define GW2_GW2Model_h
+#import <Foundation/Foundation.h>
 
-#import "GW2Object.h"
-#import "GW2World.h"
-#import "GW2Match.h"
-#import "GW2MatchDetails.h"
-#import "GW2Objective.h"
-#import "GW2Zone.h"
-#import "GW2Event.h"
-#import "GW2EventState.h"
-#import "GW2Recipe.h"
-#import "GW2Item.h"
-#import "GW2Array.h"
-#import "GW2Continent.h"
-#import "GW2Map.h"
-#import "GW2MapFloor.h"
+@interface NSCoder (IOS_Wrapper)
 
-#endif
+- (void)encodeCGSize:(CGSize)size forKey:(NSString *)key;
+- (void)encodeCGPoint:(CGPoint)point forKey:(NSString *)key;
+- (void)encodeCGRect:(CGRect)rect forKey:(NSString *)key;
+
+- (CGSize)decodeCGSizeForKey:(NSString *)key;
+- (CGPoint)decodeCGPointForKey:(NSString *)key;
+- (CGRect)decodeCGRectForKey:(NSString *)key;
+
+@end

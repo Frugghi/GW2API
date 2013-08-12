@@ -1,8 +1,8 @@
 //
-//  GW2Model.h
+//  GW2Function.h
 //  GW2API for ObjC
 //
-//  Created by Tommaso Madonia on 22/05/13.
+//  Created by Tommaso Madonia on 12/08/13.
 //  Copyright (c) 2013 Tommaso Madonia. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,22 +24,35 @@
 //  THE SOFTWARE.
 //
 
-#ifndef GW2_GW2Model_h
-#define GW2_GW2Model_h
+#ifndef GW2API_iOS_GW2Function_h
+#define GW2API_iOS_GW2Function_h
 
-#import "GW2Object.h"
-#import "GW2World.h"
-#import "GW2Match.h"
-#import "GW2MatchDetails.h"
-#import "GW2Objective.h"
-#import "GW2Zone.h"
-#import "GW2Event.h"
-#import "GW2EventState.h"
-#import "GW2Recipe.h"
-#import "GW2Item.h"
-#import "GW2Array.h"
-#import "GW2Continent.h"
-#import "GW2Map.h"
-#import "GW2MapFloor.h"
+static inline CGPoint CGPointFromArray(NSArray *array) {
+    return CGPointMake([array[0] integerValue], [array[1] integerValue]);
+}
+
+static inline CGSize CGSizeFromArray(NSArray *array) {
+    return CGSizeMake([array[0] integerValue], [array[1] integerValue]);
+}
+
+static inline CGRect CGRectFromArray(NSArray *array) {
+    return CGRectMake([array[0][0] integerValue], [array[0][1] integerValue], [array[1][0] integerValue], [array[1][0] integerValue]);
+}
+
+#if !(TARGET_OS_IPHONE)
+
+static inline NSString *NSStringFromCGPoint(CGPoint point) {
+    return NSStringFromPoint(point);
+}
+
+static inline NSString *NSStringFromCGSize(CGSize size) {
+    return NSStringFromSize(size);
+}
+
+static inline NSString *NSStringFromCGRect(CGRect rect) {
+    return NSStringFromRect(rect);
+}
+
+#endif
 
 #endif

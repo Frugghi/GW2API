@@ -61,7 +61,7 @@ NSString *const GW2RecipeInputItemCountKey = @"count";
 #pragma mark - NSObject -
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"[%@] x%i %@ %@", self.ID, self.outputCount, self.outputItemID, self.type];
+	return [NSString stringWithFormat:@"[%@] x%li %@ %@", self.ID, (long)self.outputCount, self.outputItemID, self.type];
 }
 
 #pragma mark - GW2Caching protocol -
@@ -101,15 +101,13 @@ NSString *const GW2RecipeInputItemCountKey = @"count";
     return [api requestURL:@"recipe_details.json" params:@{@"recipe_id": ID}];
 }
 
-+ (id)parseJSONData:(NSData *)jsonData error:(NSError *__autoreleasing *)error {
-    NSDictionary *json = [super parseJSONData:jsonData error:error];
++ (id)parseJSONData:(NSData *)jsonData requestURL:(NSURL *)requestURL error:(NSError *__autoreleasing *)error {
+    NSDictionary *json = [super parseJSONData:jsonData requestURL:requestURL error:error];
     if (!json) {
         return nil;
     }
 
-    GW2Recipe *obj = [[[self class] alloc] initWithID:[json objectForKey:@"recipe_id"]];
-    [obj setLastUpdate:[NSDate date]];
-    
+    GW2Recipe *obj = [[[self class] alloc] initWithID:[json objectForKey:@"recipe_id"]];    
     [obj setType:[json objectForKey:@"type"]];
     [obj setOutputItemID:[json objectForKey:@"output_item_id"]];
     [obj setOutputCount:[[json objectForKey:@"output_item_count"] integerValue]];

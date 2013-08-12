@@ -66,7 +66,7 @@
 #pragma mark - NSObject -
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"[%@] %@ (%@, level %i)", self.ID, self.name, self.rarity, self.level];
+	return [NSString stringWithFormat:@"[%@] %@ (%@, level %li)", self.ID, self.name, self.rarity, (long)self.level];
 }
 
 #pragma mark - GW2Caching protocol -
@@ -110,15 +110,13 @@
     return [api requestURL:@"item_details.json" params:@{@"item_id": ID}];
 }
 
-+ (id)parseJSONData:(NSData *)jsonData error:(NSError *__autoreleasing *)error {
-    NSDictionary *json = [super parseJSONData:jsonData error:error];
++ (id)parseJSONData:(NSData *)jsonData requestURL:(NSURL *)requestURL error:(NSError *__autoreleasing *)error {
+    NSDictionary *json = [super parseJSONData:jsonData requestURL:requestURL error:error];
     if (!json) {
         return nil;
     }
     
-    GW2Item *obj = [[[self class] alloc] initWithID:[json objectForKey:@"item_id"]];
-    [obj setLastUpdate:[NSDate date]];
-    
+    GW2Item *obj = [[[self class] alloc] initWithID:[json objectForKey:@"item_id"]];    
     [obj setName:[json objectForKey:@"name"]];
     [obj setDescription:[json objectForKey:@"description"]];
     [obj setType:[json objectForKey:@"type"]];

@@ -65,14 +65,22 @@ extern NSString *const GW2ItemNotification;
 
 + (void)fetch:(id<GW2Fetching>)obj completitionBlock:(GW2FetchCompletitionBlock)completitionBlock;
 
-+ (void)worldsWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
-+ (void)worldByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
+#pragma mark - Map
 
 + (void)continentsWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
 + (void)continentByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
 
 + (void)mapsWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
 + (void)mapByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
+
++ (void)mapFloorByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
++ (void)mapFloorContinentID:(NSString *)continentID floor:(NSInteger)floor completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
++ (void)mapFloorContinent:(GW2Continent *)continent floor:(NSInteger)floor completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
+
+#pragma mark - Dynamic Events
+
++ (void)worldsWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
++ (void)worldByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
 
 + (void)zonesWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
 + (void)zoneByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
@@ -84,6 +92,8 @@ extern NSString *const GW2ItemNotification;
 + (void)eventStateEventID:(NSString *)eventID zoneID:(NSString *)zoneID worldID:(NSString *)worldID completitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
 + (void)eventStateEvent:(GW2Event *)event zone:(GW2Zone *)zone world:(GW2World *)world completitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
 
+#pragma mark - WvW
+
 + (void)matchesWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
 + (void)matchByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
 
@@ -92,6 +102,8 @@ extern NSString *const GW2ItemNotification;
 
 + (void)objectivesWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
 + (void)objectiveByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
+
+#pragma mark - Item and Recipe
 
 + (void)recipesWithCompletitionBlock:(GW2ArrayIDCompletitionBlock)completitionBlock;
 + (void)recipeByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
@@ -104,10 +116,7 @@ extern NSString *const GW2ItemNotification;
 + (id)fetch:(id<GW2Fetching>)obj;
 + (id)fetch:(id<GW2Fetching>)obj error:(NSError **)error;
 
-+ (GW2Array *)worlds;
-+ (GW2Array *)worldsWithError:(NSError **)error;
-+ (GW2World *)worldByID:(NSString *)ID;
-+ (GW2World *)worldByID:(NSString *)ID error:(NSError **)error;
+#pragma mark - Map
 
 + (GW2Array *)continents;
 + (GW2Array *)continentsWithError:(NSError **)error;
@@ -118,6 +127,17 @@ extern NSString *const GW2ItemNotification;
 + (GW2Array *)mapsWithError:(NSError **)error;
 + (GW2Map *)mapByID:(NSString *)ID;
 + (GW2Map *)mapByID:(NSString *)ID error:(NSError **)error;
+
++ (GW2MapFloor *)mapFloorByID:(NSString *)ID error:(NSError **)error;
++ (GW2MapFloor *)mapFloorContinentID:(NSString *)continentID floor:(NSInteger)floor error:(NSError **)error;
++ (GW2MapFloor *)mapFloorContinent:(GW2Continent *)continent floor:(NSInteger)floor error:(NSError **)error;
+
+#pragma mark - Dynamic Events
+
++ (GW2Array *)worlds;
++ (GW2Array *)worldsWithError:(NSError **)error;
++ (GW2World *)worldByID:(NSString *)ID;
++ (GW2World *)worldByID:(NSString *)ID error:(NSError **)error;
 
 + (GW2Array *)zones;
 + (GW2Array *)zonesWithError:(NSError **)error;
@@ -133,6 +153,8 @@ extern NSString *const GW2ItemNotification;
 + (GW2Array *)eventStateEventID:(NSString *)eventID zoneID:(NSString *)zoneID worldID:(NSString *)worldID error:(NSError **)error;
 + (GW2Array *)eventStateEvent:(GW2Event *)event zone:(GW2Zone *)zone world:(GW2World *)world error:(NSError **)error;
 
+#pragma mark - WvW
+
 + (GW2Array *)matches;
 + (GW2Array *)matchesWithError:(NSError **)error;
 + (GW2Match *)matchByID:(NSString *)ID;
@@ -147,6 +169,8 @@ extern NSString *const GW2ItemNotification;
 + (GW2Array *)objectivesWithError:(NSError **)error;
 + (GW2Objective *)objectiveByID:(NSString *)ID;
 + (GW2Objective *)objectiveByID:(NSString *)ID error:(NSError **)error;
+
+#pragma mark - Item and Recipe
 
 + (NSArray *)recipes;
 + (NSArray *)recipesWithError:(NSError **)error;
