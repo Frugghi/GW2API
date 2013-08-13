@@ -31,7 +31,7 @@
 
 @synthesize lastUpdate = _lastUpdate;
 
-#pragma mark - Init -
+#pragma mark - Init
 
 - (id)init {
     self = [super init];
@@ -52,7 +52,7 @@
     return self;
 }
 
-#pragma mark - NSCoding protocol -
+#pragma mark - NSCoding protocol
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super init];
@@ -69,7 +69,7 @@
     [coder encodeObject:self.lastUpdate forKey:@"lastUpdate"];
 }
 
-#pragma mark - NSCopying protocol -
+#pragma mark - NSCopying protocol
 
 - (id)copyWithZone:(NSZone *)zone {
     id copy = [[[self class] allocWithZone:zone] init];
@@ -81,7 +81,7 @@
     return copy;
 }
 
-#pragma mark - NSObject protocol -
+#pragma mark - NSObject protocol
 
 - (BOOL)isEqual:(id)object {
 	if ([object isKindOfClass:[self class]]) {
@@ -95,7 +95,7 @@
 	return [[self description] hash];
 }
 
-#pragma mark - GW2Caching protocol -
+#pragma mark - GW2Caching protocol
 
 - (NSString *)cacheKey {
     return @"GW2Object";
@@ -117,7 +117,7 @@
     return [[NSDate date] timeIntervalSinceDate:self.lastUpdate] > [self timeout];
 }
 
-#pragma mark - GW2Fetching protocol -
+#pragma mark - GW2Fetching protocol
 
 - (GW2FetchBlock)fetchBlock {
     return (GW2FetchBlock) ^(NSError **error)  {
@@ -125,7 +125,7 @@
     };
 }
 
-#pragma mark - Protected -
+#pragma mark - Protected
 
 + (id)parseJSONData:(NSData *)jsonData requestURL:(NSURL *)requestURL error:(NSError *__autoreleasing *)error {
     NSError *jsonError;

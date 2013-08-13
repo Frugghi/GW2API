@@ -99,7 +99,7 @@
     return timer;
 }
 
-#pragma mark - Properties -
+#pragma mark - Properties
 
 - (void)setBlock:(dispatch_block_t)block {
     _block = [block copy];
@@ -109,7 +109,7 @@
     }
 }
 
-#pragma mark - Public -
+#pragma mark - Public
 
 - (void)invalidate {
     if (self.source) {

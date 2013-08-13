@@ -29,7 +29,7 @@
 
 @implementation GW2Map
 
-#pragma mark - NSCoding protocol -
+#pragma mark - NSCoding protocol
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
@@ -65,13 +65,13 @@
     [coder encodeCGRect:self.continentRect forKey:@"continentRect"];
 }
 
-#pragma mark - NSObject protocol -
+#pragma mark - NSObject protocol
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"[%@] %@", self.ID, self.name];
 }
 
-#pragma mark - GW2Caching protocol -
+#pragma mark - GW2Caching protocol
 
 - (NSString *)cacheKey {
     return @"gw2_maps";
@@ -81,7 +81,7 @@
     return 60 * 60 * 24 * 28; // 28 days
 }
 
-#pragma mark - GW2Fetching protocol -
+#pragma mark - GW2Fetching protocol
 
 - (GW2FetchBlock)fetchBlock {
     return (GW2FetchBlock) ^(NSError **error) {
@@ -89,7 +89,7 @@
     };
 }
 
-#pragma mark - Protected -
+#pragma mark - Protected
 
 - (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
     [super copyObject:object withZone:zone];

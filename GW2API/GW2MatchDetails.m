@@ -29,7 +29,7 @@
 
 @implementation GW2MatchDetails
 
-#pragma mark - NSCoding protocol -
+#pragma mark - NSCoding protocol
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
@@ -51,7 +51,7 @@
     [coder encodeObject:self.maps forKey:@"maps"];
 }
 
-#pragma mark - Properties -
+#pragma mark - Properties
 
 - (GW2RegionServer)region {
     @try {
@@ -107,13 +107,13 @@
     return potentialPoints;
 }
 
-#pragma mark - NSObject -
+#pragma mark - NSObject protocol
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"[%@, %@ Tier %li] R:%li B:%li G:%li", self.ID, [GW2API regionName:self.region], (long)self.tier, (long)self.redScore, (long)self.blueScore, (long)self.greenScore];
 }
 
-#pragma mark - GW2Caching protocol -
+#pragma mark - GW2Caching protocol
 
 - (NSTimeInterval)timeout {
     return 30; // 30 sec
@@ -131,7 +131,7 @@
     };
 }
 
-#pragma mark - Protected -
+#pragma mark - Protected
 
 - (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
     [super copyObject:object withZone:zone];

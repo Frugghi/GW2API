@@ -41,7 +41,7 @@
             (self.worldID ? self.worldID : @""), (self.zoneID ? self.zoneID : @""), (self.eventID ? self.eventID : @"")];
 }
 
-#pragma mark - NSCoding protocol -
+#pragma mark - NSCoding protocol
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super init];
@@ -62,13 +62,13 @@
     [coder encodeObject:self.eventID forKey:@"event_id"];
 }
 
-#pragma mark - NSObject -
+#pragma mark - NSObject protocol
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"[World %@, Zone %@, Event %@] %@", self.worldID, self.zoneID, self.eventID, [GW2API stateName:self.state]];
 }
 
-#pragma mark - GW2Caching protocol -
+#pragma mark - GW2Caching protocol
 
 - (NSTimeInterval)timeout {
     return 20; // 20 sec
@@ -86,7 +86,7 @@
     };
 }
 
-#pragma mark - Protected -
+#pragma mark - Protected
 
 - (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
     [super copyObject:object withZone:zone];

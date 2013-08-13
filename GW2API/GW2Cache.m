@@ -48,7 +48,7 @@
     return self;
 }
 
-#pragma mark - Properties -
+#pragma mark - Properties
 
 - (const char *)cacheQueueSpecific {
     static const char *kGW2CacheQueueSpecific = "GW2CacheQueueSpecific";
@@ -81,7 +81,7 @@
     return dictionary;
 }
 
-#pragma mark - GW2APICache protocol -
+#pragma mark - GW2APICache protocol
 
 - (id)objectForKey:(NSString *)key {
     __block id object;

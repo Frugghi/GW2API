@@ -29,7 +29,7 @@
 
 @implementation GW2Item
 
-#pragma mark - NSCoding protocol -
+#pragma mark - NSCoding protocol
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
@@ -63,13 +63,13 @@
     [coder encodeObject:self.attributes forKey:@"attributes"];
 }
 
-#pragma mark - NSObject -
+#pragma mark - NSObject protocol
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"[%@] %@ (%@, level %li)", self.ID, self.name, self.rarity, (long)self.level];
 }
 
-#pragma mark - GW2Caching protocol -
+#pragma mark - GW2Caching protocol
 
 - (NSTimeInterval)timeout {
     return 60 * 60 * 24 * 28; // 28 days
@@ -87,7 +87,7 @@
     };
 }
 
-#pragma mark - Protected -
+#pragma mark - Protected
 
 - (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
     [super copyObject:object withZone:zone];

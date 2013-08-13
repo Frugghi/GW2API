@@ -37,7 +37,7 @@
 
 @synthesize lastUpdate = _lastUpdate;
 
-#pragma mark - Init -
+#pragma mark - Init
 
 - (id)init {
     self = [super init];
@@ -60,7 +60,7 @@
     return self;
 }
 
-#pragma mark - NSCoding -
+#pragma mark - NSCoding
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super init];
@@ -81,7 +81,7 @@
     [coder encodeObject:self.cacheKey forKey:@"cacheKey"];
 }
 
-#pragma mark - Public -
+#pragma mark - Public
 
 - (NSArray *)array {
     return [self.objects copy];
@@ -184,13 +184,13 @@
     return filteredCollection;
 }
 
-#pragma mark - NSFastEnumeration protocol -
+#pragma mark - NSFastEnumeration protocol
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(__unsafe_unretained id [])buffer count:(NSUInteger)len {
     return [self.objects countByEnumeratingWithState:state objects:buffer count:len];
 }
 
-#pragma mark - NSCopying protocol -
+#pragma mark - NSCopying protocol
 
 - (id)copyWithZone:(NSZone *)zone {
     id copy = [[[self class] allocWithZone:zone] init];
@@ -205,7 +205,7 @@
     return copy;
 }
 
-#pragma mark - NSObject protocol -
+#pragma mark - NSObject protocol
 
 - (NSString *)description {
     return [self.objects description];
@@ -223,7 +223,7 @@
 	return [self.objects hash];
 }
 
-#pragma mark - GW2Fetching protocol -
+#pragma mark - GW2Fetching protocol
 
 - (GW2FetchBlock)fetchBlock {
     return (GW2FetchBlock) ^(NSError **error) {
@@ -251,7 +251,7 @@
     };
 }
 
-#pragma mark - GW2Caching protocol -
+#pragma mark - GW2Caching protocol
 
 - (BOOL)isExpired {
     if (!self.lastUpdate) {

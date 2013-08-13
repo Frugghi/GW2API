@@ -32,7 +32,7 @@
 NSString *const GW2RecipeInputItemIDKey = @"item_id";
 NSString *const GW2RecipeInputItemCountKey = @"count";
 
-#pragma mark - NSCoding protocol -
+#pragma mark - NSCoding protocol
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
@@ -58,13 +58,13 @@ NSString *const GW2RecipeInputItemCountKey = @"count";
     [coder encodeObject:self.ingredients forKey:@"ingredients"];
 }
 
-#pragma mark - NSObject -
+#pragma mark - NSObject protocol
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"[%@] x%li %@ %@", self.ID, (long)self.outputCount, self.outputItemID, self.type];
 }
 
-#pragma mark - GW2Caching protocol -
+#pragma mark - GW2Caching protocol
 
 - (NSTimeInterval)timeout {
     return 60 * 60 * 24 * 28; // 28 days
@@ -82,7 +82,7 @@ NSString *const GW2RecipeInputItemCountKey = @"count";
     };
 }
 
-#pragma mark - Protected -
+#pragma mark - Protected
 
 - (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
     [super copyObject:object withZone:zone];

@@ -49,18 +49,15 @@
 }
 
 + (id)parseJSONData:(NSData *)jsonData requestURL:(NSURL *)requestURL error:(NSError *__autoreleasing *)error {
-    NSError *error_;
-    NSArray *json = [[NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error_] objectForKey:@"items"];
-    if (error_ && error) {
-        NSLog(@"%s %@", __PRETTY_FUNCTION__, [error_ description]);
-        *error = error_;
+    NSDictionary *json = [super parseJSONData:jsonData requestURL:requestURL error:error];
+    if (!json) {
         return nil;
     }
     
     NSDate *now = [NSDate date];
     GW2Array *gw2Array = [[GW2Array alloc] init];
     [gw2Array setLastUpdate:now];
-    for (NSNumber *ID in json) {
+    for (NSNumber *ID in [json objectForKey:@"items"]) {
         GW2ItemID *obj = [[GW2ItemID alloc] initWithID:[ID stringValue]];
         [obj setLastUpdate:nil];
         [gw2Array addObject:obj];

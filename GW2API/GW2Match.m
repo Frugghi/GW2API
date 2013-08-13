@@ -29,7 +29,7 @@
 
 @implementation GW2Match
 
-#pragma mark - NSCoding protocol -
+#pragma mark - NSCoding protocol
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
@@ -49,7 +49,7 @@
     [coder encodeObject:self.greenWorld forKey:@"greenworld"];
 }
 
-#pragma mark - Properties -
+#pragma mark - Properties
 
 - (NSString *)matchDetailsID {
     return [self ID];
@@ -72,13 +72,13 @@
     return [[[[self ID] componentsSeparatedByString:@"-"] lastObject] integerValue];
 }
 
-#pragma mark - NSObject protocol -
+#pragma mark - NSObject protocol
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"[%@] R:%@ B:%@ G:%@", self.ID, self.redWorld, self.blueWorld, self.greenWorld];
 }
 
-#pragma mark - GW2Caching protocol -
+#pragma mark - GW2Caching protocol
 
 - (NSString *)cacheKey {
     return @"gw2_wvwmatches";
@@ -90,7 +90,7 @@
     return MIN(europeReset, northAmericaReset);
 }
 
-#pragma mark - GW2Fetching protocol -
+#pragma mark - GW2Fetching protocol
 
 - (GW2FetchBlock)fetchBlock {
     return (GW2FetchBlock) ^(NSError **error) {
@@ -98,7 +98,7 @@
     };
 }
 
-#pragma mark - Protected -
+#pragma mark - Protected
 
 - (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
     [super copyObject:object withZone:zone];
