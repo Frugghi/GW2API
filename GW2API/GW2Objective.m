@@ -148,7 +148,7 @@
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"[%@] %@ Team:%i Guild:%@", self.ID, self.name, self.ownerTeam, self.ownerGuild];
+	return [NSString stringWithFormat:@"<%@: %@, name: %@, team: %i, guild: %@>", NSStringFromClass([self class]), self.ID, self.name, self.ownerTeam, self.ownerGuild];
 }
 
 #pragma mark - GW2Caching protocol

@@ -65,7 +65,8 @@
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"[World %@, Zone %@, Event %@] %@", self.worldID, self.zoneID, self.eventID, [GW2API stateName:self.state]];
+	return [NSString stringWithFormat:@"<%@: world: %@, zone: %@, event: %@, state: %@>",
+            NSStringFromClass([self class]), self.worldID, self.zoneID, self.eventID, [GW2API stateName:self.state]];
 }
 
 #pragma mark - GW2Caching protocol

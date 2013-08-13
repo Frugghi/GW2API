@@ -59,7 +59,7 @@
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"[%@] %@", self.ID, self.name];
+	return [NSString stringWithFormat:@"<%@: %@, name: %@>", NSStringFromClass([self class]), self.ID, self.name];
 }
 
 #pragma mark - GW2Caching protocol

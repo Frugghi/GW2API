@@ -110,7 +110,8 @@
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"[%@, %@ Tier %li] R:%li B:%li G:%li", self.ID, [GW2API regionName:self.region], (long)self.tier, (long)self.redScore, (long)self.blueScore, (long)self.greenScore];
+	return [NSString stringWithFormat:@"<%@: %@, %@ Tier %li, redScore: %li blueScore: %li greenScore: %li>",
+            NSStringFromClass([self class]), self.ID, [GW2API regionName:self.region], (long)self.tier, (long)self.redScore, (long)self.blueScore, (long)self.greenScore];
 }
 
 #pragma mark - GW2Caching protocol

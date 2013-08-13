@@ -61,7 +61,8 @@ NSString *const GW2RecipeInputItemCountKey = @"count";
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"[%@] x%li %@ %@", self.ID, (long)self.outputCount, self.outputItemID, self.type];
+	return [NSString stringWithFormat:@"<%@: %@, type: %@ outputItem: %@, outputCount: %li, minRating: %li, timeToCraft: %li>",
+            NSStringFromClass([self class]), self.ID, self.type, self.outputItemID, (long)self.outputCount, (long)self.minRating, (long)self.timeToCraft];
 }
 
 #pragma mark - GW2Caching protocol
