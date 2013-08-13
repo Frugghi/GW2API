@@ -112,7 +112,7 @@
         NSArray *continentDims = [continent objectForKey:@"continent_dims"];
         [obj setDimensions:CGSizeMake([[continentDims objectAtIndex:0] integerValue], [[continentDims objectAtIndex:1] integerValue])];
         [obj setMinZoom:[[continent objectForKey:@"min_zoom"] integerValue]];
-        [obj setMinZoom:[[continent objectForKey:@"max_zoom"] integerValue]];
+        [obj setMaxZoom:[[continent objectForKey:@"max_zoom"] integerValue]];
         [obj setMapFloors:[continent objectForKey:@"floors"]];
         [obj setLastUpdate:now];
         [gw2Array addObject:obj];
