@@ -66,16 +66,16 @@ typedef NS_ENUM(NSInteger, GW2EventStateType) {
     GW2EventStateFail
 };
 
-typedef NS_ENUM(NSInteger, GW2Profession) {
-    GW2ProfessionUnknown = 0,
-    GW2ProfessionWeaponsmith,
-    GW2ProfessionHuntsman,
-    GW2ProfessionArtificer,
-    GW2ProfessionChef,
-    GW2ProfessionJeweler,
-    GW2ProfessionArmorsmith,
-    GW2ProfessionLeatherworking,
-    GW2ProfessionTailor
+typedef NS_ENUM(NSInteger, GW2CraftingDiscipline) {
+    GW2CraftUnknown = 0,
+    GW2CraftWeaponsmith,
+    GW2CraftHuntsman,
+    GW2CraftArtificer,
+    GW2CraftChef,
+    GW2CraftJeweler,
+    GW2CraftArmorsmith,
+    GW2CraftLeatherworker,
+    GW2CraftTailor
 };
 
 typedef NS_ENUM(NSInteger, GW2ObjectiveType) {
