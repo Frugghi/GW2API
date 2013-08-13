@@ -27,36 +27,36 @@
 #ifndef GW2_GW2Enums_h
 #define GW2_GW2Enums_h
 
-typedef enum {
+typedef NS_ENUM(NSInteger, GW2RegionServer) {
     GW2RegionUnknown = 0,
     GW2RegionNorthAmerica = 1,
     GW2RegionEurope = 2
-} GW2RegionServer;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, GW2Language) {
     GW2LanguageUnknown = -1,
     GW2LanguageEnglish = 0,
     GW2LanguageFrench = 1,
     GW2LanguageGerman = 2,
     GW2LanguageSpanish = 3
-} GW2Language;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, GW2WvWTeam) {
     GW2WvWTeamUnknown = 0,
     GW2WvWTeamRed,
     GW2WvWTeamBlue,
     GW2WvWTeamGreen
-} GW2WvWTeam;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, GW2WvWMapType) {
     GW2WvWMapUnknown = 0,
     GW2WvWMapRed,
     GW2WvWMapBlue,
     GW2WvWMapGreen,
     GW2WvWMapCenter
-} GW2WvWMapType;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, GW2EventStateType) {
     GW2EventStateUnknown = 0,
     GW2EventStateInactive,
     GW2EventStateWarmup,
@@ -64,9 +64,9 @@ typedef enum {
     GW2EventStateActive,
     GW2EventStateSuccess,
     GW2EventStateFail
-} GW2EventStateType;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, GW2Profession) {
     GW2ProfessionUnknown = 0,
     GW2ProfessionWeaponsmith,
     GW2ProfessionHuntsman,
@@ -76,21 +76,21 @@ typedef enum {
     GW2ProfessionArmorsmith,
     GW2ProfessionLeatherworking,
     GW2ProfessionTailor
-} GW2Profession;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, GW2ObjectiveType) {
     GW2ObjectiveUnknown = 0,
     GW2ObjectiveCamp,
     GW2ObjectiveTower,
     GW2ObjectiveKeep,
     GW2ObjectiveCastle
-} GW2ObjectiveType;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, GW2POIType) {
     GW2POIUnkown = 0,
     GW2POILandmark,
     GW2POIWaypoint,
     GW2POIVista
-} GW2POIType;
+};
 
 #endif
