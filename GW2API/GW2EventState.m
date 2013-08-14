@@ -31,9 +31,9 @@
 
 - (void)setID:(NSString *)ID {
     NSArray *components = [ID componentsSeparatedByString:@"_"];
-    [self setWorldID:[components objectAtIndex:0]];
-    [self setZoneID:[components objectAtIndex:1]];
-    [self setEventID:[components objectAtIndex:2]];
+    [self setWorldID:components[0]];
+    [self setZoneID:components[1]];
+    [self setEventID:components[2]];
 }
 
 - (NSString *)ID {
@@ -71,16 +71,16 @@
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID {
     NSArray *components = [ID componentsSeparatedByString:@"_"];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    if ([[components objectAtIndex:0] length] > 0) {
-        [params setObject:[components objectAtIndex:0] forKey:@"world_id"];
+    if ([components[0] length] > 0) {
+        [params setObject:components[0] forKey:@"world_id"];
     }
     
-    if ([[components objectAtIndex:1] length] > 0) {
-        [params setObject:[components objectAtIndex:1] forKey:@"zone_id"];
+    if ([components[1] length] > 0) {
+        [params setObject:components[1] forKey:@"zone_id"];
     }
     
-    if ([[components objectAtIndex:2] length] > 0) {
-        [params setObject:[components objectAtIndex:2] forKey:@"event_id"];
+    if ([components[2] length] > 0) {
+        [params setObject:components[2] forKey:@"event_id"];
     }
     
     return [api requestURL:@"events.json" params:params];
@@ -97,12 +97,12 @@
     NSMutableSet *worlds = [[NSMutableSet alloc] init];
     NSDate *now = [NSDate date];
     GW2Array *gw2Array = [[GW2Array alloc] init];
-    for (NSDictionary *dict in [json objectForKey:@"events"]) {
+    for (NSDictionary *dict in json[@"events"]) {
         GW2EventState *obj = [[[self class] alloc] init];
-        [obj setEventID:[dict objectForKey:@"event_id"]];
-        [obj setZoneID:[[dict objectForKey:@"map_id"] stringValue]];
-        [obj setWorldID:[[dict objectForKey:@"world_id"] stringValue]];
-        [obj setState:[self stateTypeFromString:[dict objectForKey:@"state"]]];
+        [obj setEventID:dict[@"event_id"]];
+        [obj setZoneID:[dict[@"map_id"] stringValue]];
+        [obj setWorldID:[dict[@"world_id"] stringValue]];
+        [obj setState:[self stateTypeFromString:dict[@"state"]]];
         [obj setLastUpdate:now];
         [events addObject:obj.eventID];
         [maps addObject:obj.zoneID];

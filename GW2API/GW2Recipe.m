@@ -69,13 +69,13 @@ NSString *const GW2RecipeInputItemCountKey = @"count";
         return nil;
     }
 
-    GW2Recipe *obj = [[[self class] alloc] initWithID:[json objectForKey:@"recipe_id"]];    
-    [obj setType:[json objectForKey:@"type"]];
-    [obj setOutputItemID:[json objectForKey:@"output_item_id"]];
-    [obj setOutputCount:[[json objectForKey:@"output_item_count"] integerValue]];
-    [obj setMinRating:[[json objectForKey:@"min_rating"] integerValue]];
-    [obj setTimeToCraft:[[json objectForKey:@"time_to_craft_ms"] integerValue]];
-    [obj setIngredients:[json objectForKey:@"ingredients"]];
+    GW2Recipe *obj = [[[self class] alloc] initWithID:json[@"recipe_id"]];    
+    [obj setType:json[@"type"]];
+    [obj setOutputItemID:json[@"output_item_id"]];
+    [obj setOutputCount:[json[@"output_item_count"] integerValue]];
+    [obj setMinRating:[json[@"min_rating"] integerValue]];
+    [obj setTimeToCraft:[json[@"time_to_craft_ms"] integerValue]];
+    [obj setIngredients:json[@"ingredients"]];
     
     return obj;
 }

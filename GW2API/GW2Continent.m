@@ -66,18 +66,17 @@
         return nil;
     }
     
-    NSDictionary *continents = [json objectForKey:@"continents"];
+    NSDictionary *continents = json[@"continents"];
     NSDate *now = [NSDate date];
     GW2Array *gw2Array = [[GW2Array alloc] init];
     for (NSString *continentID in [continents allKeys]) {
-        NSDictionary *continent = [continents objectForKey:continentID];
+        NSDictionary *continent = continents[continentID];
         GW2Continent *obj = [[[self class] alloc] initWithID:continentID];
-        [obj setName:[continent objectForKey:@"name"]];
-        NSArray *continentDims = [continent objectForKey:@"continent_dims"];
-        [obj setDimensions:CGSizeMake([[continentDims objectAtIndex:0] integerValue], [[continentDims objectAtIndex:1] integerValue])];
-        [obj setMinZoom:[[continent objectForKey:@"min_zoom"] integerValue]];
-        [obj setMaxZoom:[[continent objectForKey:@"max_zoom"] integerValue]];
-        [obj setMapFloors:[continent objectForKey:@"floors"]];
+        [obj setName:continent[@"name"]];
+        [obj setDimensions:CGSizeFromArray(continent[@"continent_dims"])];
+        [obj setMinZoom:[continent[@"min_zoom"] integerValue]];
+        [obj setMaxZoom:[continent[@"max_zoom"] integerValue]];
+        [obj setMapFloors:continent[@"floors"]];
         [obj setLastUpdate:now];
         [gw2Array addObject:obj];
     }

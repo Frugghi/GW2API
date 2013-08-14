@@ -73,27 +73,23 @@
         return nil;
     }
     
-    NSDictionary *maps = [json objectForKey:@"maps"];
+    NSDictionary *maps = json[@"maps"];
     NSDate *now = [NSDate date];
     GW2Array *gw2Array = [[GW2Array alloc] init];
     for (NSString *mapID in [maps allKeys]) {
-        NSDictionary *map = [maps objectForKey:mapID];
+        NSDictionary *map = maps[mapID];
         GW2Map *obj = [[[self class] alloc] initWithID:mapID];
-        [obj setName:[map objectForKey:@"map_name"]];
-        [obj setMinLevel:[[map objectForKey:@"min_level"] integerValue]];
-        [obj setMaxLevel:[[map objectForKey:@"max_level"] integerValue]];
-        [obj setDefaultFloor:[map objectForKey:@"default_floor"]];
-        [obj setFloors:[map objectForKey:@"floors"]];
-        [obj setRegionID:[[map objectForKey:@"region_id"] stringValue]];
-        [obj setRegionName:[map objectForKey:@"region_name"]];
-        [obj setContinentID:[[map objectForKey:@"continent_id"] stringValue]];
-        [obj setContinentName:[map objectForKey:@"continent_name"]];
-        NSArray *mapRect = [map objectForKey:@"map_rect"];
-        [obj setMapRect:CGRectMake([mapRect[0][0] integerValue], [mapRect[0][1] integerValue],
-                                   [mapRect[1][0] integerValue], [mapRect[1][1] integerValue])];
-        NSArray *continentRect = [map objectForKey:@"continent_rect"];
-        [obj setContinentRect:CGRectMake([continentRect[0][0] integerValue], [continentRect[0][1] integerValue],
-                                         [continentRect[1][0] integerValue], [continentRect[1][1] integerValue])];
+        [obj setName:map[@"map_name"]];
+        [obj setMinLevel:[map[@"min_level"] integerValue]];
+        [obj setMaxLevel:[map[@"max_level"] integerValue]];
+        [obj setDefaultFloor:map[@"default_floor"]];
+        [obj setFloors:map[@"floors"]];
+        [obj setRegionID:[map[@"region_id"] stringValue]];
+        [obj setRegionName:map[@"region_name"]];
+        [obj setContinentID:[map[@"continent_id"] stringValue]];
+        [obj setContinentName:map[@"continent_name"]];
+        [obj setMapRect:CGRectFromArray(map[@"map_rect"])];
+        [obj setContinentRect:CGRectFromArray(map[@"continent_rect"])];
         [obj setLastUpdate:now];
         [gw2Array addObject:obj];
     }

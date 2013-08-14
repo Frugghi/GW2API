@@ -93,11 +93,11 @@
     
     NSDate *now = [NSDate date];
     GW2Array *gw2Array = [[GW2Array alloc] init];
-    for (NSDictionary *dict in [json objectForKey:@"wvw_matches"]) {
-        GW2Match *obj = [[[self class] alloc] initWithID:[dict objectForKey:@"wvw_match_id"]];
-        [obj setRedWorld:[GW2 worldByID:[[dict objectForKey:@"red_world_id"] stringValue]]];
-        [obj setBlueWorld:[GW2 worldByID:[[dict objectForKey:@"blue_world_id"] stringValue]]];
-        [obj setGreenWorld:[GW2 worldByID:[[dict objectForKey:@"green_world_id"] stringValue]]];
+    for (NSDictionary *dict in json[@"wvw_matches"]) {
+        GW2Match *obj = [[[self class] alloc] initWithID:dict[@"wvw_match_id"]];
+        [obj setRedWorld:[GW2 worldByID:[dict[@"red_world_id"] stringValue]]];
+        [obj setBlueWorld:[GW2 worldByID:[dict[@"blue_world_id"] stringValue]]];
+        [obj setGreenWorld:[GW2 worldByID:[dict[@"green_world_id"] stringValue]]];
         [obj setLastUpdate:now];
         [gw2Array addObject:obj];
     }

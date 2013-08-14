@@ -45,8 +45,8 @@
 - (GW2RegionServer)region {
     @try {
         switch ([[[self ID] substringToIndex:1] intValue]) {
-            case 1: return GW2RegionNorthAmerica;
-            case 2: return GW2RegionEurope;
+            case 1:  return GW2RegionNorthAmerica;
+            case 2:  return GW2RegionEurope;
             default: return GW2RegionUnknown;
         }
     }
@@ -58,10 +58,10 @@
 - (GW2Language)language {
     @try {
         switch ([[[self ID] substringWithRange:NSMakeRange(1, 1)] intValue]) {
-            case 0: return GW2LanguageEnglish;
-            case 1: return GW2LanguageFrench;
-            case 2: return GW2LanguageGerman;
-            case 3: return GW2LanguageSpanish;
+            case 0:  return GW2LanguageEnglish;
+            case 1:  return GW2LanguageFrench;
+            case 2:  return GW2LanguageGerman;
+            case 3:  return GW2LanguageSpanish;
             default: return GW2LanguageUnknown;
         }
     }
@@ -118,8 +118,8 @@
     NSDate *now = [NSDate date];
     GW2Array *gw2Array = [[GW2Array alloc] init];
     for (NSDictionary *dict in json) {
-        GW2World *obj = [[[self class] alloc] initWithID:[dict objectForKey:@"id"]
-                                                    name:[dict objectForKey:@"name"]];
+        GW2World *obj = [[[self class] alloc] initWithID:dict[@"id"]
+                                                    name:dict[@"name"]];
         [obj setLastUpdate:now];
         [gw2Array addObject:obj];
     }

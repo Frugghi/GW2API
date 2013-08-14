@@ -122,19 +122,19 @@
         return nil;
     }
     
-    GW2MatchDetails *obj = [[[self class] alloc] initWithID:[json objectForKey:@"match_id"]];
+    GW2MatchDetails *obj = [[[self class] alloc] initWithID:json[@"match_id"]];
     [obj setLastUpdate:[NSDate date]];
     
-    NSArray *scores = [json objectForKey:@"scores"];
-    [obj setRedScore:[[scores objectAtIndex:0] integerValue]];
-    [obj setBlueScore:[[scores objectAtIndex:1] integerValue]];
-    [obj setGreenScore:[[scores objectAtIndex:2] integerValue]];
+    NSArray *scores = json[@"scores"];
+    [obj setRedScore:[scores[0] integerValue]];
+    [obj setBlueScore:[scores[1] integerValue]];
+    [obj setGreenScore:[scores[2] integerValue]];
     
     NSMutableSet *maps = [[NSMutableSet alloc] initWithCapacity:4];
-    for (NSDictionary *map in [json objectForKey:@"maps"]) {
+    for (NSDictionary *map in json[@"maps"]) {
         GW2WvWMap *currentMap = [[GW2WvWMap alloc] init];
         
-        NSString *mapType = [[map objectForKey:@"type"] lowercaseString];
+        NSString *mapType = [map[@"type"] lowercaseString];
         if ([mapType isEqualToString:@"redhome"]) {
             [currentMap setType:GW2WvWMapRed];
         } else if ([mapType isEqualToString:@"bluehome"]) {
@@ -147,16 +147,16 @@
             [currentMap setType:GW2WvWMapUnknown];
         }
         
-        NSArray *scores = [map objectForKey:@"scores"];
-        [currentMap setRedScore:[[scores objectAtIndex:0] integerValue]];
-        [currentMap setBlueScore:[[scores objectAtIndex:1] integerValue]];
-        [currentMap setGreenScore:[[scores objectAtIndex:2] integerValue]];
+        NSArray *scores = map[@"scores"];
+        [currentMap setRedScore:[scores[0] integerValue]];
+        [currentMap setBlueScore:[scores[1] integerValue]];
+        [currentMap setGreenScore:[scores[2] integerValue]];
         
-        NSMutableSet *objectives = [[NSMutableSet alloc] initWithCapacity:[[map objectForKey:@"objectives"] count]];
-        for (NSDictionary *objective in [map objectForKey:@"objectives"]) {
-            GW2Objective *currentObjective = [[GW2 objectiveByID:[[objective objectForKey:@"id"] stringValue]] copy];
+        NSMutableSet *objectives = [[NSMutableSet alloc] initWithCapacity:[map[@"objectives"] count]];
+        for (NSDictionary *objective in map[@"objectives"]) {
+            GW2Objective *currentObjective = [[GW2 objectiveByID:[objective[@"id"] stringValue]] copy];
             
-            NSString *owner = [[objective objectForKey:@"owner"] lowercaseString];
+            NSString *owner = [objective[@"owner"] lowercaseString];
             if ([owner isEqualToString:@"red"]) {
                 [currentObjective setOwnerTeam:GW2WvWTeamRed];
             } else if ([owner isEqualToString:@"blue"]) {
@@ -167,7 +167,7 @@
                 [currentObjective setOwnerTeam:GW2WvWTeamUnknown];
             }
             
-            [currentObjective setOwnerGuild:[objective objectForKey:@"owner_guild"]];
+            [currentObjective setOwnerGuild:objective[@"owner_guild"]];
             
             [objectives addObject:currentObjective];
         }
@@ -190,29 +190,6 @@
 #pragma mark - GW2WvWMap implementation
 
 @implementation GW2WvWMap
-
-#pragma mark - NSCoding protocol
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
-    if (self) {
-        [self setType:[[decoder decodeObjectForKey:@"type"] integerValue]];
-        [self setRedScore:[[decoder decodeObjectForKey:@"redscore"] integerValue]];
-        [self setBlueScore:[[decoder decodeObjectForKey:@"bluescore"] integerValue]];
-        [self setGreenScore:[[decoder decodeObjectForKey:@"greenscore"] integerValue]];
-        [self setMapObjectives:[decoder decodeObjectForKey:@"mapobjectives"]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:@(self.type) forKey:@"type"];
-    [coder encodeObject:@(self.redScore) forKey:@"redscore"];
-    [coder encodeObject:@(self.blueScore) forKey:@"bluescore"];
-    [coder encodeObject:@(self.greenScore) forKey:@"greenscore"];
-    [coder encodeObject:self.mapObjectives forKey:@"mapobjectives"];
-}
 
 #pragma mark - Properties
 

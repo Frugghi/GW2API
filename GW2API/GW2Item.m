@@ -66,20 +66,20 @@
         return nil;
     }
     
-    GW2Item *obj = [[[self class] alloc] initWithID:[json objectForKey:@"item_id"]];    
-    [obj setName:[json objectForKey:@"name"]];
-    [obj setDescription:[json objectForKey:@"description"]];
-    [obj setType:[json objectForKey:@"type"]];
-    [obj setLevel:[[json objectForKey:@"level"] integerValue]];
-    [obj setRarity:[json objectForKey:@"rarity"]];
-    [obj setVendorValue:[[json objectForKey:@"vendor_value"] integerValue]];
-    [obj setGameTypes:[json objectForKey:@"game_types"]];
-    [obj setFlags:[json objectForKey:@"flags"]];
-    [obj setRestrictions:[json objectForKey:@"restrictions"]];
+    GW2Item *obj = [[[self class] alloc] initWithID:json[@"item_id"]];    
+    [obj setName:json[@"name"]];
+    [obj setDescription:json[@"description"]];
+    [obj setType:json[@"type"]];
+    [obj setLevel:[json[@"level"] integerValue]];
+    [obj setRarity:json[@"rarity"]];
+    [obj setVendorValue:[json[@"vendor_value"] integerValue]];
+    [obj setGameTypes:json[@"game_types"]];
+    [obj setFlags:json[@"flags"]];
+    [obj setRestrictions:json[@"restrictions"]];
     
     NSString *attributeKey = [self attributeKeyFromType:obj.type];
     if (attributeKey) {
-        [obj setAttributes:[json objectForKey:attributeKey]];
+        [obj setAttributes:json[attributeKey]];
     }
     
     return obj;

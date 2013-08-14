@@ -168,8 +168,8 @@
     NSDate *now = [NSDate date];
     GW2Array *gw2Array = [[GW2Array alloc] init];
     for (NSDictionary *dict in json) {
-        GW2Objective *obj = [[[self class] alloc] initWithID:[dict objectForKey:@"id"]
-                                                        name:[dict objectForKey:@"name"]];
+        GW2Objective *obj = [[[self class] alloc] initWithID:dict[@"id"]
+                                                        name:dict[@"name"]];
         [obj setLastUpdate:now];
         [gw2Array addObject:obj];
     }

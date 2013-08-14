@@ -333,65 +333,65 @@
     }
     
     NSMutableArray *regions = [[NSMutableArray alloc] init];
-    NSDictionary *regionsDict = [json objectForKey:GW2MapFloorRegions];
+    NSDictionary *regionsDict = json[GW2MapFloorRegions];
     for (NSString *regionID in regionsDict) {
-        NSDictionary *regionDict = [regionsDict objectForKey:regionID];
+        NSDictionary *regionDict = regionsDict[regionID];
         GW2Region *region = [[GW2Region alloc] init];
         [region setID:regionID];
-        [region setName:[regionDict objectForKey:GW2RegionName]];
-        [region setLabelCenter:CGPointFromArray([regionDict objectForKey:GW2RegionLabelCenter])];
+        [region setName:regionDict[GW2RegionName]];
+        [region setLabelCenter:CGPointFromArray(regionDict[GW2RegionLabelCenter])];
         
         NSMutableArray *maps = [[NSMutableArray alloc] init];
-        NSDictionary *mapsDict = [regionDict objectForKey:GW2RegionMaps];
+        NSDictionary *mapsDict = regionDict[GW2RegionMaps];
         for (NSString *mapID in mapsDict) {
-            NSDictionary *mapDict = [mapsDict objectForKey:mapID];
+            NSDictionary *mapDict = mapsDict[mapID];
             GW2RegionMap *regionMap = [[GW2RegionMap alloc] init];
             [regionMap setID:mapID];
-            [regionMap setName:[mapDict objectForKey:GW2RegionMapName]];
-            [regionMap setMinLevel:[[mapDict objectForKey:GW2RegionMapMinLevel] integerValue]];
-            [regionMap setMaxLevel:[[mapDict objectForKey:GW2RegionMapMaxLevel] integerValue]];
-            [regionMap setDefaultFloor:[[mapDict objectForKey:GW2RegionMapDefFloor] integerValue]];
-            [regionMap setMapRect:CGRectFromArray([mapDict objectForKey:GW2RegionMapMapRect])];
-            [regionMap setContinentRect:CGRectFromArray([mapDict objectForKey:GW2RegionMapContRect])];
+            [regionMap setName:mapDict[GW2RegionMapName]];
+            [regionMap setMinLevel:[mapDict[GW2RegionMapMinLevel] integerValue]];
+            [regionMap setMaxLevel:[mapDict[GW2RegionMapMaxLevel] integerValue]];
+            [regionMap setDefaultFloor:[mapDict[GW2RegionMapDefFloor] integerValue]];
+            [regionMap setMapRect:CGRectFromArray(mapDict[GW2RegionMapMapRect])];
+            [regionMap setContinentRect:CGRectFromArray(mapDict[GW2RegionMapContRect])];
             
             NSMutableArray *POIs = [[NSMutableArray alloc] init];
-            for (NSDictionary *POIDict in [mapDict objectForKey:GW2RegionMapPOIs]) {
+            for (NSDictionary *POIDict in mapDict[GW2RegionMapPOIs]) {
                 GW2MapPOI *POI = [[GW2MapPOI alloc] init];
-                [POI setID:[[POIDict objectForKey:GW2MapPOIID] integerValue]];
-                [POI setName:[POIDict objectForKey:GW2MapPOIName]];
-                [POI setType:[GW2MapPOI string2type:[POIDict objectForKey:GW2MapPOIType]]];
-                [POI setFloor:[[POIDict objectForKey:GW2MapPOIFloor] integerValue]];
-                [POI setCoordinate:CGPointFromArray([POIDict objectForKey:GW2MapPOICoord])];
+                [POI setID:[POIDict[GW2MapPOIID] integerValue]];
+                [POI setName:POIDict[GW2MapPOIName]];
+                [POI setType:[GW2MapPOI string2type:POIDict[GW2MapPOIType]]];
+                [POI setFloor:[POIDict[GW2MapPOIFloor] integerValue]];
+                [POI setCoordinate:CGPointFromArray(POIDict[GW2MapPOICoord])];
                 [POIs addObject:POI];
             }
             [regionMap setPOIs:[POIs copy]];
             
             NSMutableArray *tasks = [[NSMutableArray alloc] init];
-            for (NSDictionary *taskDict in [mapDict objectForKey:GW2RegionMapTasks]) {
+            for (NSDictionary *taskDict in mapDict[GW2RegionMapTasks]) {
                 GW2MapTask *task = [[GW2MapTask alloc] init];
-                [task setID:[[taskDict objectForKey:GW2MapTaskID] integerValue]];
-                [task setObjective:[taskDict objectForKey:GW2MapTaskObj]];
-                [task setLevel:[[taskDict objectForKey:GW2MapTaskLevel] integerValue]];
-                [task setCoordinate:CGPointFromArray([taskDict objectForKey:GW2MapTaskCoord])];
+                [task setID:[taskDict[GW2MapTaskID] integerValue]];
+                [task setObjective:taskDict[GW2MapTaskObj]];
+                [task setLevel:[taskDict[GW2MapTaskLevel] integerValue]];
+                [task setCoordinate:CGPointFromArray(taskDict[GW2MapTaskCoord])];
                 [tasks addObject:task];
             }
             [regionMap setTasks:[tasks copy]];
             
             NSMutableArray *skills = [[NSMutableArray alloc] init];
-            for (NSDictionary *skillDict in [mapDict objectForKey:GW2RegionMapSkills]) {
+            for (NSDictionary *skillDict in mapDict[GW2RegionMapSkills]) {
                 GW2MapSkill *skill = [[GW2MapSkill alloc] init];
-                [skill setCoordinate:CGPointFromArray([skillDict objectForKey:GW2MapSkillCoord])];
+                [skill setCoordinate:CGPointFromArray(skillDict[GW2MapSkillCoord])];
                 [skills addObject:skill];
             }
             [regionMap setSkillChallenges:[skills copy]];
             
             NSMutableArray *sectors = [[NSMutableArray alloc] init];
-            for (NSDictionary *sectorDict in [mapDict objectForKey:GW2RegionMapSectors]) {
+            for (NSDictionary *sectorDict in mapDict[GW2RegionMapSectors]) {
                 GW2MapSector *sector = [[GW2MapSector alloc] init];
-                [sector setID:[[sectorDict objectForKey:GW2MapSectorID] integerValue]];
-                [sector setName:[sectorDict objectForKey:GW2MapSectorName]];
-                [sector setLevel:[[sectorDict objectForKey:GW2MapSectorLevel] integerValue]];
-                [sector setCoordinate:CGPointFromArray([sectorDict objectForKey:GW2MapSectorCoord])];
+                [sector setID:[sectorDict[GW2MapSectorID] integerValue]];
+                [sector setName:sectorDict[GW2MapSectorName]];
+                [sector setLevel:[sectorDict[GW2MapSectorLevel] integerValue]];
+                [sector setCoordinate:CGPointFromArray(sectorDict[GW2MapSectorCoord])];
                 [sectors addObject:sector];
             }
             [regionMap setSectors:[sectors copy]];
