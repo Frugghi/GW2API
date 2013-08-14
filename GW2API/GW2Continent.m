@@ -32,8 +32,8 @@
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"<%@: %@, name: %@, dimensions: %@, minZoom: %i, maxZoom: %i>",
-            NSStringFromClass([self class]), self.ID, self.name, NSStringFromCGSize(self.dimensions), self.minZoom, self.maxZoom];
+	return [NSString stringWithFormat:@"<%@: %@, name: %@, dimensions: %@, minZoom: %li, maxZoom: %li>",
+            NSStringFromClass([self class]), self.ID, self.name, NSStringFromCGSize(self.dimensions), (long)self.minZoom, (long)self.maxZoom];
 }
 
 #pragma mark - GW2Caching protocol

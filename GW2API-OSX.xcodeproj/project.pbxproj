@@ -18,6 +18,8 @@
 		18048EAC17B87201004F1D33 /* GW2MapFloor.m in Sources */ = {isa = PBXBuildFile; fileRef = 18048EAA17B87201004F1D33 /* GW2MapFloor.m */; };
 		18048EAF17B8721F004F1D33 /* NSCoder+IOS_Wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 18048EAD17B8721F004F1D33 /* NSCoder+IOS_Wrapper.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		18048EB017B8721F004F1D33 /* NSCoder+IOS_Wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18048EAE17B8721F004F1D33 /* NSCoder+IOS_Wrapper.m */; };
+		180BBC4D17BBA64B0013632C /* AutoCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 180BBC4B17BBA64B0013632C /* AutoCoding.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		180BBC4E17BBA64B0013632C /* AutoCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 180BBC4C17BBA64B0013632C /* AutoCoding.m */; };
 		185BF4BF17B5698A0031201B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185BF4A417B5691C0031201B /* Cocoa.framework */; };
 		185BF4C917B5698A0031201B /* GW2API.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4C817B5698A0031201B /* GW2API.m */; };
 		185BF4D417B56D450031201B /* GW2.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4CE17B56D450031201B /* GW2.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -74,6 +76,8 @@
 		18048EAA17B87201004F1D33 /* GW2MapFloor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2MapFloor.m; sourceTree = "<group>"; };
 		18048EAD17B8721F004F1D33 /* NSCoder+IOS_Wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCoder+IOS_Wrapper.h"; sourceTree = "<group>"; };
 		18048EAE17B8721F004F1D33 /* NSCoder+IOS_Wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCoder+IOS_Wrapper.m"; sourceTree = "<group>"; };
+		180BBC4B17BBA64B0013632C /* AutoCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCoding.h; sourceTree = "<group>"; };
+		180BBC4C17BBA64B0013632C /* AutoCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoCoding.m; sourceTree = "<group>"; };
 		185BF4A417B5691C0031201B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		185BF4A717B5691C0031201B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		185BF4A817B5691C0031201B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -135,6 +139,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180BBC4917BBA64B0013632C /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				180BBC4A17BBA64B0013632C /* AutoCoding */,
+			);
+			path = Vendor;
+			sourceTree = SOURCE_ROOT;
+		};
+		180BBC4A17BBA64B0013632C /* AutoCoding */ = {
+			isa = PBXGroup;
+			children = (
+				180BBC4B17BBA64B0013632C /* AutoCoding.h */,
+				180BBC4C17BBA64B0013632C /* AutoCoding.m */,
+			);
+			path = AutoCoding;
+			sourceTree = "<group>";
+		};
 		185BF49717B5691C0031201B = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +268,7 @@
 				18048EA117B871EE004F1D33 /* NSString+GW2_ID.m */,
 				18048EAD17B8721F004F1D33 /* NSCoder+IOS_Wrapper.h */,
 				18048EAE17B8721F004F1D33 /* NSCoder+IOS_Wrapper.m */,
+				180BBC4917BBA64B0013632C /* Vendor */,
 			);
 			name = Protected;
 			sourceTree = "<group>";
@@ -340,6 +362,7 @@
 				18048EA517B871EE004F1D33 /* GW2RecipeID.h in Headers */,
 				18048EA717B871EE004F1D33 /* NSString+GW2_ID.h in Headers */,
 				18048EAF17B8721F004F1D33 /* NSCoder+IOS_Wrapper.h in Headers */,
+				180BBC4D17BBA64B0013632C /* AutoCoding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +450,7 @@
 				18048EA817B871EE004F1D33 /* NSString+GW2_ID.m in Sources */,
 				18048EAC17B87201004F1D33 /* GW2MapFloor.m in Sources */,
 				18048EB017B8721F004F1D33 /* NSCoder+IOS_Wrapper.m in Sources */,
+				180BBC4E17BBA64B0013632C /* AutoCoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

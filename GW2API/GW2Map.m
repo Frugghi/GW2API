@@ -32,8 +32,8 @@
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"<%@: %@, name: %@, minLevel: %i, maxLevel: %i, defaultFloor: %i, region: %@, continent: %@, mapRect: %@, continentRect: %@>",
-            NSStringFromClass([self class]), self.ID, self.name, self.minLevel, self.maxLevel, [self.defaultFloor integerValue], self.regionName, self.continentName, NSStringFromCGRect(self.mapRect), NSStringFromCGRect(self.continentRect)];
+	return [NSString stringWithFormat:@"<%@: %@, name: %@, minLevel: %li, maxLevel: %li, defaultFloor: %li, region: %@, continent: %@, mapRect: %@, continentRect: %@>",
+            NSStringFromClass([self class]), self.ID, self.name, (long)self.minLevel, (long)self.maxLevel, (long)[self.defaultFloor integerValue], self.regionName, self.continentName, NSStringFromCGRect(self.mapRect), NSStringFromCGRect(self.continentRect)];
 }
 
 #pragma mark - GW2Caching protocol

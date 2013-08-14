@@ -229,7 +229,7 @@
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"[%i] R:%li B:%li G:%li", self.type, (long)self.redScore, (long)self.blueScore, (long)self.greenScore];
+	return [NSString stringWithFormat:@"[%li] R:%li B:%li G:%li", self.type, (long)self.redScore, (long)self.blueScore, (long)self.greenScore];
 }
 
 - (BOOL)isEqual:(id)object {
