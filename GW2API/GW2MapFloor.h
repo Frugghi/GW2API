@@ -28,42 +28,42 @@
 
 @interface GW2MapFloor : GW2Object
 
-@property (nonatomic, strong) NSString *continentID;
+@property (nonatomic, copy) NSString *continentID;
 @property (nonatomic, assign) NSInteger floor;
 @property (nonatomic, assign) CGSize textureDimensions;
-@property (nonatomic, strong) NSArray *regions;
+@property (nonatomic, copy) NSArray *regions;
 
 @end
 
 @interface GW2Region : NSObject <NSCopying, NSCoding>
 
-@property (nonatomic, strong) NSString *ID;
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, copy) NSString *ID;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) CGPoint labelCenter;
-@property (nonatomic, strong) NSArray *maps;
+@property (nonatomic, copy) NSArray *maps;
 
 @end
 
 @interface GW2RegionMap : NSObject <NSCopying, NSCoding>
 
-@property (nonatomic, strong) NSString *ID;
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, copy) NSString *ID;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) NSInteger minLevel;
 @property (nonatomic, assign) NSInteger maxLevel;
 @property (nonatomic, assign) NSInteger defaultFloor;
 @property (nonatomic, assign) CGRect mapRect;
 @property (nonatomic, assign) CGRect continentRect;
-@property (nonatomic, strong) NSArray *POIs;
-@property (nonatomic, strong) NSArray *tasks;
-@property (nonatomic, strong) NSArray *skillChallenges;
-@property (nonatomic, strong) NSArray *sectors;
+@property (nonatomic, copy) NSArray *POIs;
+@property (nonatomic, copy) NSArray *tasks;
+@property (nonatomic, copy) NSArray *skillChallenges;
+@property (nonatomic, copy) NSArray *sectors;
 
 @end
 
 @interface GW2MapPOI : NSObject <NSCopying, NSCoding>
 
 @property (nonatomic, assign) NSInteger ID;
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) GW2POIType type;
 @property (nonatomic, assign) NSInteger floor;
 @property (nonatomic, assign) CGPoint coordinate;
@@ -75,7 +75,7 @@
 @interface GW2MapTask : NSObject <NSCopying, NSCoding>
 
 @property (nonatomic, assign) NSInteger ID;
-@property (nonatomic, strong) NSString *objective;
+@property (nonatomic, copy) NSString *objective;
 @property (nonatomic, assign) NSInteger level;
 @property (nonatomic, assign) CGPoint coordinate;
 
@@ -90,7 +90,7 @@
 @interface GW2MapSector : NSObject <NSCopying, NSCoding>
 
 @property (nonatomic, assign) NSInteger ID;
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) NSInteger level;
 @property (nonatomic, assign) CGPoint coordinate;
 

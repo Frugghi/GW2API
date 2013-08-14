@@ -29,42 +29,6 @@
 
 @implementation GW2Map
 
-#pragma mark - NSCoding protocol
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super initWithCoder:decoder];
-    if (self) {
-        [self setName:[decoder decodeObjectForKey:@"name"]];
-        [self setMinLevel:[decoder decodeIntegerForKey:@"minLevel"]];
-        [self setMaxLevel:[decoder decodeIntegerForKey:@"maxLevel"]];
-        [self setDefaultFloor:[decoder decodeObjectForKey:@"defaultFloor"]];
-        [self setFloors:[decoder decodeObjectForKey:@"floors"]];
-        [self setRegionID:[decoder decodeObjectForKey:@"region_id"]];
-        [self setRegionName:[decoder decodeObjectForKey:@"region_name"]];
-        [self setContinentID:[decoder decodeObjectForKey:@"continent_id"]];
-        [self setContinentName:[decoder decodeObjectForKey:@"continent_name"]];
-        [self setMapRect:[decoder decodeCGRectForKey:@"mapRect"]];
-        [self setContinentRect:[decoder decodeCGRectForKey:@"continentRect"]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [super encodeWithCoder:coder];
-    [coder encodeObject:self.name forKey:@"name"];
-    [coder encodeInteger:self.minLevel forKey:@"minLevel"];
-    [coder encodeInteger:self.maxLevel forKey:@"maxLevel"];
-    [coder encodeObject:self.defaultFloor forKey:@"defaultFloor"];
-    [coder encodeObject:self.floors forKey:@"floors"];
-    [coder encodeObject:self.regionID forKey:@"region_id"];
-    [coder encodeObject:self.regionName forKey:@"region_name"];
-    [coder encodeObject:self.continentID forKey:@"continent_id"];
-    [coder encodeObject:self.continentName forKey:@"continent_name"];
-    [coder encodeCGRect:self.mapRect forKey:@"mapRect"];
-    [coder encodeCGRect:self.continentRect forKey:@"continentRect"];
-}
-
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
@@ -91,24 +55,6 @@
 }
 
 #pragma mark - Protected
-
-- (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
-    [super copyObject:object withZone:zone];
-    if ([object isKindOfClass:[GW2Map class]]) {
-        GW2Map *map = (GW2Map *)object;
-        [self setName:[map.name copyWithZone:zone]];
-        [self setMinLevel:map.minLevel];
-        [self setMaxLevel:map.maxLevel];
-        [self setDefaultFloor:[map.defaultFloor copyWithZone:zone]];
-        [self setFloors:[map.floors copyWithZone:zone]];
-        [self setRegionID:[map.regionID copyWithZone:zone]];
-        [self setRegionName:[map.regionName copyWithZone:zone]];
-        [self setContinentID:[map.continentID copyWithZone:zone]];
-        [self setContinentName:[map.continentName copyWithZone:zone]];
-        [self setMapRect:map.mapRect];
-        [self setContinentRect:map.continentRect];
-    }
-}
 
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID {
     NSDictionary *params;

@@ -33,6 +33,7 @@
 #import "GW2ItemID.h"
 #import "NSString+GW2_ID.h"
 #import "GW2Function.h"
+#import "AutoCoding.h"
 
 #if !(TARGET_OS_IPHONE)
 #import "NSCoder+IOS_Wrapper.h"
@@ -43,7 +44,6 @@
 @interface GW2Object ()
 
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID;
-- (void)copyObject:(GW2Object *)obj withZone:(NSZone *)zone;
 + (id)parseJSONData:(NSData *)jsonData requestURL:(NSURL *)requestURL error:(NSError **)error;
 + (NSArray *)notificationNames;
 
@@ -54,7 +54,7 @@
 @interface GW2Array ()
 
 @property (nonatomic, readwrite, assign) NSTimeInterval timeout;
-@property (nonatomic, readwrite, strong) NSString *cacheKey;
+@property (nonatomic, readwrite, copy) NSString *cacheKey;
 
 @end
 

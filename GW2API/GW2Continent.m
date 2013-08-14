@@ -29,30 +29,6 @@
 
 @implementation GW2Continent
 
-#pragma mark - NSCoding protocol
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super initWithCoder:decoder];
-    if (self) {
-        [self setName:[decoder decodeObjectForKey:@"name"]];
-        [self setDimensions:[decoder decodeCGSizeForKey:@"dimensions"]];
-        [self setMinZoom:[[decoder decodeObjectForKey:@"minZoom"] integerValue]];
-        [self setMaxZoom:[[decoder decodeObjectForKey:@"maxZoom"] integerValue]];
-        [self setMapFloors:[decoder decodeObjectForKey:@"floors"]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [super encodeWithCoder:coder];
-    [coder encodeObject:self.name forKey:@"name"];
-    [coder encodeCGSize:self.dimensions forKey:@"dimensions"];
-    [coder encodeObject:@(self.minZoom) forKey:@"minZoom"];
-    [coder encodeObject:@(self.maxZoom) forKey:@"maxZoom"];
-    [coder encodeObject:self.mapFloors forKey:@"floors"];
-}
-
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
@@ -79,18 +55,6 @@
 }
 
 #pragma mark - Protected
-
-- (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
-    [super copyObject:object withZone:zone];
-    if ([object isKindOfClass:[GW2Continent class]]) {
-        GW2Continent *continent = (GW2Continent *)object;
-        [self setName:[continent.name copyWithZone:zone]];
-        [self setDimensions:continent.dimensions];
-        [self setMinZoom:continent.minZoom];
-        [self setMaxZoom:continent.maxZoom];
-        [self setMapFloors:[continent.mapFloors copyWithZone:zone]];
-    }
-}
 
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID {
     return [api requestURL:@"continents.json" params:@{@"lang": [api langCode]}];

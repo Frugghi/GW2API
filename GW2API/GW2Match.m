@@ -29,26 +29,6 @@
 
 @implementation GW2Match
 
-#pragma mark - NSCoding protocol
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super initWithCoder:decoder];
-    if (self) {
-        [self setRedWorld:[decoder decodeObjectForKey:@"redworld"]];
-        [self setBlueWorld:[decoder decodeObjectForKey:@"blueworld"]];
-        [self setGreenWorld:[decoder decodeObjectForKey:@"greenworld"]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [super encodeWithCoder:coder];
-    [coder encodeObject:self.redWorld forKey:@"redworld"];
-    [coder encodeObject:self.blueWorld forKey:@"blueworld"];
-    [coder encodeObject:self.greenWorld forKey:@"greenworld"];
-}
-
 #pragma mark - Properties
 
 - (NSString *)matchDetailsID {
@@ -100,16 +80,6 @@
 }
 
 #pragma mark - Protected
-
-- (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
-    [super copyObject:object withZone:zone];
-    if ([object isKindOfClass:[GW2Match class]]) {
-        GW2Match *match = (GW2Match *)object;
-        [self setRedWorld:[match.redWorld copyWithZone:zone]];
-        [self setBlueWorld:[match.blueWorld copyWithZone:zone]];
-        [self setGreenWorld:[match.greenWorld copyWithZone:zone]];
-    }
-}
 
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID {
     return [api requestURL:@"wvw/matches.json" params:nil];

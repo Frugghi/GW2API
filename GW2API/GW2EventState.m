@@ -41,27 +41,6 @@
             (self.worldID ? self.worldID : @""), (self.zoneID ? self.zoneID : @""), (self.eventID ? self.eventID : @"")];
 }
 
-#pragma mark - NSCoding protocol
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
-    if (self) {
-        [self setState:[[decoder decodeObjectForKey:@"status"] integerValue]];
-        [self setWorldID:[decoder decodeObjectForKey:@"world_id"]];
-        [self setZoneID:[decoder decodeObjectForKey:@"zone_id"]];
-        [self setEventID:[decoder decodeObjectForKey:@"event_id"]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:@(self.state) forKey:@"status"];
-    [coder encodeObject:self.worldID forKey:@"world_id"];
-    [coder encodeObject:self.zoneID forKey:@"zone_id"];
-    [coder encodeObject:self.eventID forKey:@"event_id"];
-}
-
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
@@ -88,17 +67,6 @@
 }
 
 #pragma mark - Protected
-
-- (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
-    [super copyObject:object withZone:zone];
-    if ([object isKindOfClass:[GW2EventState class]]) {
-        GW2EventState *eventStatus = (GW2EventState *)object;
-        [self setState:eventStatus.state];
-        [self setWorldID:[eventStatus.worldID copyWithZone:zone]];
-        [self setZoneID:[eventStatus.zoneID copyWithZone:zone]];
-        [self setEventID:[eventStatus.eventID copyWithZone:zone]];
-    }
-}
 
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID {
     NSArray *components = [ID componentsSeparatedByString:@"_"];

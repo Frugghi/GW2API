@@ -40,6 +40,7 @@
 
 - (id)objectWithID:(NSString *)ID;
 - (id)objectAtIndex:(NSUInteger)index;
+- (id)objectAtIndexedSubscript:(NSUInteger)idx;
 - (id)firstObject;
 - (id)lastObject;
 

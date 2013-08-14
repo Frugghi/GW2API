@@ -28,7 +28,7 @@
 
 @interface GW2World : GW2Object
 
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, readonly) GW2RegionServer region;
 @property (nonatomic, readonly) GW2Language language;
 

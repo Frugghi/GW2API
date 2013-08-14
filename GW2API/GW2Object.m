@@ -52,35 +52,6 @@
     return self;
 }
 
-#pragma mark - NSCoding protocol
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
-    if (self) {
-        [self setID:[decoder decodeObjectForKey:@"ID"]];
-        [self setLastUpdate:[decoder decodeObjectForKey:@"lastUpdate"]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:self.ID forKey:@"ID"];
-    [coder encodeObject:self.lastUpdate forKey:@"lastUpdate"];
-}
-
-#pragma mark - NSCopying protocol
-
-- (id)copyWithZone:(NSZone *)zone {
-    id copy = [[[self class] allocWithZone:zone] init];
-    
-    if (copy) {
-		[copy copyObject:self withZone:zone];
-    }
-	
-    return copy;
-}
-
 #pragma mark - NSObject protocol
 
 - (BOOL)isEqual:(id)object {
@@ -144,11 +115,6 @@
 
 + (NSArray *)notificationNames {
     return @[];
-}
-
-- (void)copyObject:(GW2Object *)obj withZone:(NSZone *)zone {
-    [self setID:[obj.ID copyWithZone:zone]];
-    [self setLastUpdate:[obj.lastUpdate copyWithZone:zone]];
 }
 
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID {

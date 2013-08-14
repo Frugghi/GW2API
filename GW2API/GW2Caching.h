@@ -28,7 +28,7 @@
 
 @property (nonatomic, strong) NSDate *lastUpdate;
 @property (nonatomic, readonly) NSTimeInterval timeout;
-@property (nonatomic, readonly) NSString *cacheKey;
+@property (nonatomic, readonly, copy) NSString *cacheKey;
 
 - (BOOL)isExpired;
 - (void)invalidateCache;

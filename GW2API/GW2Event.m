@@ -40,22 +40,6 @@
     return self;
 }
 
-#pragma mark - NSCoding protocol
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super initWithCoder:decoder];
-    if (self) {
-        [self setName:[decoder decodeObjectForKey:@"name"]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [super encodeWithCoder:coder];
-    [coder encodeObject:self.name forKey:@"name"];
-}
-
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
@@ -81,14 +65,6 @@
 }
 
 #pragma mark - Protected
-
-- (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
-    [super copyObject:object withZone:zone];
-    if ([object isKindOfClass:[GW2Event class]]) {
-        GW2Event *event = (GW2Event *)object;
-        [self setName:[event.name copyWithZone:zone]];
-    }
-}
 
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID {
     return [api requestURL:@"event_names.json" params:@{@"lang": [api langCode]}];

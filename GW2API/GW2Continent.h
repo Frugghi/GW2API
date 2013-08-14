@@ -28,10 +28,10 @@
 
 @interface GW2Continent : GW2Object
 
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) CGSize dimensions;
 @property (nonatomic, assign) NSInteger minZoom;
 @property (nonatomic, assign) NSInteger maxZoom;
-@property (nonatomic, strong) NSArray *mapFloors;
+@property (nonatomic, copy) NSArray *mapFloors;
 
 @end

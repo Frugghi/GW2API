@@ -32,32 +32,6 @@
 NSString *const GW2RecipeInputItemIDKey = @"item_id";
 NSString *const GW2RecipeInputItemCountKey = @"count";
 
-#pragma mark - NSCoding protocol
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super initWithCoder:decoder];
-    if (self) {
-        [self setType:[decoder decodeObjectForKey:@"type"]];
-        [self setOutputItemID:[decoder decodeObjectForKey:@"outputID"]];
-        [self setOutputCount:[[decoder decodeObjectForKey:@"outputCount"] integerValue]];
-        [self setMinRating:[[decoder decodeObjectForKey:@"minRating"] integerValue]];
-        [self setTimeToCraft:[[decoder decodeObjectForKey:@"timeToCraft"] integerValue]];
-        [self setIngredients:[decoder decodeObjectForKey:@"ingredients"]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [super encodeWithCoder:coder];
-    [coder encodeObject:self.type forKey:@"type"];
-    [coder encodeObject:self.outputItemID forKey:@"outputID"];
-    [coder encodeObject:@(self.outputCount) forKey:@"outputCount"];
-    [coder encodeObject:@(self.minRating) forKey:@"minRating"];
-    [coder encodeObject:@(self.timeToCraft) forKey:@"timeToCraft"];
-    [coder encodeObject:self.ingredients forKey:@"ingredients"];
-}
-
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
@@ -84,19 +58,6 @@ NSString *const GW2RecipeInputItemCountKey = @"count";
 }
 
 #pragma mark - Protected
-
-- (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
-    [super copyObject:object withZone:zone];
-    if ([object isKindOfClass:[GW2Recipe class]]) {
-        GW2Recipe *recipe = (GW2Recipe *)object;
-        [self setType:[recipe.type copyWithZone:zone]];
-        [self setOutputItemID:[recipe.outputItemID copyWithZone:zone]];
-        [self setOutputCount:recipe.outputCount];
-        [self setMinRating:recipe.minRating];
-        [self setTimeToCraft:recipe.timeToCraft];
-        [self setIngredients:[recipe.ingredients copyWithZone:zone]];
-    }
-}
 
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID {
     return [api requestURL:@"recipe_details.json" params:@{@"recipe_id": ID}];

@@ -29,40 +29,6 @@
 
 @implementation GW2Item
 
-#pragma mark - NSCoding protocol
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super initWithCoder:decoder];
-    if (self) {
-        [self setName:[decoder decodeObjectForKey:@"name"]];
-        [self setDescription:[decoder decodeObjectForKey:@"description"]];
-        [self setType:[decoder decodeObjectForKey:@"type"]];
-        [self setLevel:[[decoder decodeObjectForKey:@"level"] integerValue]];
-        [self setRarity:[decoder decodeObjectForKey:@"rarity"]];
-        [self setVendorValue:[[decoder decodeObjectForKey:@"vendorValue"] integerValue]];
-        [self setGameTypes:[decoder decodeObjectForKey:@"gameTypes"]];
-        [self setFlags:[decoder decodeObjectForKey:@"flags"]];
-        [self setRestrictions:[decoder decodeObjectForKey:@"restrictions"]];
-        [self setAttributes:[decoder decodeObjectForKey:@"attributes"]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [super encodeWithCoder:coder];
-    [coder encodeObject:self.name forKey:@"name"];
-    [coder encodeObject:self.description forKey:@"description"];
-    [coder encodeObject:self.type forKey:@"type"];
-    [coder encodeObject:@(self.level) forKey:@"level"];
-    [coder encodeObject:self.rarity forKey:@"rarity"];
-    [coder encodeObject:@(self.vendorValue) forKey:@"vendorValue"];
-    [coder encodeObject:self.gameTypes forKey:@"gameTypes"];
-    [coder encodeObject:self.flags forKey:@"flags"];
-    [coder encodeObject:self.restrictions forKey:@"restrictions"];
-    [coder encodeObject:self.attributes forKey:@"attributes"];
-}
-
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
@@ -89,23 +55,6 @@
 }
 
 #pragma mark - Protected
-
-- (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
-    [super copyObject:object withZone:zone];
-    if ([object isKindOfClass:[GW2Item class]]) {
-        GW2Item *item = (GW2Item *)object;
-        [self setName:[item.name copyWithZone:zone]];
-        [self setDescription:[item.description copyWithZone:zone]];
-        [self setType:[item.type copyWithZone:zone]];
-        [self setLevel:item.level];
-        [self setRarity:[item.rarity copyWithZone:zone]];
-        [self setVendorValue:item.vendorValue];
-        [self setGameTypes:[item.gameTypes copyWithZone:zone]];
-        [self setFlags:[item.flags copyWithZone:zone]];
-        [self setRestrictions:[item.restrictions copyWithZone:zone]];
-        [self setAttributes:[item.attributes copyWithZone:zone]];
-    }
-}
 
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID {
     return [api requestURL:@"item_details.json" params:@{@"item_id": ID}];

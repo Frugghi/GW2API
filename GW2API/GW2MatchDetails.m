@@ -29,28 +29,6 @@
 
 @implementation GW2MatchDetails
 
-#pragma mark - NSCoding protocol
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super initWithCoder:decoder];
-    if (self) {
-        [self setRedScore:[[decoder decodeObjectForKey:@"redscore"] integerValue]];
-        [self setBlueScore:[[decoder decodeObjectForKey:@"bluescore"] integerValue]];
-        [self setGreenScore:[[decoder decodeObjectForKey:@"greenscore"] integerValue]];
-        [self setMaps:[decoder decodeObjectForKey:@"maps"]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [super encodeWithCoder:coder];
-    [coder encodeObject:@(self.redScore) forKey:@"redscore"];
-    [coder encodeObject:@(self.blueScore) forKey:@"bluescore"];
-    [coder encodeObject:@(self.greenScore) forKey:@"greenscore"];
-    [coder encodeObject:self.maps forKey:@"maps"];
-}
-
 #pragma mark - Properties
 
 - (GW2RegionServer)region {
@@ -134,17 +112,6 @@
 
 #pragma mark - Protected
 
-- (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
-    [super copyObject:object withZone:zone];
-    if ([object isKindOfClass:[GW2MatchDetails class]]) {
-        GW2MatchDetails *matchDetails = (GW2MatchDetails *)object;
-        [self setRedScore:matchDetails.redScore];
-        [self setBlueScore:matchDetails.blueScore];
-        [self setGreenScore:matchDetails.greenScore];
-        [self setMaps:[matchDetails.maps copyWithZone:zone]];
-    }
-}
-
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID {
     return [api requestURL:@"wvw/match_details.json" params:@{@"match_id": ID}];
 }
@@ -224,7 +191,7 @@
 
 @implementation GW2WvWMap
 
-#pragma mark - NSCoding protocol -
+#pragma mark - NSCoding protocol
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super init];
@@ -247,7 +214,7 @@
     [coder encodeObject:self.mapObjectives forKey:@"mapobjectives"];
 }
 
-#pragma mark - Properties -
+#pragma mark - Properties
 
 - (NSInteger)redPotentialPoints {
     NSInteger potentialPoints = 0;
@@ -282,7 +249,7 @@
     return potentialPoints;
 }
 
-#pragma mark - NSObject protocol -
+#pragma mark - NSObject protocol
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"[%i] R:%li B:%li G:%li", self.type, (long)self.redScore, (long)self.blueScore, (long)self.greenScore];
@@ -300,7 +267,7 @@
 	return [[self description] hash];
 }
 
-#pragma mark - NSCopying protocol -
+#pragma mark - NSCopying protocol
 
 - (id)copyWithZone:(NSZone *)zone {
     GW2WvWMap *copy = [[[self class] allocWithZone:zone] init];

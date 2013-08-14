@@ -31,8 +31,8 @@
 extern NSString *const GW2RecipeInputItemIDKey;
 extern NSString *const GW2RecipeInputItemCountKey;
 
-@property (nonatomic, strong) NSString *type;
-@property (nonatomic, strong) NSString *outputItemID;
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *outputItemID;
 @property (nonatomic, assign) NSInteger outputCount;
 @property (nonatomic, assign) NSInteger minRating;
 @property (nonatomic, assign) NSInteger timeToCraft;

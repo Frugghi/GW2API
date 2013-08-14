@@ -36,7 +36,7 @@
 @property (nonatomic, readonly) NSInteger redPotentialPoints;
 @property (nonatomic, readonly) NSInteger bluePotentialPoints;
 @property (nonatomic, readonly) NSInteger greenPotentialPoints;
-@property (nonatomic, strong) NSSet *maps;
+@property (nonatomic, copy) NSSet *maps;
 @property (nonatomic, readonly) GW2RegionServer region;
 @property (nonatomic, readonly) NSInteger tier;
 

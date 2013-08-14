@@ -28,9 +28,9 @@
 
 @interface GW2Objective : GW2Object
 
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) GW2WvWTeam ownerTeam;
-@property (nonatomic, strong) NSString *ownerGuild;
+@property (nonatomic, copy) NSString *ownerGuild;
 @property (nonatomic, readonly) NSUInteger points;
 @property (nonatomic, readonly) GW2ObjectiveType type;
 

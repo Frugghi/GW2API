@@ -29,7 +29,7 @@
 
 @interface GW2Object : NSObject <NSCopying, NSCoding, GW2Fetching, GW2Caching>
 
-@property (nonatomic, strong) NSString *ID;
+@property (nonatomic, copy) NSString *ID;
 
 - (id)initWithID:(NSString *)ID;
 

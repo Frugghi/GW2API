@@ -28,9 +28,9 @@
 
 @interface GW2EventState : GW2Object
 
-@property (nonatomic, strong) NSString *worldID;
-@property (nonatomic, strong) NSString *zoneID;
-@property (nonatomic, strong) NSString *eventID;
+@property (nonatomic, copy) NSString *worldID;
+@property (nonatomic, copy) NSString *zoneID;
+@property (nonatomic, copy) NSString *eventID;
 @property (nonatomic, assign) GW2EventStateType state;
 
 @end

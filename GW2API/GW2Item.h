@@ -28,11 +28,11 @@
 
 @interface GW2Item : GW2Object
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *description;
-@property (nonatomic, strong) NSString *type;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSString *type;
 @property (nonatomic, assign) NSInteger level;
-@property (nonatomic, strong) NSString *rarity;
+@property (nonatomic, copy) NSString *rarity;
 @property (nonatomic, assign) NSInteger vendorValue;
 @property (nonatomic, copy) NSArray *gameTypes;
 @property (nonatomic, copy) NSArray *flags;

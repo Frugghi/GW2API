@@ -28,15 +28,15 @@
 
 @interface GW2Map : GW2Object
 
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) NSInteger minLevel;
 @property (nonatomic, assign) NSInteger maxLevel;
-@property (nonatomic, strong) NSNumber *defaultFloor;
-@property (nonatomic, strong) NSArray *floors;
-@property (nonatomic, strong) NSString *regionID;
-@property (nonatomic, strong) NSString *regionName;
-@property (nonatomic, strong) NSString *continentID;
-@property (nonatomic, strong) NSString *continentName;
+@property (nonatomic, copy) NSNumber *defaultFloor;
+@property (nonatomic, copy) NSArray *floors;
+@property (nonatomic, copy) NSString *regionID;
+@property (nonatomic, copy) NSString *regionName;
+@property (nonatomic, copy) NSString *continentID;
+@property (nonatomic, copy) NSString *continentName;
 @property (nonatomic, assign) CGRect mapRect;
 @property (nonatomic, assign) CGRect continentRect;
 

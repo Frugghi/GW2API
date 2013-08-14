@@ -105,6 +105,9 @@
 		185BF41F17B55CF80031201B /* GW2Match.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF3A917B54D3B0031201B /* GW2Match.m */; };
 		185BF42017B55CF80031201B /* GW2MatchDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF3AB17B54D3B0031201B /* GW2MatchDetails.m */; };
 		185BF42117B55CF80031201B /* GW2Objective.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF3AD17B54D3B0031201B /* GW2Objective.m */; };
+		18B87ADA17BAEB670067EE8D /* AutoCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 18B87AD817BAEB670067EE8D /* AutoCoding.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		18B87ADB17BAEB670067EE8D /* AutoCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B87AD917BAEB670067EE8D /* AutoCoding.m */; };
+		18B87ADC17BAEB670067EE8D /* AutoCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B87AD917BAEB670067EE8D /* AutoCoding.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -229,6 +232,8 @@
 		185BF49517B5670C0031201B /* RMUserLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMUserLocation.h; sourceTree = "<group>"; };
 		185BF49617B5670C0031201B /* RMUserTrackingBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMUserTrackingBarButtonItem.h; sourceTree = "<group>"; };
 		185BF4CD17B56AD00031201B /* GW2API-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GW2API-Prefix.pch"; path = "GW2API/GW2API-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		18B87AD817BAEB670067EE8D /* AutoCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCoding.h; sourceTree = "<group>"; };
+		18B87AD917BAEB670067EE8D /* AutoCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoCoding.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +435,7 @@
 				185BF37717B54CAC0031201B /* Model */,
 				185BF3B517B54D4C0031201B /* Protocols */,
 				185BF3B417B54D430031201B /* Protected */,
+				18B87AD617BAEB670067EE8D /* Vendor */,
 				185BF3E817B5558D0031201B /* Supporting Files */,
 			);
 			name = "GW2 Framework";
@@ -504,6 +510,23 @@
 			path = "Route-Me Headers";
 			sourceTree = "<group>";
 		};
+		18B87AD617BAEB670067EE8D /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				18B87AD717BAEB670067EE8D /* AutoCoding */,
+			);
+			path = Vendor;
+			sourceTree = SOURCE_ROOT;
+		};
+		18B87AD717BAEB670067EE8D /* AutoCoding */ = {
+			isa = PBXGroup;
+			children = (
+				18B87AD817BAEB670067EE8D /* AutoCoding.h */,
+				18B87AD917BAEB670067EE8D /* AutoCoding.m */,
+			);
+			path = AutoCoding;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -541,6 +564,7 @@
 				18048E8817B85228004F1D33 /* GW2ItemID.h in Headers */,
 				18048E9A17B85870004F1D33 /* GW2Function.h in Headers */,
 				18048E8D17B8529D004F1D33 /* NSString+GW2_ID.h in Headers */,
+				18B87ADA17BAEB670067EE8D /* AutoCoding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +714,7 @@
 				18048E8417B851DE004F1D33 /* GW2RecipeID.m in Sources */,
 				18048E8917B85228004F1D33 /* GW2ItemID.m in Sources */,
 				18048E8E17B8529D004F1D33 /* NSString+GW2_ID.m in Sources */,
+				18B87ADB17BAEB670067EE8D /* AutoCoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +744,7 @@
 				18048E8517B851DE004F1D33 /* GW2RecipeID.m in Sources */,
 				18048E8A17B85228004F1D33 /* GW2ItemID.m in Sources */,
 				18048E8F17B8529D004F1D33 /* NSString+GW2_ID.m in Sources */,
+				18B87ADC17BAEB670067EE8D /* AutoCoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

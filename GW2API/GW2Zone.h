@@ -28,7 +28,7 @@
 
 @interface GW2Zone : GW2Object
 
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 - (id)initWithID:(NSString *)ID name:(NSString *)name;
 

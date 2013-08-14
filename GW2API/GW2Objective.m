@@ -40,22 +40,6 @@
     return self;
 }
 
-#pragma mark - NSCoding protocol
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super initWithCoder:decoder];
-    if (self) {
-        [self setName:[decoder decodeObjectForKey:@"name"]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [super encodeWithCoder:coder];
-    [coder encodeObject:self.name forKey:@"name"];
-}
-
 #pragma mark - Properties
 
 - (GW2ObjectiveType)type {
@@ -170,16 +154,6 @@
 }
 
 #pragma mark - Protected
-
-- (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
-    [super copyObject:object withZone:zone];
-    if ([object isKindOfClass:[GW2Objective class]]) {
-        GW2Objective *objective = (GW2Objective *)object;
-        [self setName:[objective.name copyWithZone:zone]];
-        [self setOwnerTeam:objective.ownerTeam];
-        [self setOwnerGuild:[objective.ownerGuild copyWithZone:zone]];
-    }
-}
 
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID {
     return [api requestURL:@"wvw/objective_names.json" params:@{@"lang": [api langCode]}];

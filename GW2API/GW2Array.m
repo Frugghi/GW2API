@@ -129,6 +129,10 @@
     return [self.objects objectAtIndex:index];
 }
 
+- (id)objectAtIndexedSubscript:(NSUInteger)idx {
+    return [self.objects objectAtIndexedSubscript:idx];
+}
+
 - (id)firstObject {
     if ([self count] == 0) {
         return nil;

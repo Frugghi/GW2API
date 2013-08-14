@@ -100,39 +100,6 @@
 
 @implementation GW2RegionMap
 
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
-    if (self) {
-        [self setID:[decoder decodeObjectForKey:@"ID"]];
-        [self setName:[decoder decodeObjectForKey:GW2RegionMapName]];
-        [self setMinLevel:[decoder decodeIntegerForKey:GW2RegionMapMinLevel]];
-        [self setMaxLevel:[decoder decodeIntegerForKey:GW2RegionMapMaxLevel]];
-        [self setDefaultFloor:[decoder decodeIntegerForKey:GW2RegionMapDefFloor]];
-        [self setMapRect:[decoder decodeCGRectForKey:GW2RegionMapMapRect]];
-        [self setContinentRect:[decoder decodeCGRectForKey:GW2RegionMapContRect]];
-        [self setPOIs:[decoder decodeObjectForKey:GW2RegionMapPOIs]];
-        [self setTasks:[decoder decodeObjectForKey:GW2RegionMapTasks]];
-        [self setSkillChallenges:[decoder decodeObjectForKey:GW2RegionMapSkills]];
-        [self setSectors:[decoder decodeObjectForKey:GW2RegionMapSectors]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:self.ID forKey:@"ID"];
-    [coder encodeObject:self.name forKey:GW2RegionMapName];
-    [coder encodeInteger:self.minLevel forKey:GW2RegionMapMinLevel];
-    [coder encodeInteger:self.maxLevel forKey:GW2RegionMapMaxLevel];
-    [coder encodeInteger:self.defaultFloor forKey:GW2RegionMapDefFloor];
-    [coder encodeCGRect:self.mapRect forKey:GW2RegionMapMapRect];
-    [coder encodeCGRect:self.continentRect forKey:GW2RegionMapContRect];
-    [coder encodeObject:self.POIs forKey:GW2RegionMapPOIs];
-    [coder encodeObject:self.tasks forKey:GW2RegionMapTasks];
-    [coder encodeObject:self.skillChallenges forKey:GW2RegionMapSkills];
-    [coder encodeObject:self.sectors forKey:GW2RegionMapSectors];
-}
-
 - (NSString *)description {
 	return [NSString stringWithFormat:@"<%@: %@ %@, minLevel: %li, maxLevel: %li, defaultFloor: %li, mapRect: %@, continentRect: %@>",
             NSStringFromClass([self class]), self.ID, self.name, (long)self.minLevel, (long)self.maxLevel, (long)self.defaultFloor,
@@ -149,26 +116,6 @@
 
 - (NSUInteger)hash {
 	return [[self description] hash];
-}
-
-- (id)copyWithZone:(NSZone *)zone {
-    GW2RegionMap *copy = [[[self class] allocWithZone:zone] init];
-    
-    if (copy) {
-        [copy setID:[self.ID copyWithZone:zone]];
-		[copy setName:[self.name copyWithZone:zone]];
-        [copy setMinLevel:self.minLevel];
-        [copy setMaxLevel:self.maxLevel];
-        [copy setDefaultFloor:self.defaultFloor];
-        [copy setMapRect:self.mapRect];
-        [copy setContinentRect:self.continentRect];
-        [copy setPOIs:[self.POIs copyWithZone:zone]];
-        [copy setTasks:[self.tasks copyWithZone:zone]];
-        [copy setSkillChallenges:[self.skillChallenges copyWithZone:zone]];
-        [copy setSectors:[self.sectors copyWithZone:zone]];
-    }
-	
-    return copy;
 }
 
 @end
@@ -189,27 +136,6 @@
 
 @implementation GW2MapPOI
 
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
-    if (self) {
-        [self setID:[decoder decodeIntegerForKey:GW2MapPOIID]];
-        [self setName:[decoder decodeObjectForKey:GW2MapPOIName]];
-        [self setType:[decoder decodeIntegerForKey:GW2MapPOIType]];
-        [self setFloor:[decoder decodeIntegerForKey:GW2MapPOIFloor]];
-        [self setCoordinate:[decoder decodeCGPointForKey:GW2MapPOICoord]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeInteger:self.ID forKey:GW2MapPOIID];
-    [coder encodeObject:self.name forKey:GW2MapPOIName];
-    [coder encodeInteger:self.type forKey:GW2MapPOIType];
-    [coder encodeInteger:self.floor forKey:GW2MapPOIFloor];
-    [coder encodeCGPoint:self.coordinate forKey:GW2MapPOICoord];
-}
-
 - (NSString *)description {
 	return [NSString stringWithFormat:@"<%@: %li, name: %@, type: %@, floor: %li, coordinate: %@>",
             NSStringFromClass([self class]), (long)self.ID, self.name, [self typeDescription], (long)self.floor, NSStringFromCGPoint(self.coordinate)];
@@ -225,20 +151,6 @@
 
 - (NSUInteger)hash {
 	return [[self description] hash];
-}
-
-- (id)copyWithZone:(NSZone *)zone {
-    GW2MapPOI *copy = [[[self class] allocWithZone:zone] init];
-    
-    if (copy) {
-        [copy setID:self.ID];
-		[copy setName:[self.name copyWithZone:zone]];
-        [copy setType:self.type];
-        [copy setFloor:self.floor];
-        [copy setCoordinate:self.coordinate];
-    }
-	
-    return copy;
 }
 
 + (GW2POIType)string2type:(NSString *)type {
@@ -273,25 +185,6 @@
 
 @implementation GW2MapTask
 
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
-    if (self) {
-        [self setID:[decoder decodeIntegerForKey:GW2MapTaskID]];
-        [self setObjective:[decoder decodeObjectForKey:GW2MapTaskObj]];
-        [self setLevel:[decoder decodeIntegerForKey:GW2MapTaskLevel]];
-        [self setCoordinate:[decoder decodeCGPointForKey:GW2MapTaskCoord]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeInteger:self.ID forKey:GW2MapTaskID];
-    [coder encodeObject:self.objective forKey:GW2MapTaskObj];
-    [coder encodeInteger:self.level forKey:GW2MapTaskLevel];
-    [coder encodeCGPoint:self.coordinate forKey:GW2MapTaskCoord];
-}
-
 - (NSString *)description {
 	return [NSString stringWithFormat:@"<%@: %li, objective: %@, level: %li, coordinate: %@>",
             NSStringFromClass([self class]), (long)self.ID, self.objective, (long)self.level, NSStringFromCGPoint(self.coordinate)];
@@ -309,19 +202,6 @@
 	return [[self description] hash];
 }
 
-- (id)copyWithZone:(NSZone *)zone {
-    GW2MapTask *copy = [[[self class] allocWithZone:zone] init];
-    
-    if (copy) {
-        [copy setID:self.ID];
-		[copy setObjective:[self.objective copyWithZone:zone]];
-        [copy setLevel:self.level];
-        [copy setCoordinate:self.coordinate];
-    }
-	
-    return copy;
-}
-
 @end
 
 #pragma mark - GW2MapSkill -
@@ -329,19 +209,6 @@
 #define GW2MapSkillCoord @"coord"
 
 @implementation GW2MapSkill
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
-    if (self) {
-        [self setCoordinate:[decoder decodeCGPointForKey:GW2MapSkillCoord]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeCGPoint:self.coordinate forKey:GW2MapSkillCoord];
-}
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"<%@: coordinate: %@>",
@@ -360,16 +227,6 @@
 	return [[self description] hash];
 }
 
-- (id)copyWithZone:(NSZone *)zone {
-    GW2MapSkill *copy = [[[self class] allocWithZone:zone] init];
-    
-    if (copy) {
-        [copy setCoordinate:self.coordinate];
-    }
-	
-    return copy;
-}
-
 @end
 
 #pragma mark - GW2MapSector -
@@ -380,25 +237,6 @@
 #define GW2MapSectorCoord @"coord"
 
 @implementation GW2MapSector
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
-    if (self) {
-        [self setID:[decoder decodeIntegerForKey:GW2MapSectorID]];
-        [self setName:[decoder decodeObjectForKey:GW2MapSectorName]];
-        [self setLevel:[decoder decodeIntegerForKey:GW2MapSectorLevel]];
-        [self setCoordinate:[decoder decodeCGPointForKey:GW2MapSectorCoord]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeInteger:self.ID forKey:GW2MapSectorID];
-    [coder encodeObject:self.name forKey:GW2MapSectorName];
-    [coder encodeInteger:self.level forKey:GW2MapSectorLevel];
-    [coder encodeCGPoint:self.coordinate forKey:GW2MapSectorCoord];
-}
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"<%@: %li, name: %@, level: %li, coordinate: %@>",
@@ -415,19 +253,6 @@
 
 - (NSUInteger)hash {
 	return [[self description] hash];
-}
-
-- (id)copyWithZone:(NSZone *)zone {
-    GW2MapSector *copy = [[[self class] allocWithZone:zone] init];
-    
-    if (copy) {
-        [copy setID:self.ID];
-		[copy setName:[self.name copyWithZone:zone]];
-        [copy setLevel:self.level];
-        [copy setCoordinate:self.coordinate];
-    }
-	
-    return copy;
 }
 
 @end
@@ -449,28 +274,6 @@
 
 - (NSString *)ID {
     return [NSString stringWithFormat:@"%@_%li", self.continentID, (long)self.floor];
-}
-
-#pragma mark - NSCoding protocol
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super initWithCoder:decoder];
-    if (self) {
-        [self setContinentID:[decoder decodeObjectForKey:GW2MapFloorContinent]];
-        [self setFloor:[decoder decodeIntegerForKey:GW2MapFloorFloor]];
-        [self setTextureDimensions:[decoder decodeCGSizeForKey:GW2MapFloorTextureDims]];
-        [self setRegions:[decoder decodeObjectForKey:GW2MapFloorRegions]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [super encodeWithCoder:coder];
-    [coder encodeObject:self.continentID forKey:GW2MapFloorContinent];
-    [coder encodeInteger:self.floor forKey:GW2MapFloorFloor];
-    [coder encodeCGSize:self.textureDimensions forKey:GW2MapFloorTextureDims];
-    [coder encodeObject:self.regions forKey:GW2MapFloorRegions];
 }
 
 #pragma mark - NSObject protocol
@@ -500,16 +303,6 @@
 
 #pragma mark - Protected
 
-- (void)copyObject:(GW2Object *)object withZone:(NSZone *)zone {
-    [super copyObject:object withZone:zone];
-    if ([object isKindOfClass:[GW2MapFloor class]]) {
-        GW2MapFloor *mapFloor = (GW2MapFloor *)object;
-        [self setContinentID:[mapFloor.continentID copyWithZone:zone]];
-        [self setFloor:mapFloor.floor];
-        [self setTextureDimensions:mapFloor.textureDimensions];
-        [self setRegions:[mapFloor.regions copyWithZone:zone]];
-    }
-}
 
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID {
     NSArray *components = [ID componentsSeparatedByString:@"_"];
