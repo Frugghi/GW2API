@@ -659,6 +659,28 @@ NSString *const GW2ItemNotification = @"com.GW2.ItemNotification";
     });
 }
 
+#pragma mark - Guilds -
+
++ (GW2Guild *)guildByID:(NSString *)ID error:(NSError *__autoreleasing *)error {
+    return [[self sharedInstance] fetchObjectForClass:[[self api] guildClass] ID:ID error:error];
+}
+
++ (void)guildByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock {
+    dispatch_async([[self sharedInstance] fetchQueue], ^{
+        NSError *error;
+        GW2Guild *object = [self guildByID:ID error:&error];
+        completitionBlock(object, error);
+    });
+}
+
++ (GW2Guild *)guildByName:(NSString *)name error:(NSError *__autoreleasing *)error {
+    return [self guildByID:name error:error];
+}
+
++ (void)guildByName:(NSString *)name completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock {
+    [self guildByID:name completitionBlock:completitionBlock];
+}
+
 #pragma mark - Private -
 
 - (id<GW2Caching, NSCopying>)cachedObjectForClass:(Class)class ID:(NSString *)ID {

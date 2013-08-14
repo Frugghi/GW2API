@@ -35,6 +35,9 @@
 		18048E8E17B8529D004F1D33 /* NSString+GW2_ID.m in Sources */ = {isa = PBXBuildFile; fileRef = 18048E8C17B8529D004F1D33 /* NSString+GW2_ID.m */; };
 		18048E8F17B8529D004F1D33 /* NSString+GW2_ID.m in Sources */ = {isa = PBXBuildFile; fileRef = 18048E8C17B8529D004F1D33 /* NSString+GW2_ID.m */; };
 		18048E9A17B85870004F1D33 /* GW2Function.h in Headers */ = {isa = PBXBuildFile; fileRef = 18048E9917B85870004F1D33 /* GW2Function.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		180BBC5217BBA77C0013632C /* GW2Guild.h in Headers */ = {isa = PBXBuildFile; fileRef = 180BBC5017BBA77C0013632C /* GW2Guild.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		180BBC5317BBA77C0013632C /* GW2Guild.m in Sources */ = {isa = PBXBuildFile; fileRef = 180BBC5117BBA77C0013632C /* GW2Guild.m */; };
+		180BBC5417BBA77C0013632C /* GW2Guild.m in Sources */ = {isa = PBXBuildFile; fileRef = 180BBC5117BBA77C0013632C /* GW2Guild.m */; };
 		185BF33617B549F90031201B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185BF33517B549F90031201B /* UIKit.framework */; };
 		185BF33817B549F90031201B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185BF33717B549F90031201B /* Foundation.framework */; };
 		185BF33A17B549F90031201B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185BF33917B549F90031201B /* CoreGraphics.framework */; };
@@ -50,7 +53,6 @@
 		185BF37117B54C7B0031201B /* GW2Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF36A17B54C7B0031201B /* GW2Timer.m */; };
 		185BF37C17B54CBB0031201B /* GW2Array.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF37917B54CBB0031201B /* GW2Array.m */; };
 		185BF37E17B54CBB0031201B /* GW2Object.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF37B17B54CBB0031201B /* GW2Object.m */; };
-		185BF38717B54CD60031201B /* GW2MapTilesSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF38217B54CD60031201B /* GW2MapTilesSource.m */; };
 		185BF38917B54CD60031201B /* GW2Continent.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF38417B54CD60031201B /* GW2Continent.m */; };
 		185BF38B17B54CD60031201B /* GW2Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF38617B54CD60031201B /* GW2Map.m */; };
 		185BF39217B54CF40031201B /* GW2Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF38F17B54CF40031201B /* GW2Item.m */; };
@@ -120,6 +122,8 @@
 		18048E8B17B8529D004F1D33 /* NSString+GW2_ID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GW2_ID.h"; sourceTree = "<group>"; };
 		18048E8C17B8529D004F1D33 /* NSString+GW2_ID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GW2_ID.m"; sourceTree = "<group>"; };
 		18048E9917B85870004F1D33 /* GW2Function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Function.h; sourceTree = "<group>"; };
+		180BBC5017BBA77C0013632C /* GW2Guild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Guild.h; sourceTree = "<group>"; };
+		180BBC5117BBA77C0013632C /* GW2Guild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Guild.m; sourceTree = "<group>"; };
 		185BF33217B549F90031201B /* GW2API-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GW2API-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		185BF33517B549F90031201B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		185BF33717B549F90031201B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -257,6 +261,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180BBC4F17BBA72F0013632C /* Guilds */ = {
+			isa = PBXGroup;
+			children = (
+				180BBC5017BBA77C0013632C /* GW2Guild.h */,
+				180BBC5117BBA77C0013632C /* GW2Guild.m */,
+			);
+			name = Guilds;
+			sourceTree = "<group>";
+		};
 		185BF32917B549F90031201B = {
 			isa = PBXGroup;
 			children = (
@@ -331,7 +344,8 @@
 				185BF37A17B54CBB0031201B /* GW2Object.h */,
 				185BF37B17B54CBB0031201B /* GW2Object.m */,
 				185BF38017B54CC90031201B /* Map */,
-				185BF38D17B54CE00031201B /* Item and Recipe */,
+				185BF38D17B54CE00031201B /* Items and Recipes */,
+				180BBC4F17BBA72F0013632C /* Guilds */,
 				185BF39617B54CF80031201B /* Dynamic Events */,
 				185BF3A717B54D240031201B /* WvW */,
 			);
@@ -354,7 +368,7 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
-		185BF38D17B54CE00031201B /* Item and Recipe */ = {
+		185BF38D17B54CE00031201B /* Items and Recipes */ = {
 			isa = PBXGroup;
 			children = (
 				185BF38E17B54CF40031201B /* GW2Item.h */,
@@ -362,7 +376,7 @@
 				185BF39017B54CF40031201B /* GW2Recipe.h */,
 				185BF39117B54CF40031201B /* GW2Recipe.m */,
 			);
-			name = "Item and Recipe";
+			name = "Items and Recipes";
 			sourceTree = "<group>";
 		};
 		185BF39617B54CF80031201B /* Dynamic Events */ = {
@@ -559,6 +573,7 @@
 				185BF40717B556240031201B /* GW2APICache.h in Headers */,
 				185BF40817B556240031201B /* GW2Caching.h in Headers */,
 				185BF40917B556240031201B /* GW2Fetching.h in Headers */,
+				180BBC5217BBA77C0013632C /* GW2Guild.h in Headers */,
 				185BF40A17B556240031201B /* GW2Protected.h in Headers */,
 				18048E8317B851DE004F1D33 /* GW2RecipeID.h in Headers */,
 				18048E8817B85228004F1D33 /* GW2ItemID.h in Headers */,
@@ -698,7 +713,6 @@
 				185BF37117B54C7B0031201B /* GW2Timer.m in Sources */,
 				185BF37C17B54CBB0031201B /* GW2Array.m in Sources */,
 				185BF37E17B54CBB0031201B /* GW2Object.m in Sources */,
-				185BF38717B54CD60031201B /* GW2MapTilesSource.m in Sources */,
 				185BF38917B54CD60031201B /* GW2Continent.m in Sources */,
 				185BF38B17B54CD60031201B /* GW2Map.m in Sources */,
 				185BF39217B54CF40031201B /* GW2Item.m in Sources */,
@@ -715,6 +729,7 @@
 				18048E8917B85228004F1D33 /* GW2ItemID.m in Sources */,
 				18048E8E17B8529D004F1D33 /* NSString+GW2_ID.m in Sources */,
 				18B87ADB17BAEB670067EE8D /* AutoCoding.m in Sources */,
+				180BBC5317BBA77C0013632C /* GW2Guild.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +760,7 @@
 				18048E8A17B85228004F1D33 /* GW2ItemID.m in Sources */,
 				18048E8F17B8529D004F1D33 /* NSString+GW2_ID.m in Sources */,
 				18B87ADC17BAEB670067EE8D /* AutoCoding.m in Sources */,
+				180BBC5417BBA77C0013632C /* GW2Guild.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

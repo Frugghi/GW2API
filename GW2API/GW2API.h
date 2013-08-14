@@ -51,6 +51,7 @@
 @property (nonatomic, assign) Class eventStateClass;
 @property (nonatomic, assign) Class recipeClass;
 @property (nonatomic, assign) Class itemClass;
+@property (nonatomic, assign) Class guildClass;
 
 #pragma mark - Public methods -
 

@@ -20,6 +20,8 @@
 		18048EB017B8721F004F1D33 /* NSCoder+IOS_Wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18048EAE17B8721F004F1D33 /* NSCoder+IOS_Wrapper.m */; };
 		180BBC4D17BBA64B0013632C /* AutoCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 180BBC4B17BBA64B0013632C /* AutoCoding.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		180BBC4E17BBA64B0013632C /* AutoCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 180BBC4C17BBA64B0013632C /* AutoCoding.m */; };
+		180BBC5817BBB9FF0013632C /* GW2Guild.h in Headers */ = {isa = PBXBuildFile; fileRef = 180BBC5617BBB9FF0013632C /* GW2Guild.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		180BBC5917BBB9FF0013632C /* GW2Guild.m in Sources */ = {isa = PBXBuildFile; fileRef = 180BBC5717BBB9FF0013632C /* GW2Guild.m */; };
 		185BF4BF17B5698A0031201B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185BF4A417B5691C0031201B /* Cocoa.framework */; };
 		185BF4C917B5698A0031201B /* GW2API.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BF4C817B5698A0031201B /* GW2API.m */; };
 		185BF4D417B56D450031201B /* GW2.h in Headers */ = {isa = PBXBuildFile; fileRef = 185BF4CE17B56D450031201B /* GW2.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -78,6 +80,8 @@
 		18048EAE17B8721F004F1D33 /* NSCoder+IOS_Wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCoder+IOS_Wrapper.m"; sourceTree = "<group>"; };
 		180BBC4B17BBA64B0013632C /* AutoCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCoding.h; sourceTree = "<group>"; };
 		180BBC4C17BBA64B0013632C /* AutoCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoCoding.m; sourceTree = "<group>"; };
+		180BBC5617BBB9FF0013632C /* GW2Guild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Guild.h; sourceTree = "<group>"; };
+		180BBC5717BBB9FF0013632C /* GW2Guild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Guild.m; sourceTree = "<group>"; };
 		185BF4A417B5691C0031201B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		185BF4A717B5691C0031201B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		185BF4A817B5691C0031201B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -154,6 +158,15 @@
 				180BBC4C17BBA64B0013632C /* AutoCoding.m */,
 			);
 			path = AutoCoding;
+			sourceTree = "<group>";
+		};
+		180BBC5517BBB9D00013632C /* Guilds */ = {
+			isa = PBXGroup;
+			children = (
+				180BBC5617BBB9FF0013632C /* GW2Guild.h */,
+				180BBC5717BBB9FF0013632C /* GW2Guild.m */,
+			);
+			name = Guilds;
 			sourceTree = "<group>";
 		};
 		185BF49717B5691C0031201B = {
@@ -238,7 +251,8 @@
 				185BF4F017B56DC90031201B /* GW2Object.h */,
 				185BF4F117B56DC90031201B /* GW2Object.m */,
 				185BF52617B56DD00031201B /* Map */,
-				185BF52717B56DD90031201B /* Item and Recipe */,
+				185BF52717B56DD90031201B /* Items and Recipes */,
+				180BBC5517BBB9D00013632C /* Guilds */,
 				185BF52817B56DEE0031201B /* Dynamic Events */,
 				185BF52917B56DF60031201B /* WvW */,
 			);
@@ -286,7 +300,7 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
-		185BF52717B56DD90031201B /* Item and Recipe */ = {
+		185BF52717B56DD90031201B /* Items and Recipes */ = {
 			isa = PBXGroup;
 			children = (
 				185BF4F817B56DC90031201B /* GW2Item.h */,
@@ -294,7 +308,7 @@
 				185BF4FA17B56DC90031201B /* GW2Recipe.h */,
 				185BF4FB17B56DC90031201B /* GW2Recipe.m */,
 			);
-			name = "Item and Recipe";
+			name = "Items and Recipes";
 			sourceTree = "<group>";
 		};
 		185BF52817B56DEE0031201B /* Dynamic Events */ = {
@@ -356,6 +370,7 @@
 				185BF52017B56DC90031201B /* GW2Match.h in Headers */,
 				185BF52217B56DC90031201B /* GW2MatchDetails.h in Headers */,
 				185BF52417B56DC90031201B /* GW2Objective.h in Headers */,
+				180BBC5817BBB9FF0013632C /* GW2Guild.h in Headers */,
 				185BF4E617B56DA30031201B /* GW2Protected.h in Headers */,
 				18048EA217B871EE004F1D33 /* GW2Function.h in Headers */,
 				18048EA317B871EE004F1D33 /* GW2ItemID.h in Headers */,
@@ -451,6 +466,7 @@
 				18048EAC17B87201004F1D33 /* GW2MapFloor.m in Sources */,
 				18048EB017B8721F004F1D33 /* NSCoder+IOS_Wrapper.m in Sources */,
 				180BBC4E17BBA64B0013632C /* AutoCoding.m in Sources */,
+				180BBC5917BBB9FF0013632C /* GW2Guild.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

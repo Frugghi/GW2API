@@ -27,242 +27,13 @@
 #import "GW2MapFloor.h"
 #import "GW2Protected.h"
 
-#pragma mark - GW2Region -
-
-#define GW2RegionName        @"name"
-#define GW2RegionLabelCenter @"label_coord"
-#define GW2RegionMaps        @"maps"
-
-@implementation GW2Region
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
-    if (self) {
-        [self setID:[decoder decodeObjectForKey:@"ID"]];
-        [self setName:[decoder decodeObjectForKey:GW2RegionName]];
-        [self setLabelCenter:[decoder decodeCGPointForKey:GW2RegionLabelCenter]];
-        [self setMaps:[decoder decodeObjectForKey:GW2RegionMaps]];
-    }
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:self.ID forKey:@"ID"];
-    [coder encodeObject:self.name forKey:GW2RegionName];
-    [coder encodeCGPoint:self.labelCenter forKey:GW2RegionLabelCenter];
-    [coder encodeObject:self.maps forKey:GW2RegionMaps];
-}
-
-- (NSString *)description {
-	return [NSString stringWithFormat:@"<%@: %@ %@, labelCenter: %@>",
-            NSStringFromClass([self class]), self.ID, self.name, NSStringFromCGPoint(self.labelCenter)];
-}
-
-- (BOOL)isEqual:(id)object {
-	if ([object isKindOfClass:[GW2Region class]]) {
-		return [[self ID] isEqualToString:[(GW2Region *)object ID]] && [[self name] isEqualToString:[(GW2Region *)object name]];
-	}
-    
-	return NO;
-}
-
-- (NSUInteger)hash {
-	return [[self description] hash];
-}
-
-- (id)copyWithZone:(NSZone *)zone {
-    GW2Region *copy = [[[self class] allocWithZone:zone] init];
-    
-    if (copy) {
-		[copy setName:[self.name copyWithZone:zone]];
-        [copy setLabelCenter:self.labelCenter];
-        [copy setMaps:[self.maps copyWithZone:zone]];
-    }
-	
-    return copy;
-}
-
-@end
-
-#pragma mark - GW2RegionMap -
-
-#define GW2RegionMapName     @"name"
-#define GW2RegionMapMinLevel @"min_level"
-#define GW2RegionMapMaxLevel @"max_level"
-#define GW2RegionMapDefFloor @"default_floor"
-#define GW2RegionMapMapRect  @"map_rect"
-#define GW2RegionMapContRect @"continent_rect"
-#define GW2RegionMapPOIs     @"points_of_interest"
-#define GW2RegionMapTasks    @"tasks"
-#define GW2RegionMapSkills   @"skill_challenges"
-#define GW2RegionMapSectors  @"sectors"
-
-@implementation GW2RegionMap
-
-- (NSString *)description {
-	return [NSString stringWithFormat:@"<%@: %@ %@, minLevel: %li, maxLevel: %li, defaultFloor: %li, mapRect: %@, continentRect: %@>",
-            NSStringFromClass([self class]), self.ID, self.name, (long)self.minLevel, (long)self.maxLevel, (long)self.defaultFloor,
-            NSStringFromCGRect(self.mapRect), NSStringFromCGRect(self.continentRect)];
-}
-
-- (BOOL)isEqual:(id)object {
-	if ([object isKindOfClass:[GW2RegionMap class]]) {
-		return [[self ID] isEqualToString:[(GW2RegionMap *)object ID]] && [[self name] isEqualToString:[(GW2RegionMap *)object name]];
-	}
-    
-	return NO;
-}
-
-- (NSUInteger)hash {
-	return [[self description] hash];
-}
-
-@end
-
-#pragma mark - GW2MapPOI -
-
-#define GW2MapPOIID    @"poi_id"
-#define GW2MapPOIName  @"name"
-#define GW2MapPOIType  @"type"
-#define GW2MapPOIFloor @"floor"
-#define GW2MapPOICoord @"coord"
-
 @interface GW2MapPOI ()
 
 + (GW2POIType)string2type:(NSString *)type;
 
 @end
 
-@implementation GW2MapPOI
-
-- (NSString *)description {
-	return [NSString stringWithFormat:@"<%@: %li, name: %@, type: %@, floor: %li, coordinate: %@>",
-            NSStringFromClass([self class]), (long)self.ID, self.name, [self typeDescription], (long)self.floor, NSStringFromCGPoint(self.coordinate)];
-}
-
-- (BOOL)isEqual:(id)object {
-	if ([object isKindOfClass:[GW2MapPOI class]]) {
-		return [self ID] == [(GW2MapPOI *)object ID];
-	}
-    
-	return NO;
-}
-
-- (NSUInteger)hash {
-	return [[self description] hash];
-}
-
-+ (GW2POIType)string2type:(NSString *)type {
-    if ([type compare:@"landmark" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        return GW2POILandmark;
-    } else if ([type compare:@"waypoint" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        return GW2POIWaypoint;
-    } else if ([type compare:@"vista" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        return GW2POIVista;
-    } else {
-        return GW2POIUnkown;
-    }
-}
-
-- (NSString *)typeDescription {
-    switch (self.type) {
-        case GW2POILandmark: return @"Landmark";
-        case GW2POIWaypoint: return @"Waypoint";
-        case GW2POIVista:    return @"Vista";
-        default:             return @"Unknown";
-    }
-}
-
-@end
-
-#pragma mark - GW2MapTask -
-
-#define GW2MapTaskID    @"task_id"
-#define GW2MapTaskObj   @"objective"
-#define GW2MapTaskLevel @"level"
-#define GW2MapTaskCoord @"coord"
-
-@implementation GW2MapTask
-
-- (NSString *)description {
-	return [NSString stringWithFormat:@"<%@: %li, objective: %@, level: %li, coordinate: %@>",
-            NSStringFromClass([self class]), (long)self.ID, self.objective, (long)self.level, NSStringFromCGPoint(self.coordinate)];
-}
-
-- (BOOL)isEqual:(id)object {
-	if ([object isKindOfClass:[GW2MapTask class]]) {
-		return [self ID] == [(GW2MapTask *)object ID];
-	}
-    
-	return NO;
-}
-
-- (NSUInteger)hash {
-	return [[self description] hash];
-}
-
-@end
-
-#pragma mark - GW2MapSkill -
-
-#define GW2MapSkillCoord @"coord"
-
-@implementation GW2MapSkill
-
-- (NSString *)description {
-	return [NSString stringWithFormat:@"<%@: coordinate: %@>",
-            NSStringFromClass([self class]), NSStringFromCGPoint(self.coordinate)];
-}
-
-- (BOOL)isEqual:(id)object {
-	if ([object isKindOfClass:[GW2MapSkill class]]) {
-		return CGPointEqualToPoint([self coordinate], [(GW2MapSkill *)object coordinate]);
-	}
-    
-	return NO;
-}
-
-- (NSUInteger)hash {
-	return [[self description] hash];
-}
-
-@end
-
-#pragma mark - GW2MapSector -
-
-#define GW2MapSectorID    @"sector_id"
-#define GW2MapSectorName  @"name"
-#define GW2MapSectorLevel @"level"
-#define GW2MapSectorCoord @"coord"
-
-@implementation GW2MapSector
-
-- (NSString *)description {
-	return [NSString stringWithFormat:@"<%@: %li, name: %@, level: %li, coordinate: %@>",
-            NSStringFromClass([self class]), (long)self.ID, self.name, (long)self.level, NSStringFromCGPoint(self.coordinate)];
-}
-
-- (BOOL)isEqual:(id)object {
-	if ([object isKindOfClass:[GW2MapSector class]]) {
-		return [self ID] == [(GW2MapSector *)object ID];
-	}
-    
-	return NO;
-}
-
-- (NSUInteger)hash {
-	return [[self description] hash];
-}
-
-@end
-
 #pragma mark - GW2MapFloor -
-
-#define GW2MapFloorContinent   @"continent_id"
-#define GW2MapFloorFloor       @"floor"
-#define GW2MapFloorTextureDims @"texture_dims"
-#define GW2MapFloorRegions     @"regions"
 
 @implementation GW2MapFloor
 
@@ -306,10 +77,10 @@
 
 + (NSURL *)requestURL:(GW2API *)api withID:(NSString *)ID {
     NSArray *components = [ID componentsSeparatedByString:@"_"];
-
+    
     return [api requestURL:@"map_floor.json" params:@{@"lang": [api langCode],
-                                                      GW2MapFloorContinent: components[0],
-                                                      GW2MapFloorFloor: components[1]}];
+            @"continent_id": components[0],
+            @"floor": components[1]}];
 }
 
 + (id)parseJSONData:(NSData *)jsonData requestURL:(NSURL *)requestURL error:(NSError *__autoreleasing *)error {
@@ -319,79 +90,79 @@
     }
     
     GW2MapFloor *obj = [[[self class] alloc] init];
-    [obj setTextureDimensions:CGSizeFromArray([json objectForKey:GW2MapFloorTextureDims])];
+    [obj setTextureDimensions:CGSizeFromArray(json[@"texture_dims"])];
     
     for (NSString *param in [[requestURL query] componentsSeparatedByString:@"&"]) {
         NSArray *components = [param componentsSeparatedByString:@"="];
         if ([components count] < 2) {
             continue;
-        } else if ([components[0] isEqualToString:GW2MapFloorContinent]) {
+        } else if ([components[0] isEqualToString:@"continent_id"]) {
             [obj setContinentID:components[1]];
-        } else if ([components[0] isEqualToString:GW2MapFloorFloor]) {
+        } else if ([components[0] isEqualToString:@"floor"]) {
             [obj setFloor:[components[1] integerValue]];
         }
     }
     
     NSMutableArray *regions = [[NSMutableArray alloc] init];
-    NSDictionary *regionsDict = json[GW2MapFloorRegions];
+    NSDictionary *regionsDict = json[@"regions"];
     for (NSString *regionID in regionsDict) {
         NSDictionary *regionDict = regionsDict[regionID];
         GW2Region *region = [[GW2Region alloc] init];
         [region setID:regionID];
-        [region setName:regionDict[GW2RegionName]];
-        [region setLabelCenter:CGPointFromArray(regionDict[GW2RegionLabelCenter])];
+        [region setName:regionDict[@"name"]];
+        [region setLabelCenter:CGPointFromArray(regionDict[@"label_coord"])];
         
         NSMutableArray *maps = [[NSMutableArray alloc] init];
-        NSDictionary *mapsDict = regionDict[GW2RegionMaps];
+        NSDictionary *mapsDict = regionDict[@"maps"];
         for (NSString *mapID in mapsDict) {
             NSDictionary *mapDict = mapsDict[mapID];
             GW2RegionMap *regionMap = [[GW2RegionMap alloc] init];
             [regionMap setID:mapID];
-            [regionMap setName:mapDict[GW2RegionMapName]];
-            [regionMap setMinLevel:[mapDict[GW2RegionMapMinLevel] integerValue]];
-            [regionMap setMaxLevel:[mapDict[GW2RegionMapMaxLevel] integerValue]];
-            [regionMap setDefaultFloor:[mapDict[GW2RegionMapDefFloor] integerValue]];
-            [regionMap setMapRect:CGRectFromArray(mapDict[GW2RegionMapMapRect])];
-            [regionMap setContinentRect:CGRectFromArray(mapDict[GW2RegionMapContRect])];
+            [regionMap setName:mapDict[@"name"]];
+            [regionMap setMinLevel:[mapDict[@"min_level"] integerValue]];
+            [regionMap setMaxLevel:[mapDict[@"max_level"] integerValue]];
+            [regionMap setDefaultFloor:[mapDict[@"default_floor"] integerValue]];
+            [regionMap setMapRect:CGRectFromArray(mapDict[@"map_rect"])];
+            [regionMap setContinentRect:CGRectFromArray(mapDict[@"continent_rect"])];
             
             NSMutableArray *POIs = [[NSMutableArray alloc] init];
-            for (NSDictionary *POIDict in mapDict[GW2RegionMapPOIs]) {
+            for (NSDictionary *POIDict in mapDict[@"points_of_interest"]) {
                 GW2MapPOI *POI = [[GW2MapPOI alloc] init];
-                [POI setID:[POIDict[GW2MapPOIID] integerValue]];
-                [POI setName:POIDict[GW2MapPOIName]];
-                [POI setType:[GW2MapPOI string2type:POIDict[GW2MapPOIType]]];
-                [POI setFloor:[POIDict[GW2MapPOIFloor] integerValue]];
-                [POI setCoordinate:CGPointFromArray(POIDict[GW2MapPOICoord])];
+                [POI setID:[POIDict[@"poi_id"] integerValue]];
+                [POI setName:POIDict[@"name"]];
+                [POI setType:[GW2MapPOI string2type:POIDict[@"type"]]];
+                [POI setFloor:[POIDict[@"floor"] integerValue]];
+                [POI setCoordinate:CGPointFromArray(POIDict[@"coord"])];
                 [POIs addObject:POI];
             }
             [regionMap setPOIs:[POIs copy]];
             
             NSMutableArray *tasks = [[NSMutableArray alloc] init];
-            for (NSDictionary *taskDict in mapDict[GW2RegionMapTasks]) {
+            for (NSDictionary *taskDict in mapDict[@"tasks"]) {
                 GW2MapTask *task = [[GW2MapTask alloc] init];
-                [task setID:[taskDict[GW2MapTaskID] integerValue]];
-                [task setObjective:taskDict[GW2MapTaskObj]];
-                [task setLevel:[taskDict[GW2MapTaskLevel] integerValue]];
-                [task setCoordinate:CGPointFromArray(taskDict[GW2MapTaskCoord])];
+                [task setID:[taskDict[@"task_id"] integerValue]];
+                [task setObjective:taskDict[@"objective"]];
+                [task setLevel:[taskDict[@"level"] integerValue]];
+                [task setCoordinate:CGPointFromArray(taskDict[@"coord"])];
                 [tasks addObject:task];
             }
             [regionMap setTasks:[tasks copy]];
             
             NSMutableArray *skills = [[NSMutableArray alloc] init];
-            for (NSDictionary *skillDict in mapDict[GW2RegionMapSkills]) {
+            for (NSDictionary *skillDict in mapDict[@"skill_challenges"]) {
                 GW2MapSkill *skill = [[GW2MapSkill alloc] init];
-                [skill setCoordinate:CGPointFromArray(skillDict[GW2MapSkillCoord])];
+                [skill setCoordinate:CGPointFromArray(skillDict[@"coord"])];
                 [skills addObject:skill];
             }
             [regionMap setSkillChallenges:[skills copy]];
             
             NSMutableArray *sectors = [[NSMutableArray alloc] init];
-            for (NSDictionary *sectorDict in mapDict[GW2RegionMapSectors]) {
+            for (NSDictionary *sectorDict in mapDict[@"sectors"]) {
                 GW2MapSector *sector = [[GW2MapSector alloc] init];
-                [sector setID:[sectorDict[GW2MapSectorID] integerValue]];
-                [sector setName:sectorDict[GW2MapSectorName]];
-                [sector setLevel:[sectorDict[GW2MapSectorLevel] integerValue]];
-                [sector setCoordinate:CGPointFromArray(sectorDict[GW2MapSectorCoord])];
+                [sector setID:[sectorDict[@"sector_id"] integerValue]];
+                [sector setName:sectorDict[@"name"]];
+                [sector setLevel:[sectorDict[@"level"] integerValue]];
+                [sector setCoordinate:CGPointFromArray(sectorDict[@"coord"])];
                 [sectors addObject:sector];
             }
             [regionMap setSectors:[sectors copy]];
@@ -409,6 +180,166 @@
 
 + (NSArray *)notificationNames {
     return @[GW2PveNotification, GW2WvWNotification, GW2MapNotification];
+}
+
+@end
+
+#pragma mark - GW2Region -
+
+@implementation GW2Region
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"<%@: %@ %@, labelCenter: %@>",
+            NSStringFromClass([self class]), self.ID, self.name, NSStringFromCGPoint(self.labelCenter)];
+}
+
+- (BOOL)isEqual:(id)object {
+	if ([object isKindOfClass:[GW2Region class]]) {
+		return [self hash] == [object hash];
+	}
+    
+	return NO;
+}
+
+- (NSUInteger)hash {
+	return [[self description] hash];
+}
+
+@end
+
+#pragma mark - GW2RegionMap -
+
+@implementation GW2RegionMap
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"<%@: %@ %@, minLevel: %li, maxLevel: %li, defaultFloor: %li, mapRect: %@, continentRect: %@>",
+            NSStringFromClass([self class]), self.ID, self.name, (long)self.minLevel, (long)self.maxLevel, (long)self.defaultFloor,
+            NSStringFromCGRect(self.mapRect), NSStringFromCGRect(self.continentRect)];
+}
+
+- (BOOL)isEqual:(id)object {
+	if ([object isKindOfClass:[GW2RegionMap class]]) {
+		return [self hash] == [object hash];
+	}
+    
+	return NO;
+}
+
+- (NSUInteger)hash {
+	return [[self description] hash];
+}
+
+@end
+
+#pragma mark - GW2MapPOI -
+
+@implementation GW2MapPOI
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"<%@: %li, name: %@, type: %@, floor: %li, coordinate: %@>",
+            NSStringFromClass([self class]), (long)self.ID, self.name, [self typeDescription], (long)self.floor, NSStringFromCGPoint(self.coordinate)];
+}
+
+- (BOOL)isEqual:(id)object {
+	if ([object isKindOfClass:[GW2MapPOI class]]) {
+		return [self hash] == [object hash];
+	}
+    
+	return NO;
+}
+
+- (NSUInteger)hash {
+	return [[self description] hash];
+}
+
++ (GW2POIType)string2type:(NSString *)type {
+    if ([type compare:@"landmark" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
+        return GW2POILandmark;
+    } else if ([type compare:@"waypoint" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
+        return GW2POIWaypoint;
+    } else if ([type compare:@"vista" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
+        return GW2POIVista;
+    } else {
+        return GW2POIUnkown;
+    }
+}
+
+- (NSString *)typeDescription {
+    switch (self.type) {
+        case GW2POILandmark: return @"Landmark";
+        case GW2POIWaypoint: return @"Waypoint";
+        case GW2POIVista:    return @"Vista";
+        default:             return @"Unknown";
+    }
+}
+
+@end
+
+#pragma mark - GW2MapTask -
+
+@implementation GW2MapTask
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"<%@: %li, objective: %@, level: %li, coordinate: %@>",
+            NSStringFromClass([self class]), (long)self.ID, self.objective, (long)self.level, NSStringFromCGPoint(self.coordinate)];
+}
+
+- (BOOL)isEqual:(id)object {
+	if ([object isKindOfClass:[GW2MapTask class]]) {
+		return [self hash] == [object hash];
+	}
+    
+	return NO;
+}
+
+- (NSUInteger)hash {
+	return [[self description] hash];
+}
+
+@end
+
+#pragma mark - GW2MapSkill -
+
+@implementation GW2MapSkill
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"<%@: coordinate: %@>",
+            NSStringFromClass([self class]), NSStringFromCGPoint(self.coordinate)];
+}
+
+- (BOOL)isEqual:(id)object {
+	if ([object isKindOfClass:[GW2MapSkill class]]) {
+		return [self hash] == [object hash];
+	}
+    
+	return NO;
+}
+
+- (NSUInteger)hash {
+	return [[self description] hash];
+}
+
+@end
+
+#pragma mark - GW2MapSector -
+
+@implementation GW2MapSector
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"<%@: %li, name: %@, level: %li, coordinate: %@>",
+            NSStringFromClass([self class]), (long)self.ID, self.name, (long)self.level, NSStringFromCGPoint(self.coordinate)];
+}
+
+- (BOOL)isEqual:(id)object {
+	if ([object isKindOfClass:[GW2MapSector class]]) {
+		return [self hash] == [object hash];
+	}
+    
+	return NO;
+}
+
+- (NSUInteger)hash {
+	return [[self description] hash];
 }
 
 @end

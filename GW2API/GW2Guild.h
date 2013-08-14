@@ -1,8 +1,8 @@
 //
-//  GW2Model.h
+//  GW2Guild.h
 //  GW2API for ObjC
 //
-//  Created by Tommaso Madonia on 22/05/13.
+//  Created by Tommaso Madonia on 14/08/13.
 //  Copyright (c) 2013 Tommaso Madonia. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,23 +24,25 @@
 //  THE SOFTWARE.
 //
 
-#ifndef GW2_GW2Model_h
-#define GW2_GW2Model_h
-
 #import "GW2Object.h"
-#import "GW2World.h"
-#import "GW2Match.h"
-#import "GW2MatchDetails.h"
-#import "GW2Objective.h"
-#import "GW2Zone.h"
-#import "GW2Event.h"
-#import "GW2EventState.h"
-#import "GW2Recipe.h"
-#import "GW2Item.h"
-#import "GW2Array.h"
-#import "GW2Continent.h"
-#import "GW2Map.h"
-#import "GW2MapFloor.h"
-#import "GW2Guild.h"
 
-#endif
+@class GW2Emblem;
+
+@interface GW2Guild : GW2Object
+
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *tag;
+@property (nonatomic, copy) GW2Emblem *emblem;
+
+@end
+
+@interface GW2Emblem : NSObject <NSCopying, NSCoding>
+
+@property (nonatomic, copy) NSString *backgroundID;
+@property (nonatomic, copy) NSString *foregroundID;
+@property (nonatomic, copy) NSSet *flags;
+@property (nonatomic, copy) NSString *backgroundColorID;
+@property (nonatomic, copy) NSString *foregroundPrimaryColorID;
+@property (nonatomic, copy) NSString *foregroundSecondaryColorID;
+
+@end

@@ -189,47 +189,76 @@
 
 #pragma mark - GW2WvWMap implementation
 
+@interface GW2WvWMap ()
+
+@property (nonatomic, readwrite, assign) NSInteger redPotentialPoints;
+@property (nonatomic, readwrite, assign) NSInteger bluePotentialPoints;
+@property (nonatomic, readwrite, assign) NSInteger greenPotentialPoints;
+
+@end
+
 @implementation GW2WvWMap
 
 #pragma mark - Properties
 
+- (void)setMapObjectives:(NSSet *)mapObjectives {
+    _mapObjectives = [mapObjectives copy];
+    
+    _redPotentialPoints = -1;
+    _bluePotentialPoints = -1;
+    _greenPotentialPoints = -1;
+}
+
 - (NSInteger)redPotentialPoints {
-    NSInteger potentialPoints = 0;
+    if (_redPotentialPoints >= 0) {
+        return _redPotentialPoints;
+    }
+    
+    _redPotentialPoints = 0;
     for (GW2Objective *objective in _mapObjectives) {
         if ([objective ownerTeam] == GW2WvWTeamRed) {
-            potentialPoints += [objective points];
+            _redPotentialPoints += [objective points];
         }
     }
     
-    return potentialPoints;
+    return _redPotentialPoints;
 }
 
 - (NSInteger)bluePotentialPoints {
-    NSInteger potentialPoints = 0;
+    if (_bluePotentialPoints >= 0) {
+        return _bluePotentialPoints;
+    }
+    
+    _bluePotentialPoints = 0;
     for (GW2Objective *objective in _mapObjectives) {
         if ([objective ownerTeam] == GW2WvWTeamBlue) {
-            potentialPoints += [objective points];
+            _bluePotentialPoints += [objective points];
         }
     }
     
-    return potentialPoints;
+    return _bluePotentialPoints;
 }
 
 - (NSInteger)greenPotentialPoints {
-    NSInteger potentialPoints = 0;
+    if (_greenPotentialPoints >= 0) {
+        return _greenPotentialPoints;
+    }
+    
+    _greenPotentialPoints = 0;
     for (GW2Objective *objective in _mapObjectives) {
         if ([objective ownerTeam] == GW2WvWTeamGreen) {
-            potentialPoints += [objective points];
+            _greenPotentialPoints += [objective points];
         }
     }
     
-    return potentialPoints;
+    return _greenPotentialPoints;
 }
 
 #pragma mark - NSObject protocol
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"[%li] R:%li B:%li G:%li", self.type, (long)self.redScore, (long)self.blueScore, (long)self.greenScore];
+	return [NSString stringWithFormat:@"<%@: %li, redScore: %li blueScore: %li greenScore: %li>",
+            NSStringFromClass([self class]), (long)self.type, (long)self.redScore, (long)self.blueScore, (long)self.greenScore];
 }
 
 - (BOOL)isEqual:(id)object {

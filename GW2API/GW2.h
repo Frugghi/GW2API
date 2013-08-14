@@ -103,13 +103,18 @@ extern NSString *const GW2ItemNotification;
 + (void)objectivesWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
 + (void)objectiveByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
 
-#pragma mark - Item and Recipe
+#pragma mark - Items and Recipes
 
 + (void)recipesWithCompletitionBlock:(GW2ArrayIDCompletitionBlock)completitionBlock;
 + (void)recipeByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
 
 + (void)itemsWithCompletitionBlock:(GW2ArrayIDCompletitionBlock)completitionBlock;
 + (void)itemByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
+
+#pragma mark - Guilds
+
++ (void)guildByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
++ (void)guildByName:(NSString *)name completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
 
 #pragma mark - Synchronous Methods -
 
@@ -170,7 +175,7 @@ extern NSString *const GW2ItemNotification;
 + (GW2Objective *)objectiveByID:(NSString *)ID;
 + (GW2Objective *)objectiveByID:(NSString *)ID error:(NSError **)error;
 
-#pragma mark - Item and Recipe
+#pragma mark - Items and Recipes
 
 + (NSArray *)recipes;
 + (NSArray *)recipesWithError:(NSError **)error;
@@ -181,5 +186,10 @@ extern NSString *const GW2ItemNotification;
 + (NSArray *)itemsWithError:(NSError **)error;
 + (GW2Item *)itemByID:(NSString *)ID;
 + (GW2Item *)itemByID:(NSString *)ID error:(NSError **)error;
+
+#pragma mark - Guilds
+
++ (GW2Guild *)guildByID:(NSString *)ID error:(NSError **)error;
++ (GW2Guild *)guildByName:(NSString *)name error:(NSError **)error;
 
 @end

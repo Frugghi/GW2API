@@ -28,6 +28,8 @@
 #import "GW2Model.h"
 #import "GW2Cache.h"
 
+#include <sys/errno.h>
+
 @interface GW2API ()
 
 @property (nonatomic, strong) dispatch_semaphore_t urlSemaphore;
@@ -62,6 +64,7 @@
         [self setEventStateClass:[GW2EventState class]];
         [self setRecipeClass:[GW2Recipe class]];
         [self setItemClass:[GW2Item class]];
+        [self setGuildClass:[GW2Guild class]];
     }
     
     return self;
@@ -181,17 +184,28 @@
     if (params && [params count] > 0) {
         [paramURL appendString:@"?"];
         for (NSString *param in params) {
-            [paramURL appendFormat:@"%@=%@&", param, [params objectForKey:param]];
+            [paramURL appendFormat:@"%@=%@&", param, params[param]];
         }
         [paramURL deleteCharactersInRange:NSMakeRange(paramURL.length - 1, 1)];
     }
 
-    return [NSURL URLWithString:paramURL relativeToURL:[[self apiURL] URLByAppendingPathComponent:relativeURL]];
+    return [NSURL URLWithString:[paramURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+                  relativeToURL:[[self apiURL] URLByAppendingPathComponent:relativeURL]];
 }
 
 - (NSData *)syncRequest:(NSURL *)requestURL error:(NSError *__autoreleasing *)error {
     __block dispatch_semaphore_t semaphore;
     __block NSData *(^block)(void);
+    
+    if (!requestURL) {
+        if (error) {
+            *error = [NSError errorWithDomain:NSPOSIXErrorDomain
+                                         code:EINVAL
+                                     userInfo:@{NSLocalizedDescriptionKey : @"requestURL is nil"}];
+        }
+        
+        return nil;
+    }
 
     dispatch_sync([self serialQueue], ^{
         NSMutableDictionary *dict = [self.semaphoreDict objectForKey:requestURL];
