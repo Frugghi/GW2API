@@ -87,10 +87,17 @@ typedef NS_ENUM(NSInteger, GW2ObjectiveType) {
 };
 
 typedef NS_ENUM(NSInteger, GW2POIType) {
-    GW2POIUnkown = 0,
+    GW2POIUnknown = 0,
     GW2POILandmark,
     GW2POIWaypoint,
     GW2POIVista
+};
+
+typedef NS_ENUM(NSInteger, GW2ColorMaterial) {
+    GW2ColorMaterialUnknown = 0,
+    GW2ColorMaterialCloth,
+    GW2ColorMaterialLeather,
+    GW2ColorMaterialMetal
 };
 
 #endif

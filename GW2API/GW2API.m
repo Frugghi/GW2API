@@ -65,6 +65,7 @@
         [self setRecipeClass:[GW2Recipe class]];
         [self setItemClass:[GW2Item class]];
         [self setGuildClass:[GW2Guild class]];
+        [self setDyeClass:[GW2Dye class]];
     }
     
     return self;

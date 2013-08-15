@@ -52,6 +52,7 @@
 @property (nonatomic, assign) Class recipeClass;
 @property (nonatomic, assign) Class itemClass;
 @property (nonatomic, assign) Class guildClass;
+@property (nonatomic, assign) Class dyeClass;
 
 #pragma mark - Public methods -
 

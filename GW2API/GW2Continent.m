@@ -69,7 +69,7 @@
     NSDictionary *continents = json[@"continents"];
     NSDate *now = [NSDate date];
     GW2Array *gw2Array = [[GW2Array alloc] init];
-    for (NSString *continentID in [continents allKeys]) {
+    for (NSString *continentID in continents) {
         NSDictionary *continent = continents[continentID];
         GW2Continent *obj = [[[self class] alloc] initWithID:continentID];
         [obj setName:continent[@"name"]];

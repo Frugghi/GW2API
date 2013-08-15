@@ -76,7 +76,7 @@
     NSDictionary *maps = json[@"maps"];
     NSDate *now = [NSDate date];
     GW2Array *gw2Array = [[GW2Array alloc] init];
-    for (NSString *mapID in [maps allKeys]) {
+    for (NSString *mapID in maps) {
         NSDictionary *map = maps[mapID];
         GW2Map *obj = [[[self class] alloc] initWithID:mapID];
         [obj setName:map[@"map_name"]];

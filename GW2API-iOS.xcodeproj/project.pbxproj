@@ -38,6 +38,9 @@
 		180BBC5217BBA77C0013632C /* GW2Guild.h in Headers */ = {isa = PBXBuildFile; fileRef = 180BBC5017BBA77C0013632C /* GW2Guild.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		180BBC5317BBA77C0013632C /* GW2Guild.m in Sources */ = {isa = PBXBuildFile; fileRef = 180BBC5117BBA77C0013632C /* GW2Guild.m */; };
 		180BBC5417BBA77C0013632C /* GW2Guild.m in Sources */ = {isa = PBXBuildFile; fileRef = 180BBC5117BBA77C0013632C /* GW2Guild.m */; };
+		1820E1AD17BD44BF0029F6CA /* GW2Dye.h in Headers */ = {isa = PBXBuildFile; fileRef = 1820E1AB17BD44BF0029F6CA /* GW2Dye.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1820E1AE17BD44BF0029F6CA /* GW2Dye.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820E1AC17BD44BF0029F6CA /* GW2Dye.m */; };
+		1820E1AF17BD44BF0029F6CA /* GW2Dye.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820E1AC17BD44BF0029F6CA /* GW2Dye.m */; };
 		185BF33617B549F90031201B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185BF33517B549F90031201B /* UIKit.framework */; };
 		185BF33817B549F90031201B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185BF33717B549F90031201B /* Foundation.framework */; };
 		185BF33A17B549F90031201B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185BF33917B549F90031201B /* CoreGraphics.framework */; };
@@ -124,6 +127,8 @@
 		18048E9917B85870004F1D33 /* GW2Function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Function.h; sourceTree = "<group>"; };
 		180BBC5017BBA77C0013632C /* GW2Guild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Guild.h; sourceTree = "<group>"; };
 		180BBC5117BBA77C0013632C /* GW2Guild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Guild.m; sourceTree = "<group>"; };
+		1820E1AB17BD44BF0029F6CA /* GW2Dye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GW2Dye.h; sourceTree = "<group>"; };
+		1820E1AC17BD44BF0029F6CA /* GW2Dye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GW2Dye.m; sourceTree = "<group>"; };
 		185BF33217B549F90031201B /* GW2API-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GW2API-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		185BF33517B549F90031201B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		185BF33717B549F90031201B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -270,6 +275,15 @@
 			name = Guilds;
 			sourceTree = "<group>";
 		};
+		1820E1AA17BD448A0029F6CA /* Miscellaneous */ = {
+			isa = PBXGroup;
+			children = (
+				1820E1AB17BD44BF0029F6CA /* GW2Dye.h */,
+				1820E1AC17BD44BF0029F6CA /* GW2Dye.m */,
+			);
+			name = Miscellaneous;
+			sourceTree = "<group>";
+		};
 		185BF32917B549F90031201B = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +362,7 @@
 				180BBC4F17BBA72F0013632C /* Guilds */,
 				185BF39617B54CF80031201B /* Dynamic Events */,
 				185BF3A717B54D240031201B /* WvW */,
+				1820E1AA17BD448A0029F6CA /* Miscellaneous */,
 			);
 			name = Model;
 			path = GW2API;
@@ -574,6 +589,7 @@
 				185BF40817B556240031201B /* GW2Caching.h in Headers */,
 				185BF40917B556240031201B /* GW2Fetching.h in Headers */,
 				180BBC5217BBA77C0013632C /* GW2Guild.h in Headers */,
+				1820E1AD17BD44BF0029F6CA /* GW2Dye.h in Headers */,
 				185BF40A17B556240031201B /* GW2Protected.h in Headers */,
 				18048E8317B851DE004F1D33 /* GW2RecipeID.h in Headers */,
 				18048E8817B85228004F1D33 /* GW2ItemID.h in Headers */,
@@ -730,6 +746,7 @@
 				18048E8E17B8529D004F1D33 /* NSString+GW2_ID.m in Sources */,
 				18B87ADB17BAEB670067EE8D /* AutoCoding.m in Sources */,
 				180BBC5317BBA77C0013632C /* GW2Guild.m in Sources */,
+				1820E1AE17BD44BF0029F6CA /* GW2Dye.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +778,7 @@
 				18048E8F17B8529D004F1D33 /* NSString+GW2_ID.m in Sources */,
 				18B87ADC17BAEB670067EE8D /* AutoCoding.m in Sources */,
 				180BBC5417BBA77C0013632C /* GW2Guild.m in Sources */,
+				1820E1AF17BD44BF0029F6CA /* GW2Dye.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

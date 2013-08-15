@@ -116,6 +116,11 @@ extern NSString *const GW2ItemNotification;
 + (void)guildByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
 + (void)guildByName:(NSString *)name completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
 
+#pragma mark - Miscellaneous
+
++ (void)dyesWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock;
++ (void)dyeByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock;
+
 #pragma mark - Synchronous Methods -
 
 + (id)fetch:(id<GW2Fetching>)obj;
@@ -191,5 +196,12 @@ extern NSString *const GW2ItemNotification;
 
 + (GW2Guild *)guildByID:(NSString *)ID error:(NSError **)error;
 + (GW2Guild *)guildByName:(NSString *)name error:(NSError **)error;
+
+#pragma mark - Miscellaneous
+
++ (GW2Array *)dyes;
++ (GW2Array *)dyesWithError:(NSError **)error;
++ (GW2Dye *)dyeByID:(NSString *)ID;
++ (GW2Dye *)dyeByID:(NSString *)ID error:(NSError **)error;
 
 @end

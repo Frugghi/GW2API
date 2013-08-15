@@ -681,6 +681,41 @@ NSString *const GW2ItemNotification = @"com.GW2.ItemNotification";
     [self guildByID:name completitionBlock:completitionBlock];
 }
 
+#pragma mark - Dyes -
+
++ (GW2Array *)dyes {
+    return [self dyesWithError:nil];
+}
+
++ (GW2Array *)dyesWithError:(NSError *__autoreleasing *)error {
+    return [[self sharedInstance] fetchObjectForClass:[[self api] dyeClass] ID:nil error:error];
+}
+
++ (void)dyesWithCompletitionBlock:(GW2CollectionCompletitionBlock)completitionBlock {
+    dispatch_async([[self sharedInstance] fetchQueue], ^{
+        NSError *error;
+        GW2Array *collection = [self dyesWithError:&error];
+        completitionBlock(collection, error);
+    });
+}
+
++ (GW2Dye *)dyeByID:(NSString *)ID {
+    return [self dyeByID:ID error:nil];
+}
+
++ (GW2Dye *)dyeByID:(NSString *)ID error:(NSError *__autoreleasing *)error {
+    return (GW2Dye *)[[self dyesWithError:error] objectWithID:ID];
+}
+
++ (void)dyeByID:(NSString *)ID completitionBlock:(GW2ObjectCompletitionBlock)completitionBlock {
+    dispatch_async([[self sharedInstance] fetchQueue], ^{
+        NSError *error;
+        GW2Dye *object = [self dyeByID:ID error:&error];
+        completitionBlock(object, error);
+    });
+}
+
+
 #pragma mark - Private -
 
 - (id<GW2Caching, NSCopying>)cachedObjectForClass:(Class)class ID:(NSString *)ID {

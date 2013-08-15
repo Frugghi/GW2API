@@ -260,7 +260,7 @@
     } else if ([type compare:@"vista" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
         return GW2POIVista;
     } else {
-        return GW2POIUnkown;
+        return GW2POIUnknown;
     }
 }
 

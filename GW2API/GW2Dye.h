@@ -1,8 +1,8 @@
 //
-//  GW2Model.h
+//  GW2Dye.h
 //  GW2API for ObjC
 //
-//  Created by Tommaso Madonia on 22/05/13.
+//  Created by Tommaso Madonia on 15/08/13.
 //  Copyright (c) 2013 Tommaso Madonia. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,24 +24,30 @@
 //  THE SOFTWARE.
 //
 
-#ifndef GW2_GW2Model_h
-#define GW2_GW2Model_h
-
 #import "GW2Object.h"
-#import "GW2World.h"
-#import "GW2Match.h"
-#import "GW2MatchDetails.h"
-#import "GW2Objective.h"
-#import "GW2Zone.h"
-#import "GW2Event.h"
-#import "GW2EventState.h"
-#import "GW2Recipe.h"
-#import "GW2Item.h"
-#import "GW2Array.h"
-#import "GW2Continent.h"
-#import "GW2Map.h"
-#import "GW2MapFloor.h"
-#import "GW2Guild.h"
-#import "GW2Dye.h"
 
-#endif
+@class GW2Color;
+
+@interface GW2Dye : GW2Object
+
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSArray *baseRGB;
+@property (nonatomic, copy) GW2Color *cloth;
+@property (nonatomic, copy) GW2Color *leather;
+@property (nonatomic, copy) GW2Color *metal;
+
+@end
+
+@interface GW2Color : NSObject <NSCopying, NSCoding>
+
+@property (nonatomic, assign) GW2ColorMaterial material;
+@property (nonatomic, copy) NSNumber *brightness;
+@property (nonatomic, copy) NSNumber *contrast;
+@property (nonatomic, copy) NSNumber *hue;
+@property (nonatomic, copy) NSNumber *saturation;
+@property (nonatomic, copy) NSNumber *lightness;
+@property (nonatomic, copy) NSArray *RGB;
+
+- (id)color;
+
+@end
