@@ -9,7 +9,8 @@ xcuserdata
 
 *.xcscheme
 
-*.framework
-
 *.build
+
 *.xccheckout
+
+Products/
