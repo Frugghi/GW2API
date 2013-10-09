@@ -43,13 +43,13 @@
 
 - (NSURL *)URLForTile:(RMTile)tile
 {
-	return [NSURL URLWithString:[NSString stringWithFormat:@"https://tiles.guildwars2.com/%d/%d/%d/%d/%d.jpg",
-                                 self.continent, self.floor, tile.zoom, tile.x, tile.y]];
+	return [NSURL URLWithString:[NSString stringWithFormat:@"https://tiles.guildwars2.com/%ld/%ld/%d/%d/%d.jpg",
+                                 (long)self.continent, (long)self.floor, tile.zoom, tile.x, tile.y]];
 }
 
 - (NSString *)uniqueTilecacheKey
 {
-	return [NSString stringWithFormat:@"Gw2Map_%d_%d", self.continent, self.floor];
+	return [NSString stringWithFormat:@"Gw2Map_%ld_%ld", (long)self.continent, (long)self.floor];
 }
 
 - (NSString *)shortName

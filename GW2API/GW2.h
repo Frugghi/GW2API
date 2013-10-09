@@ -29,6 +29,8 @@
 #import "GW2Model.h"
 #import "GW2Protocols.h"
 
+#define GW2API_FRAMEWORK_VERSION @"0.2.1"
+
 typedef void (^GW2FetchCompletitionBlock)(id obj, NSError *error);
 typedef void (^GW2ObjectCompletitionBlock)(GW2Object *obj, NSError *error);
 typedef void (^GW2CollectionCompletitionBlock)(GW2Array *objCollection, NSError *error);

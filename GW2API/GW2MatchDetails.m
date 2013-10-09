@@ -130,6 +130,8 @@
     [obj setBlueScore:[scores[1] integerValue]];
     [obj setGreenScore:[scores[2] integerValue]];
     
+    [obj setBonuses:json[@"bonuses"]];
+    
     NSMutableSet *maps = [[NSMutableSet alloc] initWithCapacity:4];
     for (NSDictionary *map in json[@"maps"]) {
         GW2WvWMap *currentMap = [[GW2WvWMap alloc] init];
