@@ -45,7 +45,8 @@ typedef NS_ENUM(NSInteger, GW2WvWTeam) {
     GW2WvWTeamUnknown = 0,
     GW2WvWTeamRed,
     GW2WvWTeamBlue,
-    GW2WvWTeamGreen
+    GW2WvWTeamGreen,
+    GW2WvWTeamNeutral
 };
 
 typedef NS_ENUM(NSInteger, GW2WvWMapType) {

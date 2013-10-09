@@ -163,6 +163,8 @@
                 [currentObjective setOwnerTeam:GW2WvWTeamBlue];
             } else if ([owner isEqualToString:@"green"]) {
                 [currentObjective setOwnerTeam:GW2WvWTeamGreen];
+            } else if ([owner isEqualToString:@"neutral"]) {
+                [currentObjective setOwnerTeam:GW2WvWTeamNeutral];
             } else {
                 [currentObjective setOwnerTeam:GW2WvWTeamUnknown];
             }
