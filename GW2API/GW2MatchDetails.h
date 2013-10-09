@@ -37,7 +37,6 @@
 @property (nonatomic, readonly) NSInteger bluePotentialPoints;
 @property (nonatomic, readonly) NSInteger greenPotentialPoints;
 @property (nonatomic, copy) NSSet *maps;
-@property (nonatomic, copy) NSArray *bonuses;
 @property (nonatomic, readonly) GW2RegionServer region;
 @property (nonatomic, readonly) NSInteger tier;
 
@@ -55,5 +54,6 @@
 @property (nonatomic, readonly) NSInteger bluePotentialPoints;
 @property (nonatomic, readonly) NSInteger greenPotentialPoints;
 @property (nonatomic, copy) NSSet *mapObjectives;
+@property (nonatomic, copy) NSArray *bonuses;
 
 @end

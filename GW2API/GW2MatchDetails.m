@@ -130,8 +130,6 @@
     [obj setBlueScore:[scores[1] integerValue]];
     [obj setGreenScore:[scores[2] integerValue]];
     
-    [obj setBonuses:json[@"bonuses"]];
-    
     NSMutableSet *maps = [[NSMutableSet alloc] initWithCapacity:4];
     for (NSDictionary *map in json[@"maps"]) {
         GW2WvWMap *currentMap = [[GW2WvWMap alloc] init];
@@ -153,6 +151,8 @@
         [currentMap setRedScore:[scores[0] integerValue]];
         [currentMap setBlueScore:[scores[1] integerValue]];
         [currentMap setGreenScore:[scores[2] integerValue]];
+        
+        [currentMap setBonuses:map[@"bonuses"]];
         
         NSMutableSet *objectives = [[NSMutableSet alloc] initWithCapacity:[map[@"objectives"] count]];
         for (NSDictionary *objective in map[@"objectives"]) {
